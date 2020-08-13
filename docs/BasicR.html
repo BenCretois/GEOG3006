@@ -1345,30 +1345,43 @@
 <h1 id="creating-objects-in-r">Creating objects in R</h1>
 <p>To do things in R we need to assign values to objects. To do so, we write a name followed by the assignement operator &lt;- or = and the value we want to give it:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+my_age &lt;- 23
 
+# Or
+
+my_age = 23</code></pre>
 </div>
 <p>We can read this line of code as 23 goes into the object temperature. Then you need to run the line of code (with either Run or Ctrl + Enter). Once you have executed the code you will see your object in the global environment (the upper right window) with its value. Now, there is some very important rules as of how to name objects in R:</p>
 <p>• Objects names are explicits and shorts • They cannot start with a number such as 2pac • They cannot include space, if you need place an underscore _. Don’t write my age but my_age • R is <strong>case sensitive</strong>. For R, My_age is different from my_age Now that R has my_age in memory you can do some math with it. For instance, you know that your aunt is two times your age:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+my_age*2</code></pre>
 <pre><code>
 [1] 46</code></pre>
 </div>
 <p>You can even create a new object:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+aunt_age &lt;- my_age*2</code></pre>
 </div>
 <p>Note that you can change the value of an object. Let’s suppose I made a mistake and I wanted to write 27 instead of 23 for my_age. I only need to reassign the value:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+my_age &lt;- 27</code></pre>
 </div>
 <p>If you want to check that my_age has the good value you can force R to print the value by typing the object name. The value will appear in the console (down left)</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+my_age</code></pre>
 <pre><code>
 [1] 27</code></pre>
 </div>
 <h2 id="functions">Functions</h2>
 <p>A function is a block of code which you can use whenever you need and wherever you required to avoid repeated code blocks. The function takes arguments to produce a result. For instance, let’s assume you have coffee beans that you want to grind. You will put your beans in the grinder and will get the grinded coffee as a result. Well, your coffee beans are the arguments, the grinding process the function and the grinded coffee the result. Many functions are predifined and you only need to call (or excecute) them. For instance you can square root my_age with the function sqrt():</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+sqrt(my_age)</code></pre>
 <pre><code>
 [1] 5.196152</code></pre>
 </div>
@@ -1376,29 +1389,42 @@
 <h2 id="comments">Comments</h2>
 <p>As I stated in the previous lesson, you can comment your code with the hasthtag #. I repeat it because I would like you to use it extensively in your code, <strong>commenting your code is always good!</strong>. For instance to keep track of the units of your variables:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+my_age &lt;- 27 # In years
+bottle_weight &lt;- 1 # Kilogram
+distance &lt;- 100 # Meters</code></pre>
 </div>
 <h2 id="objects-vs-variables">Objects vs variables</h2>
 <p>What are known as objects in R are also called variables in many other programming languages. Depending on the context, object and variable can have drastically different meanings but for this course we will use these two words synonymously.</p>
 <h1 id="vectors-and-data-types">Vectors and data types</h1>
 <p>A <strong>vector</strong>| is the most basic data type in R. A vector is composed by a serie of values, which can be either numbers of characters. Now, this is <strong>very important</strong> to note that a vector is composed of only <strong>one type of data</strong>. Either your vector is fully made of numbers or of characters (include letters or words). You can assign a series of values to a vector using the <code>concatenate</code> function. For instance let’s create a vector of age and assign it to the object <code>group_age</code>:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+group_age &lt;- c(18,21,22,31,28,32,50, 42,38 ) # create the vector and assign it to group_age
+group_age # I check if my object has been created and if it has the good values</code></pre>
 <pre><code>
 [1] 18 21 22 31 28 32 50 42 38</code></pre>
 </div>
 <p>There is some important functions that are used to inspect your vector. We can for instance check the length of the vector using the function `length()``.</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+length(group_age)</code></pre>
 <pre><code>
 [1] 9</code></pre>
 </div>
 <p>You can also get an overview of your vector with the function <code>str()</code>:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+str(group_age)</code></pre>
 <pre><code>
  num [1:9] 18 21 22 31 28 32 50 42 38</code></pre>
 </div>
 <p>You can check the class (or the type) of your vector with <code>class()</code>:</p>
 <p>Now for comparison let’s write a vector composed of words, let’s say 5 vegetables:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+vegetables &lt;- c(&quot;tomatoes&quot;, &quot;eggplant&quot;, &quot;carrots&quot;, &quot;salad&quot;, &quot;onion&quot;)
+class(vegetables)</code></pre>
 <pre><code>
 [1] &quot;character&quot;</code></pre>
 </div>
@@ -1407,16 +1433,22 @@
 <h1 id="manipulating-vectors">Manipulating vectors</h1>
 <p>Sometimes, we want to extract one or several values from a vector. For example, I want to know what is the second vegetable of my vector:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+vegetables[2]</code></pre>
 <pre><code>
 [1] &quot;eggplant&quot;</code></pre>
 </div>
 <p>You need to specify the position of what you want to know in the brackets [] If I want to know what are the 2nd and 3rd vegetables:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+vegetables[c(2,3)] #  I need to concatenate as my input is multiple values</code></pre>
 <pre><code>
 [1] &quot;eggplant&quot; &quot;carrots&quot; </code></pre>
 </div>
 <p>You can also excludes some elements of your vector. Some people say that tomatoes is not a vegetables <code>tomatoes</code> need to exclude tomatoes from my vector of vegetables:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+vegetables[-1] #I don&#39;t have tomatoes anymore!</code></pre>
 <pre><code>
 [1] &quot;eggplant&quot; &quot;carrots&quot;  &quot;salad&quot;    &quot;onion&quot;   </code></pre>
 </div>
@@ -1424,25 +1456,38 @@
 <h1 id="conditional-subsetting">Conditional subsetting</h1>
 <p>Another common way of subsetting is by searching for certain words (or strings in the programming language). We can use OR (at least one of the condition is true) with the operator | to test for equality to multiple values:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+vegetables[vegetables == &quot;eggplant&quot; | vegetables == &quot;cucumber&quot;]</code></pre>
 <pre><code>
 [1] &quot;eggplant&quot;</code></pre>
 </div>
 <p>Equivalently, if you have a numeric vector you can subset with the operators <code>&lt;</code> (less than), <code>&gt;</code> (more than) or <code>=</code> (equal). For instance, using the vector group_age I want to create a new vector with ages below 30:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+group_age &lt; 30 #I check if there is numbers below 30</code></pre>
 <pre><code>
 [1]  TRUE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+inf_30 &lt;- group_age[group_age &lt; 30] # I create a new vector composed of ages below 30
+inf_30 #I check if my object has been created</code></pre>
 <pre><code>
 [1] 18 21 22 28</code></pre>
 </div>
 <p>You can combine multiple tests using &amp; (AND, both conditions are true) or |. For instance, I want to create a dataset with ages below 30 OR over 40:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+new_age &lt;- group_age[group_age &lt; 30 | group_age &gt; 40 ]
+new_age</code></pre>
 <pre><code>
 [1] 18 21 22 28 50 42</code></pre>
 </div>
 <p>If I want to create a dataset with ages over 30 AND below 40:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+new_age2 &lt;- group_age[group_age &gt; 30 &amp; group_age &lt; 40]
+new_age2</code></pre>
 <pre><code>
 [1] 31 32 38</code></pre>
 </div>
@@ -1450,11 +1495,16 @@
 <h1 id="missing-data">Missing data</h1>
 <p>As R was designed to analyze datasets, it includes the concept of missing data (which is uncommon in other programming languages). Missing data are represented in vectors as NA. When doing operations on numbers, most functions will return NA if the data you are working with include missing values:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+heights &lt;- c(1,3,5,3,2,1,NA,3,NA,4,5) # I assign a vector to &quot;heights&quot;
+max(heights) # will return NA</code></pre>
 <pre><code>
 [1] NA</code></pre>
 </div>
 <p>You can add the arguent na.rm = TRUE to calculate the result while ignoring the missing values:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+max(heights, na.rm = TRUE) # will do the operation</code></pre>
 <pre><code>
 [1] 5</code></pre>
 </div>
@@ -1464,14 +1514,21 @@
 <h2 id="matrix">Matrix</h2>
 <p>If we arrange data elements of a vector in a two-dimensional rectangular layout we have a matrix. To construct a matrix, we use a function conveniently called <code>matrix()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+my_matrix &lt;- matrix(1:20, nrow=5, ncol=4) # Create a 5 x 4 numeric matrix</code></pre>
 </div>
 <p>You can subset a matrix with [ row , column ]:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+my_matrix[ , 4] # I subset the 4th column of the matrix</code></pre>
 <pre><code>
 [1] 16 17 18 19 20</code></pre>
+<pre class="r"><code>
+my_matrix[3 , ] # I subset the 3rd row of the matrix</code></pre>
 <pre><code>
 [1]  3  8 13 18</code></pre>
+<pre class="r"><code>
+my_matrix[2:4 , 1:3] # I subset rows 2,3,4 and column 1,2,3 of the matrix</code></pre>
 <pre><code>
      [,1] [,2] [,3]
 [1,]    2    7   12
@@ -1481,6 +1538,14 @@
 <h2 id="data-frame">Data frame</h2>
 <p>While matrix can only take numeric values, data.frame can contain any type of elements. The only rule is that all elements must have the same length. A data frame is the most common way of storing tabular data in R and something you will likely deal with a lot. You can really think of a data frame as a table or an excell spreadsheet. For instance, let’s build a dataframe using the <code>data.frame()</code> function:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+group_df &lt;- data.frame(Student = c(&quot;Kjersti&quot;, &quot;Bjorn&quot;, &quot;Patrick&quot;, &quot;Karine&quot;, &quot;Kristine&quot;),
+Eyes = c(&quot;blue&quot;, &quot;green&quot;, &quot;borwn&quot;, &quot;blue&quot;, &quot;brown&quot;),
+Height = c(1.88,1.56,1.78,1.98,1.75),
+ScoreStat = c(&quot;B&quot;, &quot;C&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;),
+StudentNumber = c(13,14,11,16,18))
+
+group_df</code></pre>
 <pre><code>
    Student  Eyes Height ScoreStat StudentNumber
 1  Kjersti  blue   1.88         B            13
@@ -1499,13 +1564,15 @@
 <p>To install packages there is two main options:</p>
 <p>1.You can use RStudio interface: In the menu at the top of your window: Tools &gt; Install packages 2.You can install the package from the R console like this:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+install.packages(&quot;dplyr&quot;) #to install the package &quot;dplyr&quot;</code></pre>
 </div>
 <p>The second method is the method I would recommand as you can customize the function call by adding some arguments.</p>
 <h1 id="using-the-installed-packages">Using the installed packages</h1>
 <p>Downloading the packages is not enough, you need to tell R that you want to use them! To access the functions of your newly downloaded package you need to specify:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+library(dplyr)</code></pre>
 </div>
 <p>A small advice . . . All packages in R have a description, if you want to see what are the possibilities of a package you can google it. For instance, if you google “dplyr + pdf” you will find this, which is a complete description of the dplyr package.</p>
 <h1 id="i-need-some-help">I need some help!</h1>
@@ -1518,7 +1585,8 @@
 </div>
 <p>Instead of writing the name of the function in this small area you can directly ask for help by typing in the Console:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+?mean</code></pre>
 </div>
 <h2 id="you-are-stuck-you-get-an-error-message-and-you-want-to-break-your-computer">You are stuck, you get an error message and you want to break your computer</h2>
 <p>Yes, I get this feeling quite often. When I reach this point the best is to look for help on Google! Google is your friend as they say, but in the programming world google is your best friend. You can start by copy and paste your error message on google and look at the firsts few lines. In general that work and someone else alreay got the problem you are facing. Most of the time, the first matches from your google search will redirect you to the website stackoverflow.</p>

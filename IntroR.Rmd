@@ -92,13 +92,15 @@ This means that everyone can contribute to improving R! All the work done in R a
 
 You can make beautiful graphs in only a few lines of codes! You want the proof? Okay, let's do it. 
 
-````{r}
+````{r, echo = TRUE}
 #I open the libraries I need - don't worry about it now
 library(ggplot2)
 library(viridis)
 
-#Here I simulate a dataset, let's say it represents the number of vulgar words per day for each sex
-data <- data.frame(n.insult = c(rnorm(60, mean=10,sd=2), rnorm(40, mean=20, sd=4)),
+#Here I simulate a dataset, let's say it represents the number 
+# of vulgar words per day for each sex
+data <- data.frame(n.insult = c(rnorm(60, mean=10,sd=2),
+                                rnorm(40, mean=20, sd=4)),
                  Sex = c(rep('women', 60), rep('men', 40)))
 
 #And now the graphic (just 4 lines of code)
@@ -152,7 +154,7 @@ Now, just below `New Folder` it should be written something like `StudentName > 
 
 It's possible to change your working directory within the command line with. For example if I want to set my new directory in the folder you first need to click right on your folder > `properties` and copy the `location`. This gives more or less something like this:
 
-```{r eval=FALSE}
+```{r eval=FALSE, echo = TRUE}
 setwd('StudentName/Desktop/GEOG_whatever') 
 ```
 
@@ -160,7 +162,7 @@ Is that clear? If it's not, do not worry we will see that a bit more in detail d
 
 You can also check in which working directory you are by writting:
 
-```{r eval=FALSE}
+```{r eval=FALSE, echo = TRUE}
 getwd()
 ```
 
@@ -198,7 +200,7 @@ The most important aspects of making your code comprehensible for others and you
 
 For instance like this:
 
-```{r eval=FALSE} 
+```{r eval=FALSE, echo = TRUE} 
 #I comment by adding a hashtag
 getwd() #I can directly comment a line of code like this
 

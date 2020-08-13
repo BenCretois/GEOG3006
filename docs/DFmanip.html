@@ -1343,28 +1343,36 @@
 <p>If you have made a R project (as you should have) the working directory is already set and you just need to load your data.</p>
 <p>Otherwise you need to set the working directory with setwd. To do so click right on <code>WorldView.csv &gt; properties &gt; copy paste the location in setwd()</code> as follow:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+setwd(&quot;PATH/THAT/IS/WRITTEN&quot;)</code></pre>
 </div>
 <p>Make sure you replace  (that R do not understand) by /!</p>
 <p>Now is time to open your data! For that we need to use the function <code>read.xlsx()</code> from the library xlsx. First you need to install the library <code>xlsx</code>:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+install.packages(&#39;xlsx&#39;)</code></pre>
 </div>
 <p>And then load the library:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+library(xlsx)</code></pre>
 </div>
 <p>Now you can open your document with the function described above.</p>
 <p>If you are in the project write:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+data &lt;- read.xlsx(&quot;data/worldbank_df.xlsx&quot;, sheetIndex = 1)</code></pre>
 </div>
 <p>If you are not in a project write (with your own path):</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+setwd(&#39;//home.ansatt.ntnu.no/benjamcr/Desktop/Teaching/GEOG3006/&#39;)
+data &lt;- read.xlsx(&#39;data/worldbank_df.xlsx&#39;, sheetIndex = 1)</code></pre>
 </div>
 <p>Now, this line of code doesn’t produce any output in the console because, as you might recall, <strong>assignments don’t display anything</strong>. If we want to check that our data has been loaded, we can print the variable’s value by running data. If you do that you have your whole dataset printed in your console! That is not very handy and we need to find other strategies to inspect the data frame reasonably . . . We can for instance use the function head() to inspect the firsts 6 lines:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+head(data)</code></pre>
 <pre><code>
                   name iso_a2   HDI urban_pop     unemployment
 1          Afghanistan     AF    NA   8609463               NA
@@ -1397,6 +1405,8 @@
 <p>Remember how we defined a data frame in the previous lesson? Okay just a quick reminder: a data frame is a <strong>representation of data where the columns are vectors that all have the same length</strong>. Because the columns are vectors, they all contain the same type of data (e.g. numeric, characters). But the type of data can vary BETWEEN vectors!</p>
 <p>You can inspect the structure of a data frame with the function str():</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+str(data)</code></pre>
 <pre><code>
 &#39;data.frame&#39;:   177 obs. of  7 variables:
  $ name        : Factor w/ 177 levels &quot;Afghanistan&quot;,..: 1 4 2 166 6 7 5 56 8 9 ...
@@ -1431,24 +1441,37 @@
 <h1 id="indexing-and-subsetting-dataframes">Indexing and subsetting dataframes</h1>
 <p>The <code>worldbank_df</code> dataset has two dimensions (rows and columns) and if we want to extract some specific information from it we need to specify the coordinates we want from it. It is like subsetting a matrix (remember the previous lesson!): rows come first and it is followed by column number:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+data[ 1 , 1 ] #First element in the first column
+data[ 1 , 3 ] #First element in the third column
+data[ , 1 ] #First column
+data[ 4 , ] #Fourth row
+data[ 1:10 , 1 ] #Rows 1 to 10 from the first column
+#And so forth and so on ... Just try to play with that!</code></pre>
 </div>
 <p>You can also subset the columns of a data frame using their names:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+data[ , &quot;name&quot; ] # I subset the column name -&gt; the result will be a vector!
+data[ , c(&quot;name&quot;, &quot;unemployment&quot;) ] # I subset the columns name and unemployment -&gt; #the result will be a dataframe</code></pre>
 </div>
 <p>Another way for subsetting columns of a data frame is using <code>$</code></p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+data$name # It is equivalent to data[ , &quot;name&quot; ]</code></pre>
 </div>
 <p>Exercise: create a data frame <code>country_pop</code> by subsetting <code>name</code>, <code>urban_pop</code> and <code>pop_growth</code>. Inspect this new dataframe using the functions we learned.</p>
 <h1 id="conditional-subsetting">Conditional subsetting</h1>
 <p>Often, we need to extract a subset of a data frame based on certain conditions. For instance, if I want to have a look at some specific countries . . . let’s say Norway:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+data[data$name == &quot;Norway&quot; , ] # This line of code tells R to subset the row in which &quot;name&quot; equal Norway</code></pre>
 </div>
 <p>Now if I want to create a new dataset by subsetting only France and Norway I would do like this:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+NOR_FRA &lt;- data[data$name == &quot;Norway&quot; | data$name == &quot;France&quot;, ]
+NOR_FRA</code></pre>
 <pre><code>
       name iso_a2 HDI urban_pop     unemployment        pop_growth
 56  France     FR  NA  52593947 10.3000001907349 0.503868913037786
@@ -1461,7 +1484,9 @@
 <h1 id="adding-and-removing-rows-and-columns">Adding and removing rows and columns</h1>
 <p>I can add columns to a data frame using the cbind() function. For instance, let’s say I want to create a column “ID” which assigns a number to each country. I first create the vector and add it to the dataframe:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+ID &lt;- 1:nrow(data) #A vector going from 1 to 160 (which is the length of my data frame)
+cbind(data, ID)</code></pre>
 </div>
 <p>To add rows to a data frame we need to use the function <code>rbind()</code>.</p>
 <h1 id="categorical-data-factors">Categorical data: factors</h1>
@@ -1471,12 +1496,17 @@
 <p>Factors are stored as integers, and have labels (text) associated with these unique integers. While factors look (and often behave) like character vectors, <code>they are actually integers under the hood</code>, and you need to be careful when treating them like strings.</p>
 <p>Once created, factors can only contain a pre-defined set of values, known as levels. By default, R always sorts levels in alphabetical order. For instance, if you have a factor with 2 levels:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+sex &lt;- factor(c(&quot;man&quot;, &quot;woman&quot;, &quot;woman&quot;, &quot;man&quot;, &quot;woman&quot;))</code></pre>
 </div>
 <p>R will assign the value of 1 to the level man and the value 2 to the level woman. You can check this by using the functions <code>levels()</code> and <code>nlevels()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+levels(sex)</code></pre>
 <pre><code>
 [1] &quot;man&quot;   &quot;woman&quot;</code></pre>
+<pre class="r"><code>
+nlevels(sex)</code></pre>
 <pre><code>
 [1] 2</code></pre>
 </div>
@@ -1484,9 +1514,14 @@
 <h2 id="reordering-levels">Reordering levels</h2>
 <p>It is possible to reorder the levels of a vector:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+sex #gives the current order of the levels</code></pre>
 <pre><code>
 [1] man   woman woman man   woman
 Levels: man woman</code></pre>
+<pre class="r"><code>
+sex &lt;- factor(sex, levels = c(&#39;woman&#39;,&#39;man&#39;)) # I reorder
+sex # after re ordering</code></pre>
 <pre><code>
 [1] man   woman woman man   woman
 Levels: woman man</code></pre>
@@ -1495,10 +1530,14 @@ Levels: woman man</code></pre>
 <p>Sometimes, R open that dataframe and thinks one of the column is a factor while in reality it is not (such as it is the case for <code>name</code> here). In these cases we need to convert the data type</p>
 <p>If you need to convert a factor vector to a character vector use the function <code>as.character()</code></p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+as.character(data$name)</code></pre>
 </div>
 <p>If you need to convert factors where the levels appear as numbers (such as dates) to a numeric vector you need to first convert factors to character and then numbers:</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+dates &lt;- factor(c(1500,1600,1700,1800,1900,2000))
+as.numeric(as.character(dates)) #Looks a bit complicated but works well</code></pre>
 <pre><code>
 [1] 1500 1600 1700 1800 1900 2000</code></pre>
 </div>

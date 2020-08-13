@@ -1374,7 +1374,26 @@
 <h2 id="r-produces-high-quality-graphics">R produces high quality graphics</h2>
 <p>You can make beautiful graphs in only a few lines of codes! You want the proof? Okay, let’s do it.</p>
 <div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+#I open the libraries I need - don&#39;t worry about it now
+library(ggplot2)
+library(viridis)
+
+#Here I simulate a dataset, let&#39;s say it represents the number 
+# of vulgar words per day for each sex
+data &lt;- data.frame(n.insult = c(rnorm(60, mean=10,sd=2),
+                                rnorm(40, mean=20, sd=4)),
+                 Sex = c(rep(&#39;women&#39;, 60), rep(&#39;men&#39;, 40)))
+
+#And now the graphic (just 4 lines of code)
+
+ggplot(data, aes(x=Sex, y=n.insult, col=Sex)) +
+  geom_boxplot() +
+  theme_classic() +
+  xlab(&#39;Sex&#39;) + ylab(&#39;number of vulgar words per day&#39;)</code></pre>
 <p><img src="IntroR_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
+<pre class="r"><code>
+#It seems that women are less vulgar than men ...</code></pre>
 </div>
 <p>I hope I managed to share my enthusiasm for R and that you are more curious about this programming language!</p>
 <p>Okay, now that I have convinced you of the usefulness of R let’s get a bit more familiar with RStudio before moving to the really fun stuff!</p>
@@ -1405,12 +1424,14 @@
 <p>Now, just below <code>New Folder</code> it should be written something like <code>StudentName &gt; Desktop &gt; GEOG3006</code>. This is your <em>Working directory</em></p>
 <p>It’s possible to change your working directory within the command line with. For example if I want to set my new directory in the folder you first need to click right on your folder &gt; <code>properties</code> and copy the <code>location</code>. This gives more or less something like this:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+setwd(&#39;StudentName/Desktop/GEOG_whatever&#39;) </code></pre>
 </div>
 <p>Is that clear? If it’s not, do not worry we will see that a bit more in detail during the Labs!</p>
 <p>You can also check in which working directory you are by writting:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+getwd()</code></pre>
 </div>
 <p>Wow, this was hard work! If you are still unsure about the notions of projects and working directory try to read a bit more about it on <a href="www.google.com">google</a>.</p>
 <h2 id="organizing-your-working-directory">Organizing your working directory</h2>
@@ -1431,7 +1452,9 @@
 <p>The most important aspects of making your code comprehensible for others and your future self is adding comments about why you did something. You can write comments directly in your script, and tell R not no execute those words simply by putting a hashtag <code>#</code> before you start typing the comment.</p>
 <p>For instance like this:</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<pre class="r"><code>
+#I comment by adding a hashtag
+getwd() #I can directly comment a line of code like this</code></pre>
 </div>
 <p>Now that you have written your code you need to run it. You have two option, you first need to select the lines of code you want to run. You can do that by highlighting the lines with your mose. Then * Either you click on <code>Run</code> located on the upper left of the ‘Source’ pane * Or if you are a bit lazy you can just use <code>Ctrl</code> + <code>Enter</code> (Note that on Mac the shortcut is <code>Cmd</code> + <code>Enter</code>)</p>
 <h1 id="wait-a-minute-i-have-some-questions">Wait a minute, I have some questions!</h1>

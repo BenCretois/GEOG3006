@@ -23,7 +23,7 @@ What you will learn:
 
 To do things in R we need to assign values to objects. To do so, we write a name followed by the assignement operator <- or = and the value we want to give it:
 
-```{r}
+```{r, echo = TRUE}
 my_age <- 23
 
 # Or
@@ -44,25 +44,25 @@ my_age
 Now that R has my_age in memory you can do some math with it. For instance, you know that your aunt is
 two times your age:
 
-```{r}
+```{r, echo = TRUE}
 my_age*2
 ```
 
 You can even create a new object:
 
-```{r}
+```{r, echo = TRUE}
 aunt_age <- my_age*2
 ```
 
 Note that you can change the value of an object. Let’s suppose I made a mistake and I wanted to write 27 instead of 23 for my_age. I only need to reassign the value:
 
-```{r}
+```{r, echo = TRUE}
 my_age <- 27
 ```
 
 If you want to check that my_age has the good value you can force R to print the value by typing the object name. The value will appear in the console (down left)
 
-```{r}
+```{r, echo = TRUE}
 my_age
 ```
 
@@ -72,7 +72,7 @@ A function is a block of code which you can use whenever you need and wherever y
 For instance, let’s assume you have coffee beans that you want to grind. You will put your beans in the grinder and will get the grinded coffee as a result. Well, your coffee beans are the arguments, the grinding process the function and the grinded coffee the result.
 Many functions are predifined and you only need to call (or excecute) them. For instance you can square root my_age with the function sqrt():
 
-```{r}
+```{r, echo = TRUE}
 sqrt(my_age)
 ```
 
@@ -82,7 +82,7 @@ In R, there is function for everything, and if there is no function for what you
 
 As I stated in the previous lesson, you can comment your code with the hasthtag #. I repeat it because I would like you to use it extensively in your code, **commenting your code is always good!**. For instance to keep track of the units of your variables:
 
-```{r}
+```{r, echo = TRUE}
 my_age <- 27 # In years
 bottle_weight <- 1 # Kilogram
 distance <- 100 # Meters
@@ -96,7 +96,7 @@ What are known as objects in R are also called variables in many other programmi
 
 A **vector**| is the most basic data type in R. A vector is composed by a serie of values, which can be either numbers of characters. Now, this is **very important** to note that a vector is composed of only **one type of data**. Either your vector is fully made of numbers or of characters (include letters or words). You can assign a series of values to a vector using the `concatenate` function. For instance let’s create a vector of age and assign it to the object `group_age`:
 
-```{r}
+```{r, echo = TRUE}
 group_age <- c(18,21,22,31,28,32,50, 42,38 ) # create the vector and assign it to group_age
 group_age # I check if my object has been created and if it has the good values
 ```
@@ -104,13 +104,13 @@ group_age # I check if my object has been created and if it has the good values
 There is some important functions that are used to inspect your vector. We can for instance check the length
 of the vector using the function `length()``.
 
-```{r}
+```{r, echo = TRUE}
 length(group_age)
 ```
 
 You can also get an overview of your vector with the function `str()`:
 
-```{r}
+```{r, echo = TRUE}
 str(group_age)
 ```
 
@@ -118,7 +118,7 @@ You can check the class (or the type) of your vector with `class()`:
 
 Now for comparison let’s write a vector composed of words, let’s say 5 vegetables:
 
-```{r}
+```{r, echo = TRUE}
 vegetables <- c("tomatoes", "eggplant", "carrots", "salad", "onion")
 class(vegetables)
 ```
@@ -135,20 +135,20 @@ Can you inspect its length and class?
 
 Sometimes, we want to extract one or several values from a vector. For example, I want to know what is the second vegetable of my vector:
 
-```{r}
+```{r, echo = TRUE}
 vegetables[2]
 ```
 
 You need to specify the position of what you want to know in the brackets []
 If I want to know what are the 2nd and 3rd vegetables:
 
-```{r}
+```{r, echo = TRUE}
 vegetables[c(2,3)] #  I need to concatenate as my input is multiple values
 ```
 
 You can also excludes some elements of your vector. Some people say that tomatoes is not a vegetables `tomatoes` need to exclude tomatoes from my vector of vegetables:
 
-```{r}
+```{r, echo = TRUE}
 vegetables[-1] #I don't have tomatoes anymore!
 
 ```
@@ -159,17 +159,17 @@ Now that you know the basics for subsetting vectors, let’s see something even 
 
 Another common way of subsetting is by searching for certain words (or strings in the programming language). We can use OR (at least one of the condition is true) with the operator | to test for equality to multiple values:
 
-```{r}
+```{r, echo = TRUE}
 vegetables[vegetables == "eggplant" | vegetables == "cucumber"]
 ```
 
 Equivalently, if you have a numeric vector you can subset with the operators `<` (less than), `>` (more than) or `=` (equal). For instance, using the vector group_age I want to create a new vector with ages below 30:
 
-```{r}
+```{r, echo = TRUE}
 group_age < 30 #I check if there is numbers below 30
 ```
 
-```{r}
+```{r, echo = TRUE}
 inf_30 <- group_age[group_age < 30] # I create a new vector composed of ages below 30
 inf_30 #I check if my object has been created
 ```
@@ -177,14 +177,14 @@ inf_30 #I check if my object has been created
 You can combine multiple tests using & (AND, both conditions are true) or |.
 For instance, I want to create a dataset with ages below 30 OR over 40:
 
-```{r}
+```{r, echo = TRUE}
 new_age <- group_age[group_age < 30 | group_age > 40 ]
 new_age
 ```
 
 If I want to create a dataset with ages over 30 AND below 40:
 
-```{r}
+```{r, echo = TRUE}
 new_age2 <- group_age[group_age > 30 & group_age < 40]
 new_age2
 ```
@@ -197,14 +197,14 @@ with subsetting read [this](https://www.statmethods.net/management/subset.html)
 As R was designed to analyze datasets, it includes the concept of missing data (which is uncommon in other programming languages). Missing data are represented in vectors as NA.
 When doing operations on numbers, most functions will return NA if the data you are working with include missing values:
 
-```{r}
+```{r, echo = TRUE}
 heights <- c(1,3,5,3,2,1,NA,3,NA,4,5) # I assign a vector to "heights"
 max(heights) # will return NA
 ```
 
 You can add the arguent na.rm = TRUE to calculate the result while ignoring the missing values:
 
-```{r}
+```{r, echo = TRUE}
 max(heights, na.rm = TRUE) # will do the operation
 ```
 
@@ -218,13 +218,13 @@ Even though understanding how vectors work is fundamental, R uses a lot of other
 
 If we arrange data elements of a vector in a two-dimensional rectangular layout we have a matrix. To construct a matrix, we use a function conveniently called `matrix()`.
 
-```{r}
+```{r, echo = TRUE}
 my_matrix <- matrix(1:20, nrow=5, ncol=4) # Create a 5 x 4 numeric matrix
 ```
 
 You can subset a matrix with [ row , column ]:
 
-```{r}
+```{r, echo = TRUE}
 my_matrix[ , 4] # I subset the 4th column of the matrix
 my_matrix[3 , ] # I subset the 3rd row of the matrix
 my_matrix[2:4 , 1:3] # I subset rows 2,3,4 and column 1,2,3 of the matrix
@@ -235,7 +235,7 @@ my_matrix[2:4 , 1:3] # I subset rows 2,3,4 and column 1,2,3 of the matrix
 While matrix can only take numeric values, data.frame can contain any type of elements. The only rule is that all elements must have the same length.
 A data frame is the most common way of storing tabular data in R and something you will likely deal with a lot. You can really think of a data frame as a table or an excell spreadsheet. For instance, let’s build a dataframe using the `data.frame()` function:
 
-```{r}
+```{r, echo = TRUE}
 group_df <- data.frame(Student = c("Kjersti", "Bjorn", "Patrick", "Karine", "Kristine"),
 Eyes = c("blue", "green", "borwn", "blue", "brown"),
 Height = c(1.88,1.56,1.78,1.98,1.75),
@@ -267,7 +267,7 @@ To install packages there is two main options:
 1.You can use RStudio interface: In the menu at the top of your window: Tools > Install packages 
 2.You can install the package from the R console like this:
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 install.packages("dplyr") #to install the package "dplyr"
 ```
 
@@ -277,7 +277,7 @@ The second method is the method I would recommand as you can customize the funct
 
 Downloading the packages is not enough, you need to tell R that you want to use them! To access the functions of your newly downloaded package you need to specify:
 
-```{r}
+```{r, echo = TRUE}
 library(dplyr)
 ```
 
@@ -301,7 +301,7 @@ knitr::include_graphics('imgs_tuto/Help.PNG')
 
 Instead of writing the name of the function in this small area you can directly ask for help by typing in the Console:
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 ?mean
 ```
 

@@ -34,7 +34,7 @@ If you have made a R project (as you should have) the working directory is alrea
 
 Otherwise you need to set the working directory with setwd. To do so click right on `WorldView.csv > properties > copy paste the location in setwd()` as follow:
 
-```{r, eval= FALSE}
+```{r, eval= FALSE, echo = TRUE}
 setwd("PATH/THAT/IS/WRITTEN")
 ```
 
@@ -42,13 +42,13 @@ Make sure you replace \ (that R do not understand) by /!
 
 Now is time to open your data! For that we need to use the function `read.xlsx()` from the library xlsx. First you need to install the library `xlsx`:
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 install.packages('xlsx')
 ```
 
 And then load the library:
 
-```{r}
+```{r, echo = TRUE}
 library(xlsx)
 ```
 
@@ -56,20 +56,20 @@ Now you can open your document with the function described above.
 
 If you are in the project write:
 
-```{r}
+```{r, echo = TRUE}
 data <- read.xlsx("data/worldbank_df.xlsx", sheetIndex = 1)
 ```
 
 If you are not in a project write (with your own path):
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 setwd('//home.ansatt.ntnu.no/benjamcr/Desktop/Teaching/GEOG3006/')
 data <- read.xlsx('data/worldbank_df.xlsx', sheetIndex = 1)
 ```
 
 Now, this line of code doesn’t produce any output in the console because, as you might recall, **assignments don’t display anything**. If we want to check that our data has been loaded, we can print the variable’s value by running data. If you do that you have your whole dataset printed in your console! That is not very handy and we need to find other strategies to inspect the data frame reasonably . . . We can for instance use the function head() to inspect the firsts 6 lines:
 
-```{r}
+```{r, echo = TRUE}
 head(data)
 ```
 
@@ -93,7 +93,7 @@ Remember how we defined a data frame in the previous lesson? Okay just a quick r
 
 You can inspect the structure of a data frame with the function str():
 
-```{r}
+```{r, echo = TRUE}
 str(data)
 ```
 
@@ -126,7 +126,7 @@ Small exercise: play with the functions and try to figure out what they do exact
 
 The `worldbank_df` dataset has two dimensions (rows and columns) and if we want to extract some specific information from it we need to specify the coordinates we want from it. It is like subsetting a matrix (remember the previous lesson!): rows come first and it is followed by column number:
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 data[ 1 , 1 ] #First element in the first column
 data[ 1 , 3 ] #First element in the third column
 data[ , 1 ] #First column
@@ -137,14 +137,14 @@ data[ 1:10 , 1 ] #Rows 1 to 10 from the first column
 
 You can also subset the columns of a data frame using their names:
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 data[ , "name" ] # I subset the column name -> the result will be a vector!
 data[ , c("name", "unemployment") ] # I subset the columns name and unemployment -> #the result will be a dataframe
 ```
 
 Another way for subsetting columns of a data frame is using `$`
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, echo = TRUE}
 data$name # It is equivalent to data[ , "name" ]
 ```
 
@@ -155,13 +155,13 @@ and `pop_growth`. Inspect this new dataframe using the functions we learned.
 
 Often, we need to extract a subset of a data frame based on certain conditions. For instance, if I want to have a look at some specific countries . . . let’s say Norway:
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, echo = TRUE}
 data[data$name == "Norway" , ] # This line of code tells R to subset the row in which "name" equal Norway
 ```
 
 Now if I want to create a new dataset by subsetting only France and Norway I would do like this:
 
-```{r}
+```{r, echo = TRUE}
 NOR_FRA <- data[data$name == "Norway" | data$name == "France", ]
 NOR_FRA
 ```
@@ -172,7 +172,7 @@ I must admit there is a much simpler way but this require a bit more knowledge a
 
 I can add columns to a data frame using the cbind() function. For instance, let’s say I want to create a column “ID” which assigns a number to each country. I first create the vector and add it to the dataframe:
 
-```{r, eval= FALSE}
+```{r, eval= FALSE, echo = TRUE}
 ID <- 1:nrow(data) #A vector going from 1 to 160 (which is the length of my data frame)
 cbind(data, ID)
 ```
@@ -191,13 +191,13 @@ Factors are stored as integers, and have labels (text) associated with these uni
 
 Once created, factors can only contain a pre-defined set of values, known as levels. By default, R always sorts levels in alphabetical order. For instance, if you have a factor with 2 levels:
 
-```{r}
+```{r, echo = TRUE}
 sex <- factor(c("man", "woman", "woman", "man", "woman"))
 ```
 
 R will assign the value of 1 to the level man and the value 2 to the level woman. You can check this by using the functions `levels()` and `nlevels()`.
 
-```{r}
+```{r, echo = TRUE}
 levels(sex)
 nlevels(sex)
 ```
@@ -208,7 +208,7 @@ Sometimes the order of the factors do not matter (here that would be the same if
 
 It is possible to reorder the levels of a vector:
 
-```{r}
+```{r, echo = TRUE}
 sex #gives the current order of the levels
 sex <- factor(sex, levels = c('woman','man')) # I reorder
 sex # after re ordering
@@ -221,13 +221,13 @@ Sometimes, R open that dataframe and thinks one of the column is a factor while 
 
 If you need to convert a factor vector to a character vector use the function `as.character()`
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, echo = TRUE}
 as.character(data$name)
 ```
 
 If you need to convert factors where the levels appear as numbers (such as dates) to a numeric vector you need to first convert factors to character and then numbers:
 
-```{r}
+```{r, echo = TRUE}
 dates <- factor(c(1500,1600,1700,1800,1900,2000))
 as.numeric(as.character(dates)) #Looks a bit complicated but works well
 ```
