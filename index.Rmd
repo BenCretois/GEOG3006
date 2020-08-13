@@ -1,0 +1,25 @@
+---
+title: "Welcome to GEOG3006!"
+description:
+site: distill::distill_website
+---
+
+Welcome to the website of GEOG3006! On this website you will find all the slides and the videos from the lectures and you will also find all the material you need for the lab exercises.
+
+During this course we will be using R, an extremely versatile and powerful **programming language** which is used by some of the biggest companies including Facebook, Google, Twitter, AirBnB and much more. R is a language designed primarily for statistical analysis and as you will see during this course there is a lot of handy functions for this. 
+
+This course uses a **programming language** which means that you have to write your own **code** for the computer to understand what you want to do. While this can be scary at first you get much more freedom compared to other statistical software such as **SPSS**.
+
+This website is decomposed in three parts.
+
+- First are the **R tutorials**. They will teach you how to install R and RStudio and the basic manipulations. It is important that you start working on it before the course begin.
+- Second part is the **Course material** where you will find a link to all slides and videos made for this course.
+- Finally, the third section is dedicated to the **exercises**.
+
+## Get started with R - Installation and basic manipulations
+
+Make sure you install on your computer and get comfortable with it. You will find the tutorial below.
+
+- [Get started with R - Introduction to R](https://bencretois.github.io/GEOG3006/Intro/IntroR.html)
+- [Get started with R - Basic manipulations in R](https://bencretois.github.io/GEOG3006/Intro/BasicR.html)
+- [Get started with R - Data frame manipulation in R](https://bencretois.github.io/GEOG3006/Intro/DFmanip.html)

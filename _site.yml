@@ -1,0 +1,10 @@
+name: "GEOG3006"
+title: "GEOG3006 - Quantitative methods"
+description: |
+  GEOG3006
+output_dir: "_site"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+output: distill::distill_article
