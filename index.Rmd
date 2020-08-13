@@ -20,6 +20,6 @@ This website is decomposed in three parts.
 
 Make sure you install on your computer and get comfortable with it. You will find the tutorial below.
 
-- [Get started with R - Introduction to R](https://bencretois.github.io/GEOG3006/Intro/IntroR.html)
-- [Get started with R - Basic manipulations in R](https://bencretois.github.io/GEOG3006/Intro/BasicR.html)
-- [Get started with R - Data frame manipulation in R](https://bencretois.github.io/GEOG3006/Intro/DFmanip.html)
+- [Get started with R - Introduction to R](IntroR.html)
+- [Get started with R - Basic manipulations in R](BasicR.html)
+- [Get started with R - Data frame manipulation in R](DFmanip.html)

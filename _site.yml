@@ -2,7 +2,7 @@ name: "GEOG3006"
 title: "GEOG3006 - Quantitative methods"
 description: |
   GEOG3006
-output_dir: "_site"
+output_dir: "docs"
 navbar:
   right:
     - text: "Home"
