@@ -14,17 +14,5 @@ This website is decomposed in three parts.
 
 - First are the **R tutorials**. They will teach you how to install R and RStudio and the basic manipulations. It is important that you start working on it before the course begin.
 - Second part is the **Course material** where you will find a link to all slides and videos made for this course.
-- Finally, the third section is dedicated to the **exercises**.
+- Finally, the third section is dedicated to the **Exercises**.
 
-## Get started with R - Installation and basic manipulations
-
-Make sure you install on your computer and get comfortable with it. You will find the tutorial below.
-
-- [Get started with R - Introduction to R](IntroR.html)
-- [Get started with R - Basic manipulations in R](BasicR.html)
-- [Get started with R - Data frame manipulation in R](DFmanip.html)
-
-## Course material
-
-
-## Exercises

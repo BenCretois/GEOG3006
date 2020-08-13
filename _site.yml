@@ -6,4 +6,10 @@ navbar:
   right:
     - text: "Home"
       href: index.html
+    - text: "Tuto"
+      href: tutorial.html
+    - text: "Lectures"
+      href: lectures.html
+    - text: "Exercises"
+      href: exercises.html
 output: distill::distill_article

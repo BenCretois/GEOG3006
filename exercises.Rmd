@@ -1,0 +1,4 @@
+---
+title: "Exercises"
+site: distill::distill_website
+---
