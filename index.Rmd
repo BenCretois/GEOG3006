@@ -16,3 +16,12 @@ This website is decomposed in three parts.
 - Second part is the **Course material** where you will find a link to all slides and videos made for this course.
 - Finally, the third section is dedicated to the **Exercises**.
 
+Good luck for this semester!
+
+## Slideshow of the course presentation:
+
+```{r}
+xfun::embed_file('lecture/Presentation_GEOG3006.pptx')
+```
+
+

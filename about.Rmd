@@ -1,10 +1,24 @@
 ---
-title: "About this site"
+title: "About us"
 description: |
-  Some additional details about the website
+  A short presentation of us
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r,}
+source("Rlibraries.R")
+```
+
+Thomas Halverson
+
+
+
+Benjamin Cretois
+
+
+
+Sven Martin Kørner
+
+```{r}
+embed_url("https://www.youtube.com/watch?v=chi3GBzFobc")
 ```
 
