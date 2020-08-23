@@ -10,3 +10,9 @@ Make sure you install on your computer and get comfortable with it. You will fin
 - [Get started with R - Introduction to R](IntroR.html)
 - [Get started with R - Basic manipulations in R](BasicR.html)
 - [Get started with R - Data frame manipulation in R](DFmanip.html)
+
+## Download the dataset for the third tutorial
+
+```{r}
+xfun::embed_file('data/worldbank_df.xlsx')
+```
