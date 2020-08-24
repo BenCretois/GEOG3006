@@ -2,3 +2,18 @@
 title: "Exercises"
 site: distill::distill_website
 ---
+
+## Short introduction to the labs and exercises
+
+```{r}
+knitr::include_graphics('ex/imgs/DataFlow.PNG')
+```
+
+### Part 1: Data Vizualisation
+
+
+
+### Part 2: Modelling data & Statistical inference
+
+
+### Part 3: Predictions

@@ -3,9 +3,19 @@ title: "Tutorial"
 site: distill::distill_website
 ---
 
+```{r, echo=FALSE}
+source("Rlibraries.R")
+```
+
 ## Get started with R - Installation and basic manipulations
 
 Make sure you install on your computer and get comfortable with it. You will find the tutorial below.
+
+A short video on how to install R and RStudio:
+
+```{r}
+embed_url("https://www.youtube.com/watch?v=D7RhldPlSP8&t=137s")
+```
 
 - [Get started with R - Introduction to R](IntroR.html)
 - [Get started with R - Basic manipulations in R](BasicR.html)

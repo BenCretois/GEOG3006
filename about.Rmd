@@ -4,19 +4,22 @@ description: |
   A short presentation of us
 ---
 
-```{r,}
+```{r, echo=FALSE}
 source("Rlibraries.R")
 ```
 
-Thomas Halverson
+**Thomas Halverson**
+
+Associate professor at the Department of Geography at NTNU.
+
+**Benjamin Cretois**
+
+```{r}
+embed_url('https://www.youtube.com/watch?v=Sy9L_WfoY20')
+```
 
 
-
-Benjamin Cretois
-
-
-
-Sven Martin Kørner
+**Sven Martin Kørner**
 
 ```{r}
 embed_url("https://www.youtube.com/watch?v=chi3GBzFobc")
