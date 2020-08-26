@@ -10,7 +10,10 @@ source("Rlibraries.R")
 
 **Thomas Halverson**
 
-Associate professor at the Department of Geography at NTNU.
+```{r}
+embed_url('https://www.youtube.com/watch?v=eVF0PkuQQg0')
+```
+
 
 **Benjamin Cretois**
 
