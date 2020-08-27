@@ -11,7 +11,7 @@ knitr::include_graphics('ex/imgs/DataFlow.PNG')
 
 ### Part 1: Data Vizualisation
 
-
+[Lab 1: Introduction to data visualization and ggplot2](Lab1_DataViz.html)
 
 ### Part 2: Modelling data & Statistical inference
 

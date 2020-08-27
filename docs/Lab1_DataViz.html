@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Lab 1: Introduction to data vizualisation</title>
+  
+  
+  
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2020-08-27"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-08-27"/>
+  
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Lab 1: Introduction to data vizualisation"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:locale" content="en_US"/>
+  
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Lab 1: Introduction to data vizualisation"/>
+  
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output_dir","output","date"]}},"value":[{"type":"character","attributes":{},"value":["Lab 1: Introduction to data vizualisation"]},{"type":"character","attributes":{},"value":["docs"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["08-27-2020"]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["imgs/brewerp.PNG","imgs/DataFlow.PNG","Lab1_DataViz_files/figure-html5/unnamed-chunk-10-1.png","Lab1_DataViz_files/figure-html5/unnamed-chunk-11-1.png","Lab1_DataViz_files/figure-html5/unnamed-chunk-12-1.png","Lab1_DataViz_files/figure-html5/unnamed-chunk-14-1.png","Lab1_DataViz_files/figure-html5/unnamed-chunk-16-1.png","Lab1_DataViz_files/figure-html5/unnamed-chunk-17-1.png","Lab1_DataViz_files/figure-html5/unnamed-chunk-18-1.png","Lab1_DataViz_files/figure-html5/unnamed-chunk-21-1.png","Lab1_DataViz_files/figure-html5/unnamed-chunk-6-1.png","Lab1_DataViz_files/figure-html5/unnamed-chunk-7-1.png","Lab1_DataViz_files/figure-html5/unnamed-chunk-8-1.png"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+  
+  <style type="text/css">
+  
+  body {
+    background-color: white;
+  }
+  
+  .pandoc-table {
+    width: 100%;
+  }
+  
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+  
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+  
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+  
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+  
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+  
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+  
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .shaded-content {
+    background: white;
+  }
+  
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  d-article {
+    padding-bottom: 30px;
+  }
+  
+  d-appendix {
+    padding-top: 30px;
+  }
+  
+  d-article>p>img {
+    width: 100%;
+  }
+  
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+  
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  /* CSS for table of contents */
+  
+  .d-toc {
+    color: rgba(0,0,0,0.8);
+    font-size: 0.8em;
+    line-height: 1em;
+  }
+  
+  .d-toc-header {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 1.3em;
+  }
+  
+  .d-toc a {
+    border-bottom: none;
+  }
+  
+  .d-toc ul {
+    padding-left: 0;
+  }
+  
+  .d-toc li>ul {
+    padding-top: 0.8em;
+    padding-left: 16px;
+    margin-bottom: 0.6em;
+  }
+  
+  .d-toc ul,
+  .d-toc li {
+    list-style-type: none;
+  }
+  
+  .d-toc li {
+    margin-bottom: 0.9em;
+  }
+  
+  .d-toc-separator {
+    margin-top: 20px;
+    margin-bottom: 2em;
+  }
+  
+  .d-article-with-toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  
+  
+  
+  /* Tweak code blocks (note that this CSS is repeated above in an injection
+     into the d-code shadow dom) */
+  
+  d-code {
+    overflow-x: auto !important;
+  }
+  
+  pre.d-code code.d-code {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+  
+  pre.text-output {
+  
+    font-size: 12px;
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  @media(min-width: 768px) {
+  
+  d-code {
+    overflow-x: visible !important;
+  }
+  
+  pre.d-code code.d-code  {
+      padding-left: 18px;
+      font-size: 14px;
+  }
+  pre.text-output {
+    font-size: 14px;
+  }
+  }
+  
+  /* Figure */
+  
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+  
+  .figure img {
+    width: 100%;
+  }
+  
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+  
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+  
+  
+  
+  /* Tweak 1000px media break to show more text */
+  
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+  
+    .grid {
+      grid-column-gap: 16px;
+    }
+  
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+  
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+  
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+  
+  
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+  
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  
+  /* Social footer */
+  
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+  
+  .disqus-comments {
+    margin-right: 30px;
+  }
+  
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  #disqus_thread {
+    margin-top: 30px;
+  }
+  
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+  
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+  
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+  
+  
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+  
+  
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+  
+  
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+  
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+  
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+  
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+  
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+  
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+  
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+  
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+  
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  </style>
+  
+  <script type="application/javascript">
+  
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+  
+  // show body when load is complete
+  function on_load_complete() {
+  
+    // set body to visible
+    document.body.style.visibility = 'visible';
+  
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+  
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+  
+  function init_distill() {
+  
+    init_common();
+  
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+  
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+  
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+  
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+  
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+  
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+  
+    // create d-bibliography
+    var bibliography = $('<d-bibliography></d-bibliography>');
+    $('#distill-bibliography').wrap(bibliography);
+  
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+  
+    // replace citations with <d-cite>
+    $('.citation').each(function(i, val) {
+      appendix = true;
+      var cites = $(this).attr('data-cites').split(" ");
+      var dt_cite = $('<d-cite></d-cite>');
+      dt_cite.attr('key', cites.join());
+      $(this).replaceWith(dt_cite);
+    });
+    // remove refs
+    $('#refs').remove();
+  
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+  
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-toc a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+  
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+  
+    // replace code blocks with d-code
+    $('pre>code').each(function(i, val) {
+      var code = $(this);
+      var pre = code.parent();
+      var clz = "";
+      var language = pre.attr('class');
+      if (language) {
+        // map unknown languages to "clike" (without this they just dissapear)
+        if ($.inArray(language, ["bash", "clike", "css", "go", "html",
+                                 "javascript", "js", "julia", "lua", "markdown",
+                                 "markup", "mathml", "python", "svg", "xml"]) == -1)
+          language = "clike";
+        language = ' language="' + language + '"';
+        var dt_code = $('<d-code block' + language + clz + '></d-code>');
+        dt_code.text(code.text());
+        pre.replaceWith(dt_code);
+      } else {
+        code.addClass('text-output').unwrap().changeElementType('pre');
+      }
+    });
+  
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+  
+      // capture layout
+      var layout = $(this).attr('data-layout');
+  
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('d-code, pre.text-output, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+  
+  
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+  
+    // load distill framework
+    load_distill_framework();
+  
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+  
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+  
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+  
+      // table of contents
+      if (have_authors) // adjust border if we are in authors
+        $('.d-toc').parent().addClass('d-article-with-toc');
+  
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+  
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+  
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+  
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+  
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+  
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+  
+      // inject pre code styles (can't do this with a global stylesheet b/c a shadow root is used)
+      $('d-code').each(function(i, val) {
+        var style = document.createElement('style');
+        style.innerHTML = 'pre code { padding-left: 10px; font-size: 12px; border-left: 2px solid rgba(0,0,0,0.1); } ' +
+                          '@media(min-width: 768px) { pre code { padding-left: 18px; font-size: 14px; } }';
+        if (this.shadowRoot)
+          this.shadowRoot.appendChild(style);
+      });
+  
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+  
+      // clear polling timer
+      clearInterval(tid);
+  
+      // show body now that everything is ready
+      on_load_complete();
+    }
+  
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+  
+  }
+  
+  function init_downlevel() {
+  
+    init_common();
+  
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+  
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+  
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+  
+    // remove toc
+    $('.d-toc-header').remove();
+    $('.d-toc').remove();
+    $('.d-toc-separator').remove();
+  
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+  
+  
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+  
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+  
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+  
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+  
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+  
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+  
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+  
+    $('body').addClass('downlevel');
+  
+    on_load_complete();
+  }
+  
+  
+  function init_common() {
+  
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+  
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+  
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+  
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+  
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+  
+      }
+    });
+  
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+  
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+  
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+  
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+  
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+  
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+  
+  </script>
+  
+  <!--/radix_placeholder_distill-->
+  <script src="Lab1_DataViz_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="Lab1_DataViz_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="Lab1_DataViz_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="Lab1_DataViz_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Lab 1: Introduction to data vizualisation","authors":[],"publishedDate":"2020-08-27T00:00:00.000+02:00"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Lab 1: Introduction to data vizualisation</h1>
+
+</div>
+
+
+<div class="d-article">
+<h3 class="d-toc-header">Table of Contents</h3>
+<nav class="d-toc" id="TOC">
+<ul>
+<li><a href="#introduction-to-data-vizualisation">Introduction to data vizualisation</a><ul>
+<li><a href="#install-and-load-the-package">Install and load the package</a></li>
+<li><a href="#dataset">Dataset</a></li>
+<li><a href="#the-grammar-of-graphics">The Grammar of Graphics</a><ul>
+<li><a href="#the-basics">The basics</a></li>
+<li><a href="#aesthetic-mappings">Aesthetic Mappings</a></li>
+<li><a href="#specifying-geometric-shapes">Specifying Geometric Shapes</a></li>
+<li><a href="#position-adjustments">Position adjustments</a></li>
+<li><a href="#managing-scale">Managing scale</a></li>
+<li><a href="#facets">Facets</a></li>
+<li><a href="#labels-and-annotations">Labels and annotations</a></li>
+</ul></li>
+<li><a href="#additional-ressources-on-ggplot2">Additional ressources on <code>ggplot2</code></a></li>
+<li><a href="#exercises">Exercises</a></li>
+</ul></li>
+</ul>
+</nav>
+<hr class="d-toc-separator"/>
+<h1 id="introduction-to-data-vizualisation">Introduction to data vizualisation</h1>
+<p>Being able to create <strong>visualizations</strong> (graphical representations) of data is a key step in being able to finding patterns in your data and communicate information and findings to others. In this lab you will learn to use the R library <code>ggplot2</code>. <code>ggplot2</code> is a very powerful library which make us build beautiful plots with few lines of code. <code>ggplot2</code> librar implements the <a href="https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=sr_1_fkmr0_1?ie=UTF8&amp;qid=1493924426&amp;sr=8-1-fkmr0&amp;keywords=grammar+of+graphics+ggplot">Gramar of Graphics</a>.</p>
+<p>Learning this library will allow you to make nearly any kind of (static) data visualization, customized to your exact specifications. Learning this package will tremendously improve the way you understand your data.</p>
+<h2 id="install-and-load-the-package">Install and load the package</h2>
+<p>First of all you need to install the library <code>ggplot2</code> with the following lines of code:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+install.packages(&#39;ggplot2&#39;)</code></pre>
+</div>
+<p>And load the library:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+library(ggplot2)</code></pre>
+</div>
+<h2 id="dataset">Dataset</h2>
+<p>In this lab I will extend and use the dataset Thomas created during his lecture. You can copy the dataset to reproduce the graph of this lab.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+kids_frame &lt;- data.frame(
+  names = c(&quot;Tor&quot;, &quot;Gus&quot;, &quot;Bob&quot;, &quot;Di&quot;, &quot;Lena&quot;, &quot;Tony&quot;, &quot;Ingrid&quot;, &quot;Maria&quot;, &quot;Ed&quot;, &quot;Raghnild&quot;),
+  height = c(110, 130, 115, 140, 125, 135, 120, 130, 130, 115),
+  shirt_color = c(&quot;green&quot;, &quot;green&quot;, &quot;green&quot;, &quot;blue&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;blue&quot;, &quot;green&quot;, &quot;green&quot;, &quot;blue&quot;),
+  shoe_color = c(&quot;blue&quot;, &quot;red&quot;, &quot;grey&quot;, &quot;blue&quot;, &quot;pink&quot;, &quot;red&quot;, &quot;grey&quot;, &quot;pink&quot;, &quot;pink&quot;, &quot;blue&quot;),
+  sex = c(&quot;m&quot;, &quot;m&quot;, &quot;m&quot;, &quot;f&quot;, &quot;f&quot;, &quot;m&quot;, &quot;f&quot;, &quot;f&quot;, &quot;m&quot;, &quot;f&quot;),
+  age = c(8,11,8,12,11,11,9,12,12,8))</code></pre>
+</div>
+<p>You can check your dataset with the commands you learnt during the tutorial:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+summary(kids_frame)</code></pre>
+<pre><code>
+     names       height      shirt_color shoe_color sex  
+ Bob    :1   Min.   :110.0   blue :4     blue:3     f:5  
+ Di     :1   1st Qu.:116.2   green:6     grey:2     m:5  
+ Ed     :1   Median :127.5               pink:3          
+ Gus    :1   Mean   :125.0               red :2          
+ Ingrid :1   3rd Qu.:130.0                               
+ Lena   :1   Max.   :140.0                               
+ (Other):4                                               
+      age       
+ Min.   : 8.00  
+ 1st Qu.: 8.25  
+ Median :11.00  
+ Mean   :10.20  
+ 3rd Qu.:11.75  
+ Max.   :12.00  
+                </code></pre>
+<pre class="r"><code>
+head(kids_frame)</code></pre>
+<pre><code>
+  names height shirt_color shoe_color sex age
+1   Tor    110       green       blue   m   8
+2   Gus    130       green        red   m  11
+3   Bob    115       green       grey   m   8
+4    Di    140        blue       blue   f  12
+5  Lena    125        blue       pink   f  11
+6  Tony    135       green        red   m  11</code></pre>
+</div>
+<h2 id="the-grammar-of-graphics">The Grammar of Graphics</h2>
+<p>Just as the grammar of language helps us construct meaningful sentences out of words, the <a href="https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=sr_1_fkmr0_1?ie=UTF8&amp;qid=1493924426&amp;sr=8-1-fkmr0&amp;keywords=grammar+of+graphics+ggplot">Grammar of Graphics</a> helps us to construct graphical figures out of different visual elements. This grammar gives us a way to talk about parts of a plot: all the circles, lines, arrows, and words that are combined into a diagram for visualizing data. The Grammar of Graphics was adapted by Hadley Wickham to describe the components of a plot, including</p>
+<ul>
+<li>the <strong>data</strong> being plotted</li>
+<li>the <strong>geometrc objects</strong> (circles, lines, etc. ) that appear on the plot</li>
+<li>a set of mappings from variables in the data to the <strong>aesthetics</strong> (appearance) of the geometric objects</li>
+<li>a <strong>position adjustment</strong> for locating each geometric object on the plot</li>
+<li>a <strong>scale</strong> (e.g., range of values) for each aesthetic mapping used</li>
+<li>a <strong>coordinate system</strong> used to organize the geometric objects</li>
+<li>the <strong>facets</strong> or groups of data shown in different plots</li>
+</ul>
+<p>Following this grammar, you can think of each plot as a set of layers of images, where each image’s appearance is based on some aspect of the data set. If this seems a bit theoric for now, it is normal. It looks much simpler when we code the plot.</p>
+<h3 id="the-basics">The basics</h3>
+<p>In order to create a plot, you:</p>
+<ol type="1">
+<li>Call the ggplot() function which creates a blank canvas</li>
+<li>Specify <strong>aesthetic mappings</strong>, which specifies how you want to map variables to visual aspects. In this case we are simply mapping the displ and hwy variables to the x- and y-axes.</li>
+<li>You then add new layers that are geometric objects which will show up on the plot. In this case we add geom_point to add a layer with points (dot) elements as the geometric shapes to represent the data.</li>
+</ol>
+<p>For instance, here we will explore whether height depends on age:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+# Initiate the plot
+ggplot(data = kids_frame)
+
+# Mapping the variable of interest
+ggplot(data = kids_frame, aes(x = age, y = height))
+
+# Finally, plot the data
+ggplot(data = kids_frame, aes(x = age, y = height)) +
+  geom_point()</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="Lab1_DataViz_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
+</div>
+<p>Note that when you added the <code>geom</code> layer you used the addition (<code>+</code>) operator. As you add new layers you will always use <code>+</code> to add onto your visualization.</p>
+<h3 id="aesthetic-mappings">Aesthetic Mappings</h3>
+<p>The aesthetic mappings take properties of the data and use them to influence visual characteristics, such as <em>position, color, size, shape, or transparency</em>. Each visual characteristic can thus encode an aspect of the data and be used to convey information.</p>
+<p>All aesthetics for a plot are specified in the <code>aes()</code> function call (later in this tutorial you will see that each <code>geom</code> layer can have its own aes specification). For example, we can add a mapping the sex of the kid to a color characteristic:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+ggplot(data = kids_frame, aes(x = age, y = height, color = sex)) +
+  geom_point()</code></pre>
+<p><img src="Lab1_DataViz_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+</div>
+<p>Note that using the aes() function will cause the visual channel to be based on the data specified in the argument. For instance, if you want all your points to be green you need to specify it <strong>outside</strong> the aesthetics:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+ggplot(data = kids_frame, aes(x = age, y = height)) +
+  geom_point(color = &quot;green&quot;)</code></pre>
+<p><img src="Lab1_DataViz_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
+</div>
+<h3 id="specifying-geometric-shapes">Specifying Geometric Shapes</h3>
+<p>Building on these basics, <code>ggplot2</code> can be used to build almost any kind of plot you may want. These plots are declared using functions that follow from the Grammar of Graphics.</p>
+<p>The most obvious distinction between plots is what geometric objects (geoms) they include. <code>ggplot2</code> supports a number of different types of <code>geoms</code>. The most important <code>geoms</code> are:</p>
+<ul>
+<li><code>geom_point</code> for drawing individual points (e.g., a scatter plot)</li>
+<li><code>geom_line</code> for drawing lines (e.g., for a line charts)</li>
+<li><code>geom_smooth</code> for drawing smoothed lines (e.g., for simple trends or approximations)</li>
+<li><code>geom_bar</code> for drawing bars (e.g., for bar charts)</li>
+<li><code>geom_histogram</code> for drawing binned values (e.g. a histogram)</li>
+<li><code>geom_boxplot</code> for drawing a boxplot</li>
+</ul>
+<p>Note that <code>geom_bar</code> and <code>geom_histogram</code> do not require the mapping of a <code>y</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+ggplot(data = kids_frame, aes(x = age, y = height)) +
+  geom_point()
+
+ggplot(data = kids_frame, aes(x = age, y = height)) +
+  geom_line()
+
+ggplot(data = kids_frame, aes(x = height)) +
+  geom_histogram()
+
+ggplot(data = kids_frame, aes(x = sex, y = height)) +
+  geom_boxplot()</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="Lab1_DataViz_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
+<p>But what makes <code>ggplot</code> and the Grammar of Graphics really powerful is that you can add multiple geometries to a plot, thus allowing you to create complex graphics showing multiple aspects of your data.</p>
+<p>For instance, if I want to vizualise more clearly the <strong>trend</strong> between age and height I can add a <code>geom_smooth</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+ggplot(data = kids_frame, aes(x = age, y = height)) +
+  geom_point() +
+  geom_smooth()</code></pre>
+<p><img src="Lab1_DataViz_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
+</div>
+<h3 id="position-adjustments">Position adjustments</h3>
+<p>In addition to a default statistical transformation, each <code>geom</code> also has a default position adjustment which specifies a set of “rules” as to how different components should be positioned relative to each other. This position is noticeable in a <code>geom_bar</code> if you map a different variable to the color visual characteristic:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+ggplot(data = kids_frame, aes(x = sex, fill = shoe_color)) +
+  geom_bar()</code></pre>
+<p><img src="Lab1_DataViz_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
+</div>
+<p>The geom_bar by default uses a position adjustment of “<em>stack</em>”, which makes each rectangle’s height proportional to its value and stacks them on top of each other. We can use the <code>position</code> argument to specify what position adjustment rules to follow:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+ggplot(data = kids_frame, aes(x = sex, fill = shoe_color)) +
+  geom_bar(position = &quot;dodge&quot;)
+
+ggplot(data = kids_frame, aes(x = sex, fill = shoe_color)) +
+  geom_bar(position = &quot;fill&quot;)</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="Lab1_DataViz_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
+</div>
+<p>Check the documentation for each particular geom to learn more about its positioning adjustments.</p>
+<h3 id="managing-scale">Managing scale</h3>
+<p>Whenever you specify an aesthetic mapping, ggplot uses a particular scale to determine the range of values that the data should map to.</p>
+<p>While the default scales will work fine, it is possible to explicitly add different scales to replace the defaults. This is especially useful for the colors. While you can use the default coloring, a more common option is to leverage the pre-defined palettes from <a href="https://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">colorbrewer.org</a>. <a href="https://www.google.com/search?q=theme+color+brewer&amp;rlz=1C1GCEA_enNO820NO820&amp;sxsrf=ALeKk02p7p3DANIIYo_AX3YhqI6qOHNhFA:1598517486980&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=2ahUKEwjbuunX_brrAhXtlosKHTH2AKgQ_AUoAXoECAsQAw&amp;biw=1920&amp;bih=1008#imgrc=mnBSoYbO8D6_IM">Here</a> is an overview of the palette and their names.</p>
+<p>These color sets have been carefully designed to look good and to be viewable to people with certain forms of color blindness. We can change the colors by specifying a <code>palette</code> argument in the <code>scale_color_brewer()</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+ggplot(data = kids_frame, aes(x = age, y = height, color = names)) +
+  geom_point(size = 3)
+
+ggplot(data = kids_frame, aes(x = age, y = height, color = names)) +
+  geom_point(size = 3) +
+  scale_color_brewer(palette = &quot;Set3&quot;)</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="Lab1_DataViz_files/figure-html5/unnamed-chunk-16-1.png" width="624" /></p>
+</div>
+<h3 id="facets">Facets</h3>
+<p><strong>Facets</strong> are ways of grouping a data plot into multiple different pieces (subplots). This allows you to view a separate plot for each value in a categorical variable. This is <strong>very useful</strong> when you want to evaluate the patterns in different categories in your data. You can construct a plot with multiple facets by using the facet_wrap() function. This will produce a “row” of subplots, one for each categorical variable (the number of rows can be specified with an additional argument):</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+ggplot(data = kids_frame, aes(x = age, y = height, color = names)) +
+  geom_point(size = 3) +
+  facet_wrap( ~ sex)</code></pre>
+<p><img src="Lab1_DataViz_files/figure-html5/unnamed-chunk-17-1.png" width="624" /></p>
+</div>
+<h3 id="labels-and-annotations">Labels and annotations</h3>
+<p>Textual labels and annotations (on the plot, axes, geometry, and legend) are an important part of making a plot understandable and communicating information. It is very easy to add such annotations in <code>ggplot</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+ggplot(data = kids_frame, aes(x = age, y = height, color = names)) +
+  geom_point(size = 3) +
+  labs(title = &quot;Height of the kids function of their age&quot;,
+       subtitle = &quot;The dataset was simulated&quot;,
+       x = &quot;Age of the kids&quot;,
+       y = &quot;Height of the kids&quot;,
+       color = &quot;Names&quot;)</code></pre>
+<p><img src="Lab1_DataViz_files/figure-html5/unnamed-chunk-18-1.png" width="624" /></p>
+</div>
+<h2 id="additional-ressources-on-ggplot2">Additional ressources on <code>ggplot2</code></h2>
+<p>This lab will get you started with <code>ggplot2</code>. However, this library has much more to offer. If you want to take it further I recommend reading the part I of <a href="https://r4ds.had.co.nz/">R for Data Science</a>.</p>
+<p><a href="https://rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">Here</a> is also a cheat sheet so you remember easily the basic functions of <code>ggplot2</code>.</p>
+<h2 id="exercises">Exercises</h2>
+<p>Now it is your turn to practice. You will play with the <code>plastic_waste</code> dataset that you can download here:</p>
+<div class="layout-chunk" data-layout="l-body">
+<a href="data:text/csv;base64,Y29kZSxlbnRpdHksY29udGluZW50LHllYXIsZ2RwX3Blcl9jYXAscGxhc3RpY193YXN0ZV9wZXJfY2FwLG1pc21hbmFnZWRfcGxhc3RpY193YXN0ZV9wZXJfY2FwLG1pc21hbmFnZWRfcGxhc3RpY193YXN0ZSxjb2FzdGFsX3BvcCx0b3RhbF9wb3ANCkFGRyxBZmdoYW5pc3RhbixBc2lhLDIwMTAsMTYxNC4yNTUwMDEyNjExNSxOQSxOQSxOQSxOQSwzMTQxMTc0Mw0KQUxCLEFsYmFuaWEsRXVyb3BlLDIwMTAsOTkyNy4xODE4NDExNzUxMiwwLjA2OSwwLjAzMiwyOTcwNSwyNTMwNTMzLDMyMDQyODQNCkRaQSxBbGdlcmlhLEFmcmljYSwyMDEwLDEyODcwLjYwMjY5ODUxNTQsMC4xNDQsMC4wODYsNTIwNTU1LDE2NTU2NTgwLDM1NDY4MjA4DQpBU00sQW1lcmljYW4gU2Ftb2EsT2NlYW5pYSwyMDEwLE5BLE5BLE5BLE5BLE5BLDY4NDIwDQpBTkQsQW5kb3JyYSxFdXJvcGUsMjAxMCxOQSxOQSxOQSxOQSxOQSw4NDg2NA0KQUdPLEFuZ29sYSxBZnJpY2EsMjAxMCw1ODk3LjY4Mjg0MDU5ODQ4LDAuMDYyLDAuMDQ1LDYyNTI4LDM3OTAwNDEsMTkwODE5MTINCkFJQSxBbmd1aWxsYSxOb3J0aCBBbWVyaWNhLDIwMTAsTkEsMC4yNTIsMC4wMSw1MiwxNDU2MSwxNTM1OA0KQVRHLEFudGlndWEgYW5kIEJhcmJ1ZGEsTm9ydGggQW1lcmljYSwyMDEwLDE5MjEyLjcyMDEzMDc1NDEsMC42NiwwLjA1MSwxMjUzLDY2ODQzLDg4NzEwDQpBUkcsQXJnZW50aW5hLFNvdXRoIEFtZXJpY2EsMjAxMCwxODcxMi4wNjMwNzczNDM2LDAuMTgzLDAuMDI2LDE1Nzc3NywxNjQ0OTI0NSw0MDQxMjM3Ng0KQVJNLEFybWVuaWEsRXVyb3BlLDIwMTAsNjcwMi44NDgwMDYyNzk0MSxOQSxOQSxOQSxOQSwzMDkyMDcyDQpBUk0sQXJtZW5pYSxBc2lhLDIwMTAsNjcwMi44NDgwMDYyNzk0MSxOQSxOQSxOQSxOQSwzMDkyMDcyDQpBQlcsQXJ1YmEsTm9ydGggQW1lcmljYSwyMDEwLE5BLDAuMjUyLDAuMDA3LDM3MiwxMzc5MTAsMTA3NDg4DQpBVVMsQXVzdHJhbGlhLE9jZWFuaWEsMjAxMCw0MTQ2NC4wNDAwNjk2MzU5LDAuMTEyLDAuMDAyLDEzODg5LDE3MjM1OTU0LDIyMjY4Mzg0DQpBVVQsQXVzdHJpYSxFdXJvcGUsMjAxMCw0MzMzNi4xOTc4NTI3NjQ3LE5BLE5BLE5BLE5BLDgzOTM2NDQNCkFaRSxBemVyYmFpamFuLEV1cm9wZSwyMDEwLDE1OTUwLjI1NzQ1Nzg3ODMsTkEsTkEsTkEsTkEsOTE4Nzc4Mw0KQVpFLEF6ZXJiYWlqYW4sQXNpYSwyMDEwLDE1OTUwLjI1NzQ1Nzg3ODMsTkEsTkEsTkEsTkEsOTE4Nzc4Mw0KQkhTLEJhaGFtYXMsTm9ydGggQW1lcmljYSwyMDEwLDI5MjIxLjk5MTE4MTYxNDksMC4zOSwwLjAxMSwxMzMzLDM0MTE0NSwzNDI4NzcNCkJIUixCYWhyYWluLEFzaWEsMjAxMCw0MDU3MC41MzU2OTI4MzA3LDAuMTMyLDAuMDE2LDQzNzYsNzQzNTc0LDEyNjE4MzUNCkJHRCxCYW5nbGFkZXNoLEFzaWEsMjAxMCwyNDQyLjcyODg4NzY1Njk2LDAuMDM0LDAuMDMsNzg3MzI3LDcwODc0MTI0LDE0ODY5MjEzMQ0KQlJCLEJhcmJhZG9zLE5vcnRoIEFtZXJpY2EsMjAxMCwxNjQxNy45NjI0NTIzMTA4LDAuNTcsMC4wMzQsMzQ4MywyNzY3ODQsMjczMzMxDQpCTFIsQmVsYXJ1cyxFdXJvcGUsMjAxMCwxNjIzNS4xNzE0NTM0MzM0LE5BLE5BLE5BLE5BLDk1OTU0MjENCkJFTCxCZWxnaXVtLEV1cm9wZSwyMDEwLDQxMDg1LjkxODk0MDEzNjYsMC4wOCwwLjAwMiwyNzQzLDQ3NDc5NTcsMTA3MTIwNjYNCkJMWixCZWxpemUsTm9ydGggQW1lcmljYSwyMDEwLDc4NzYuODA5NTg1OTc2NDQsMC4xNzIsMC4wNTMsMzg5MiwyMDI0MjksMzExNjI3DQpCRU4sQmVuaW4sQWZyaWNhLDIwMTAsMTgxOC43Nzg0NjA3NTkwNiwwLjA0MywwLjAzNiw0MzAxNSwzMjM1NDE4LDg4NDk4OTINCkJNVSxCZXJtdWRhLE5vcnRoIEFtZXJpY2EsMjAxMCw1NjM5NS4wMDc4MDAzNTM5LDAuMjUyLDAuMDA1LDEyMyw2Njk2Niw2NDk0MQ0KQlROLEJodXRhbixBc2lhLDIwMTAsNjQxOS42NzU1OTkwODgxMSxOQSxOQSxOQSxOQSw3MjU5NDANCkJPTCxCb2xpdmlhLFNvdXRoIEFtZXJpY2EsMjAxMCw1NDA3LjQ3MDIyMDIzNTY5LE5BLE5BLE5BLE5BLDk5Mjk4NDkNCkJJSCxCb3NuaWEgYW5kIEhlcnplZ292aW5hLEV1cm9wZSwyMDEwLDk3MjAuMzQyMTc3MTgwOTUsMC4xNDQsMC4wNjEsMTI5NTUsNTg1NTgyLDM3NjAxNDkNCkJXQSxCb3Rzd2FuYSxBZnJpY2EsMjAxMCwxMzMzNC4xOTg3OTcwODU3LE5BLE5BLE5BLE5BLDIwMDY5NDUNCkJSQSxCcmF6aWwsU291dGggQW1lcmljYSwyMDEwLDE0NTM3LjU2NzE5MzA5MDMsMC4xNjUsMC4wMTcsNDcxNDA0LDc0Njk2NzcxLDE5NDk0NjQ3MA0KVkdCLEJyaXRpc2ggVmlyZ2luIElzbGFuZHMsTm9ydGggQW1lcmljYSwyMDEwLE5BLDAuMjUyLDAuMDA1LDU1LDI5Njc0LDIzMjQ1DQpCUk4sQnJ1bmVpLEFzaWEsMjAxMCw4MDU1Mi44NjQ0NzEzMTM4LDAuMDI2LDAuMDAxLDkzLDM1OTg3MSwzOTg5MjANCkJHUixCdWxnYXJpYSxFdXJvcGUsMjAxMCwxNTI4My4yOTE0NzUxNjY0LDAuMTU0LDAuMDUxLDE4NzM5LDEwMDI2OTUsNzQ5NDMzMg0KQkZBLEJ1cmtpbmEgRmFzbyxBZnJpY2EsMjAxMCwxNDIzLjM3NzcwNTk4MTk4LE5BLE5BLE5BLE5BLDE2NDY4NzE0DQpCREksQnVydW5kaSxBZnJpY2EsMjAxMCw3NjMuODMxOTMwMjEzODQzLE5BLE5BLE5BLE5BLDgzODI4NDkNCktITSxDYW1ib2RpYSxBc2lhLDIwMTAsMjUyMi45MjY4MjQ3NTQwMiwwLjA2NiwwLjA1OCwyOTY4NiwxMzkxMjU0LDE0MTM4MjU1DQpDTVIsQ2FtZXJvb24sQWZyaWNhLDIwMTAsMjkyOS44MjkxMTI4MTk2MiwwLjA0NiwwLjAzOCwyNzcxMywxOTg2NzIzLDE5NTk4ODg5DQpDQU4sQ2FuYWRhLE5vcnRoIEFtZXJpY2EsMjAxMCw0MDY5OS4zNTUxMjkzODQxLDAuMDkzLDAuMDAyLDc5NTksMTE4NDY4NjMsMzQwMTY1OTMNCkNQVixDYXBlIFZlcmRlLEFmcmljYSwyMDEwLDU4MjguMjQxNTg4MDQzMzgsMC4wNjUsMC4wNDksOTM0Nyw1MjIyNDUsNDk1OTk5DQpDWU0sQ2F5bWFuIElzbGFuZHMsTm9ydGggQW1lcmljYSwyMDEwLE5BLDAuMjUyLDAuMDA1LDk1LDUxODY0LDU2MjMwDQpDQUYsQ2VudHJhbCBBZnJpY2FuIFJlcHVibGljLEFmcmljYSwyMDEwLDg4MS4xNDQ1NTA3OTE2NjMsTkEsTkEsTkEsTkEsNDQwMTA1MQ0KVENELENoYWQsQWZyaWNhLDIwMTAsMTkyNS4xOTUxMTgwMjUwNyxOQSxOQSxOQSxOQSwxMTIyNzIwOA0KQ0hMLENoaWxlLFNvdXRoIEFtZXJpY2EsMjAxMCwxOTQ0Mi4wNTAzMTU0NjM1LDAuMTE5LDAuMDExLDIxNzU0LDU2MjE1NTAsMTcxMTM2ODgNCkNITixDaGluYSxBc2lhLDIwMTAsOTUyNS44MTg0ODMzOTE2NCwwLjEyMSwwLjA5Miw4ODE5NzE3LDI2Mjg5MjM4NywxMzQxMzM1MTUyDQpDWFIsQ2hyaXN0bWFzIElzbGFuZCxBc2lhLDIwMTAsTkEsMC4yNTIsMC4wMDUsMywxNDAyLDE0MDANCkNDSyxDb2NvcyBJc2xhbmRzLEFzaWEsMjAxMCxOQSwwLjI1MiwwLjAwNSwxLDU5Niw1OTYNCkNPTCxDb2xvbWJpYSxTb3V0aCBBbWVyaWNhLDIwMTAsMTA5MDAuNTA1MjgyMTYxNiwwLjE0NCwwLjAzNCw5MjE3Myw3NDk4NTYzLDQ2Mjk0ODQxDQpDT00sQ29tb3JvcyxBZnJpY2EsMjAxMCwxNDEyLjUwMjY4NjYzOTk3LDAuMjAxLDAuMTY5LDU4MDMyLDkzODU5NSw3MzQ3NTANCkNPRyxDb25nbyxBZnJpY2EsMjAxMCw1MTg2LjM0NDc4ODQ1MTk0LDAuMDY5LDAuMDU0LDE2NzY2LDg0NzgwNyw0MDQyODk5DQpDT0ssQ29vayBJc2xhbmRzLE9jZWFuaWEsMjAxMCxOQSwwLjE0NCwwLjA1NCw0MTYsMjA5MzQsMjAyODgNCkNSSSxDb3N0YSBSaWNhLE5vcnRoIEFtZXJpY2EsMjAxMCwxMjk5OS45OTIxOTMxNDQyLDAuMjU4LDAuMDQ3LDQyMDkwLDI0NzkyOTgsNDY1ODg4Nw0KQ0lWLENvdGUgZCdJdm9pcmUsQWZyaWNhLDIwMTAsMjY5MC4yNTgwMDE5ODk1MiwwLjEwMywwLjA4NiwxOTQ1NTgsNjIzMDU4MywxOTczNzgwMA0KSFJWLENyb2F0aWEsRXVyb3BlLDIwMTAsMjAxNzEuOTU3NTI5NDg2NywwLjI1MiwwLjAyOCwxNjQ2MSwxNjAyNzgyLDQ0MDMzMzANCkNVQixDdWJhLE5vcnRoIEFtZXJpY2EsMjAxMCxOQSwwLjA4OSwwLjAyMiw5MDYzMCwxMTMzMzQ3MSwxMTI1Nzk3OQ0KQ1VXLEN1cmFjYW8sTm9ydGggQW1lcmljYSwyMDEwLE5BLDAuMjUyLDAuMDA1LDI2OCwxNDM3ODQsTkENCkNZUCxDeXBydXMsRXVyb3BlLDIwMTAsMzM5NDEuMTM4MDE1ODM1NSwwLjI0OCwwLjAwNiwxODIxLDg0MDU1NiwxMTAzNjQ3DQpDWVAsQ3lwcnVzLEFzaWEsMjAxMCwzMzk0MS4xMzgwMTU4MzU1LDAuMjQ4LDAuMDA2LDE4MjEsODQwNTU2LDExMDM2NDcNCkNaRSxDemVjaCBSZXB1YmxpYyxFdXJvcGUsMjAxMCwyODM1Mi45NDkzOTY0NDAzLE5BLE5BLE5BLE5BLDEwNDkyOTYwDQpDT0QsRGVtb2NyYXRpYyBSZXB1YmxpYyBvZiBDb25nbyxBZnJpY2EsMjAxMCw2NjAuMjEwOTU1ODE4MjcyLDAuMDQ1LDAuMDM5LDE1MjA4LDEwNzYwNTYsNjU5NjU3OTUNCkROSyxEZW5tYXJrLEV1cm9wZSwyMDEwLDQzOTk4LjQzNjY3MTYyODUsMC4wNDcsMC4wMDEsMTc5MSw1Mzc2Mzg2LDU1NTAxNDINCkRKSSxEamlib3V0aSxBZnJpY2EsMjAxMCxOQSwwLjEwMywwLjA3NiwxNzMyNCw2MjE3NDQsODg4NzE2DQpETUEsRG9taW5pY2EsTm9ydGggQW1lcmljYSwyMDEwLDEwMTk4LjI3MzM3MjkzMjYsMC4xNDksMC4wMzEsNzgzLDcwMTM4LDY3NzU3DQpET00sRG9taW5pY2FuIFJlcHVibGljLE5vcnRoIEFtZXJpY2EsMjAxMCwxMTEzMi41NTI2OTA1NDY3LDAuMTQ0LDAuMDM5LDExODIyNiw4MjMyNTg2LDk5MjczMjANCkVDVSxFY3VhZG9yLFNvdXRoIEFtZXJpY2EsMjAxMCw5MzUyLjM0NDIzNjgxNTkzLDAuMTQ3LDAuMDQ3LDEwOTM4Myw2NDAwMDQ4LDE0NDY0NzM5DQpFR1ksRWd5cHQsQWZyaWNhLDIwMTAsOTg1Ny40NjgyODE5MDA2NiwwLjE3OCwwLjEyMiw5NjcwMTIsMjE3NTA5NDMsODExMjEwNzcNClNMVixFbCBTYWx2YWRvcixOb3J0aCBBbWVyaWNhLDIwMTAsNjMwMC43NzUzODc3NzMzNywwLjE0NywwLjA1MSwxMTg3MzIsNjQxMDcyNiw2MTkyOTkzDQpHTlEsRXF1YXRvcmlhbCBHdWluZWEsQWZyaWNhLDIwMTAsMzM3MjMuMzY1ODAzMDE1MiwwLjE0NCwwLjA0Nyw1OTc3LDM1MTYwMCw3MDA0MDENCkVSSSxFcml0cmVhLEFmcmljYSwyMDEwLDE0MTYuMzY1ODAxNTQyMzgsMC4wNDUsMC4wMzUsMTYyNTksMTI2NjIyMiw1MjUzNjc2DQpFU1QsRXN0b25pYSxFdXJvcGUsMjAxMCwyMjc0MC45NzIwMDM4NzA4LDAuMTc2LDAuMDE5LDU5NzksODc4MDIxLDEzNDExNDANCkVUSCxFdGhpb3BpYSxBZnJpY2EsMjAxMCwxMDczLjgyNjI5NTA2ODgzLE5BLE5BLE5BLE5BLDgyOTQ5NTQxDQpGUk8sRmFlcm9lIElzbGFuZHMsRXVyb3BlLDIwMTAsTkEsMC4yNTIsMC4wMDUsOTMsNTA1NTQsNDg3MDgNCkZMSyxGYWxrbGFuZCBJc2xhbmRzLFNvdXRoIEFtZXJpY2EsMjAxMCxOQSwwLjI1MiwwLjAwNSw1LDI2MDIsTkENCkZKSSxGaWppLE9jZWFuaWEsMjAxMCw3MzUyLjA4ODM2MDAyMzcyLDAuMTg5LDAuMTUxLDQ5MjU3LDg5NjE0NSw4NjA2MjMNCkZJTixGaW5sYW5kLEV1cm9wZSwyMDEwLDM5ODQ4LjEzNDQ5Nzg3NzUsMC4yMzQsMC4wMDUsNDk4NSwyOTI3Njc0LDUzNjQ1NDYNCkZSQSxGcmFuY2UsRXVyb3BlLDIwMTAsMzY4NTUuODQ0NjgyNDA2NCwwLjE5MiwwLjAwNCwyNDEwOSwxNzI4NzI4MCw2Mjc4NzQyNw0KR1VGLEZyZW5jaCBHdWlhbmEsU291dGggQW1lcmljYSwyMDEwLE5BLDAuMTQ0LDAuMDM5LDIzNjAsMTY3NjMxLDIzMTE1MQ0KUFlGLEZyZW5jaCBQb2x5bmVzaWEsT2NlYW5pYSwyMDEwLE5BLDAuMjUyLDAuMDEzLDEyODYsMjcwNjE4LDI3MDc2NA0KR0FCLEdhYm9uLEFmcmljYSwyMDEwLDE1MzU1Ljc4NDY0OTc3MzEsMC4wNTQsMC4wMTksNjA4Nyw4NjIzMjgsMTUwNTQ2Mw0KR01CLEdhbWJpYSxBZnJpY2EsMjAxMCwxNjQ0LjI0MjM2NjEzNDkzLDAuMDQ4LDAuMDQxLDE5NjE2LDEzMjQyMTQsMTcyODM5NA0KR0VPLEdlb3JnaWEsRXVyb3BlLDIwMTAsNjczMy43ODM3NjEzMDk4OCwwLjA2OCwwLjAzNSwxNDQ3MiwxMTI0MjQ5LDQzNTIyNDQNCkdFTyxHZW9yZ2lhLEFzaWEsMjAxMCw2NzMzLjc4Mzc2MTMwOTg4LDAuMDY4LDAuMDM1LDE0NDcyLDExMjQyNDksNDM1MjI0NA0KREVVLEdlcm1hbnksRXVyb3BlLDIwMTAsNDA0MjguNzIxMDMwNzYxNywwLjQ4NSwwLjAxLDMxMjM5LDg4MzcwMzUsODIzMDI0NjUNCkdIQSxHaGFuYSxBZnJpY2EsMjAxMCwzMDU5LjM4MzYyNjQwNTQxLDAuMDQsMC4wMzIsOTE1NzEsNzcyNzcwMiwyNDM5MTgyMw0KR0lCLEdpYnJhbHRhcixFdXJvcGUsMjAxMCxOQSwwLjI1MiwwLjAwNSw2NSwzMzQ4MywyOTI0NA0KR1JDLEdyZWVjZSxFdXJvcGUsMjAxMCwyODcyNi4wNzkyODM2ODczLDAuMiwwLjAwNCwxNDIyOSw5Nzk0NzAyLDExMzU5MzQ2DQpHUkwsR3JlZW5sYW5kLE5vcnRoIEFtZXJpY2EsMjAxMCxOQSwwLjI1MiwwLjAwNSwxMDUsNTcwNjgsNTcyOTYNCkdSRCxHcmVuYWRhLE5vcnRoIEFtZXJpY2EsMjAxMCwxMTE3Ny45OTk3MTU1NTk0LDAuMzI1LDAuMDY0LDIyNDgsOTYxMjEsMTA0NDg3DQpHTFAsR3VhZGVsb3VwZSxOb3J0aCBBbWVyaWNhLDIwMTAsTkEsMC4xNDQsMC4wMzksNjU2NCw0NjYxNjYsNDYwNjY2DQpHVU0sR3VhbSxPY2VhbmlhLDIwMTAsTkEsMC4yNTIsMC4wMDYsMzkzLDE5MDgwOSwxNzk4OTYNCkdUTSxHdWF0ZW1hbGEsTm9ydGggQW1lcmljYSwyMDEwLDY3MTQuMDYzNTk1NTQ2NSwwLjI4LDAuMTA1LDkxNTYzLDIzOTI0NDIsMTQzODg5MjkNCkdHWSxHdWVybnNleSxFdXJvcGUsMjAxMCxOQSwwLjI1MiwwLjAwNSwxMDMsNTYyODksTkENCkdJTixHdWluZWEsQWZyaWNhLDIwMTAsMTU3My41NDQ5NTc1NjgyMywwLjAzLDAuMDI1LDE4NTE0LDE5OTY0OTYsOTk4MTU5MA0KR05CLEd1aW5lYS1CaXNzYXUsQWZyaWNhLDIwMTAsMTQwMC4zNjMyOTMxMjY2NSwwLjA1NCwwLjA0NiwyMDI0MCwxMjA4MTA2LDE1MTUyMjQNCkdVWSxHdXlhbmEsU291dGggQW1lcmljYSwyMDEwLDU4NDcuODU3MjU0OTk2NzksMC41ODYsMC4yMjQsNDIwMDIsNTEzMjM1LDc1NDQ5Mw0KSFRJLEhhaXRpLE5vcnRoIEFtZXJpY2EsMjAxMCwxNTAyLjAzMjcxMTQxMjI0LDAuMDksMC4wNDQsMTQ3Mzg5LDkxNTU2OTMsOTk5MzI0Nw0KSE5ELEhvbmR1cmFzLE5vcnRoIEFtZXJpY2EsMjAxMCwzOTcxLjE4Mjk5MzUyNzI3LDAuMTg5LDAuMDc5LDk1NjM4LDMzMjQxNDQsNzYwMDUyNA0KSEtHLEhvbmcgS29uZyxBc2lhLDIwMTAsNDgxMDcuNzA4NjMzMzI3OSwwLjM5OCwwLjAxLDI4NTEyLDc1NzMwNzQsNzA1MzE4OQ0KSFVOLEh1bmdhcnksRXVyb3BlLDIwMTAsMjI0MDQuMjM5MTk2OTQ3MSxOQSxOQSxOQSxOQSw5OTgzNjQ1DQpJU0wsSWNlbGFuZCxFdXJvcGUsMjAxMCwzODk3OC4wMDU1OTUzNDE1LDAuMjgxLDAuMDA2LDU5OCwyOTI3MDgsMzIwMTM2DQpJTkQsSW5kaWEsQXNpYSwyMDEwLDQ0MDQuNjk3MDA1MzAzODcsMC4wMSwwLjAwOSw1OTk4MTksMTg3NDkzNDMzLDEyMjQ2MTQzMjcNCklETixJbmRvbmVzaWEsQXNpYSwyMDEwLDg0MzMuNDk3MzU2Nzg0NTIsMC4wNTcsMC4wNDcsMzIxNjg1NiwxODcyMjM0NzYsMjM5ODcwOTM3DQpJUk4sSXJhbixBc2lhLDIwMTAsMTc5NDIuODMyODQyNjE0MywwLjE0NCwwLjA3NCwyNDc0MDMsOTA5OTY5NSw3Mzk3MzYzMA0KSVJRLElyYXEsQXNpYSwyMDEwLDEyNzE3LjU5NzUyNzE2ODQsMC4xMDMsMC4wNjcsMTU1NjMsNjM5MjI4LDMxNjcxNTkxDQpJUkwsSXJlbGFuZCxFdXJvcGUsMjAxMCw0NDAzMC40MTQxNDg3MDU1LDAuNDMsMC4wMDksMTE3MTAsMzc0OTU3Niw0NDY5OTAwDQpJTU4sSXNsZSBvZiBNYW4sRXVyb3BlLDIwMTAsTkEsTkEsTkEsTkEsTkEsODI4NjkNCklTUixJc3JhZWwsQXNpYSwyMDEwLDI5NzQzLjAwNTg3Mjc5MTYsMC4yOTcsMC4wMDgsMTkwMDcsNjY3NzgxMCw3NDE4NDAwDQpJVEEsSXRhbHksRXVyb3BlLDIwMTAsMzYyMDEuMTYxNTY3MjEzNCwwLjEzNCwwLjAwMywzMjc2MSwzMzgyMjUzMiw2MDU1MDg0OA0KSkFNLEphbWFpY2EsTm9ydGggQW1lcmljYSwyMDEwLDc5OTYuMDE5NDg3OTU4NzMsMC4wMzQsMC4wMSwxMDAxOSwyODIwNTU4LDI3NDEwNTINCkpQTixKYXBhbixBc2lhLDIwMTAsMzU3NDkuNzU2Njc4ODc4NCwwLjE3MSwwLjAwMywxNDMxMjEsMTE1MjI4ODkxLDEyNjUzNTkyMA0KSk9SLEpvcmRhbixBc2lhLDIwMTAsOTQ3Mi43NjgzMjYyNDY2OSwwLjE0NCwwLjA4NiwxNzM3LDU1MzkyLDYxODcyMjcNCktBWixLYXpha2hzdGFuLEV1cm9wZSwyMDEwLDIwMDk2LjU1OTc2MTc1OTEsTkEsTkEsTkEsTkEsMTYwMjYzNjcNCktBWixLYXpha2hzdGFuLEFzaWEsMjAxMCwyMDA5Ni41NTk3NjE3NTkxLE5BLE5BLE5BLE5BLDE2MDI2MzY3DQpLRU4sS2VueWEsQWZyaWNhLDIwMTAsMjQ3Ni4wMTA3NDIxNjQwMSwwLjAyNywwLjAyMywyMjY1OCwyNzI5OTQ1LDQwNTEyNjgyDQpLSVIsS2lyaWJhdGksT2NlYW5pYSwyMDEwLDE3MzEuNTM4NjI2NTA0NjYsMC4xMDMsMC4wODgsMzA0NSw5NDQ4Nyw5OTU0Ng0KS1dULEt1d2FpdCxBc2lhLDIwMTAsNzUyMDQuMTQ1MTE2NjE3LDAuNjg2LDAuMDE0LDExNDg5LDIyOTM2MDQsMjczNjczMg0KS0daLEt5cmd5enN0YW4sQXNpYSwyMDEwLDI3OTAuMTcwNjYzOTQzMTEsTkEsTkEsTkEsTkEsNTMzNDIyMw0KTEFPLExhb3MsQXNpYSwyMDEwLDQyMTguNzgyMDQ0MTU5NDQsTkEsTkEsTkEsTkEsNjIwMDg5NA0KTFZBLExhdHZpYSxFdXJvcGUsMjAxMCwxODI1MS45NTMyODEzNDczLDAuMTI0LDAuMDIsMTAyODQsMTQzMjA3OCwyMjUyMDYwDQpMQk4sTGViYW5vbixBc2lhLDIwMTAsMTY0NTEuNzU5ODMzNjYwNiwwLjA5NCwwLjAzNCw0NzgxNSwzODkwODcxLDQyMjc1OTcNCkxTTyxMZXNvdGhvLEFmcmljYSwyMDEwLDIzNjUuNjgzNDYxMDkwODQsTkEsTkEsTkEsTkEsMjE3MTMxOA0KTEJSLExpYmVyaWEsQWZyaWNhLDIwMTAsNjk5LjY1MzcyMTUxMDU5OSwwLjA4NCwwLjA3Miw1NjcyOCwyMTQ4MjcxLDM5OTQxMjINCkxCWSxMaWJ5YSxBZnJpY2EsMjAxMCwyOTYzMC4yMjIxNDg0NjIyLDAuMTQ0LDAuMDM2LDUyNzc5LDQwNTAxMjgsNjM1NTExMg0KTElFLExpZWNodGVuc3RlaW4sRXVyb3BlLDIwMTAsTkEsTkEsTkEsTkEsTkEsMzYwMzINCkxUVSxMaXRodWFuaWEsRXVyb3BlLDIwMTAsMjEwNzAuNjM0MzMwMTY0NiwwLjEzMiwwLjAyMSwzNDc5LDQ0Mzg5NCwzMzIzNjExDQpMVVgsTHV4ZW1ib3VyZyxFdXJvcGUsMjAxMCw5MTc0My4yOTM4OTA1OTc0LE5BLE5BLE5BLE5BLDUwNzQ0OA0KTUFDLE1hY2FvLEFzaWEsMjAxMCw5ODE4NC4zMzY1MDA5NTM0LDAuMzY4LDAuMDA3LDY5OCwyNTc5MTEsNTQzNjU2DQpNS0QsTWFjZWRvbmlhLEV1cm9wZSwyMDEwLDExMzU1LjM2NzQ5MjY0MjUsTkEsTkEsTkEsTkEsMjA2MDU2Mw0KTURHLE1hZGFnYXNjYXIsQWZyaWNhLDIwMTAsMTM4NS42ODUwNzE2ODAzOSwwLjAxNiwwLjAxMywzNDUyMiw3MDYyNDEzLDIwNzEzODE5DQpNV0ksTWFsYXdpLEFmcmljYSwyMDEwLDEwMzIuOTYyODgwNjE5OSxOQSxOQSxOQSxOQSwxNDkwMDg0MQ0KTVlTLE1hbGF5c2lhLEFzaWEsMjAxMCwyMTEwNy4yNjc5MzcyNTIzLDAuMTk4LDAuMTEyLDkzNjgxOCwyMjg5MDI1MiwyODQwMTAxNw0KTURWLE1hbGRpdmVzLEFzaWEsMjAxMCwxMjAwNS41MDQ2MTgzMTY3LDAuMzIyLDAuMjIsMzE0NjksMzkyNTY3LDMxNTg4NQ0KTUxJLE1hbGksQWZyaWNhLDIwMTAsMTg3MS45ODQ3NDM4NTA5OCxOQSxOQSxOQSxOQSwxNTM2OTgwOQ0KTUxULE1hbHRhLEV1cm9wZSwyMDEwLDI4MzY0Ljc5OTMyMDkyMDgsMC4yMTQsMC4wMTgsMjYyMCw0MDQ3MDcsNDE2NTE1DQpNSEwsTWFyc2hhbGwgSXNsYW5kcyxPY2VhbmlhLDIwMTAsMzQ3OS4xNTUzMDM0MDY4MywwLjE5MiwwLjE1LDMxODcsNTgwODYsNTQwMzgNCk1UUSxNYXJ0aW5pcXVlLE5vcnRoIEFtZXJpY2EsMjAxMCxOQSwwLjI1MiwwLjAwNSw3NDksNDAyMjU3LDQwNTgxNA0KTVJULE1hdXJpdGFuaWEsQWZyaWNhLDIwMTAsMzMxNi45NzQ3ODA0MjQ4OSwwLjA0NSwwLjAzOCwxMzg1NCwxMDA1NDgxLDM0NTk3NzMNCk1VUyxNYXVyaXRpdXMsQWZyaWNhLDIwMTAsMTU5MzguNDE5MjA4OTc4MiwwLjIzLDAuMTIyLDU2MDUxLDEyNTU5NTIsMTI5OTE3Mg0KTVlULE1heW90dGUsQWZyaWNhLDIwMTAsTkEsTkEsTkEsTkEsTkEsMjA0MTE0DQpNRVgsTWV4aWNvLE5vcnRoIEFtZXJpY2EsMjAxMCwxNTcxNS45NzIxNDQ5NTAxLDAuMDg3LDAuMDEyLDEwMTM0MywyMjY0Nzc3MSwxMTM0MjMwNDcNCkZTTSxNaWNyb25lc2lhIChjb3VudHJ5KSxPY2VhbmlhLDIwMTAsMzI5Ny42NTY5MzM2MDgwNCwwLjEwMywwLjA4NSw0Nzk0LDE1NDg5NSxOQQ0KTURBLE1vbGRvdmEsRXVyb3BlLDIwMTAsMzkxMC44NjA1MzMyNDUyNyxOQSxOQSxOQSxOQSwzNTcyODg1DQpNQ08sTW9uYWNvLEV1cm9wZSwyMDEwLE5BLDAuMjUyLDAuMDA1LDYyLDM0MDUwLDM1NDA3DQpNTkcsTW9uZ29saWEsQXNpYSwyMDEwLDc3MDguNTk5OTk0MTM1OTMsTkEsTkEsTkEsTkEsMjc1NjAwMQ0KTU5FLE1vbnRlbmVncm8sRXVyb3BlLDIwMTAsMTQwMzQuNTg0NTY0MDA4NzAxLDAuMTQ0LDAuMDQ2LDQ0MTYsMjYwMzM2LDYzMTQ5MA0KTVNSLE1vbnRzZXJyYXQsTm9ydGggQW1lcmljYSwyMDEwLE5BLDAuMTQ0LDAuMDIsMzgsNTE3Myw1OTM0DQpNQVIsTW9yb2NjbyxBZnJpY2EsMjAxMCw2NDQzLjI1MzYxMzE5NDgxLDAuMDczLDAuMDQ5LDMxMDEyNiwxNzMwMzQzMSwzMTk1MTQxMg0KTU9aLE1vemFtYmlxdWUsQWZyaWNhLDIwMTAsOTE3Ljc2MzgzMjA0MDUzMSwwLjAxNSwwLjAxMyw0NTk5NSw5NTY2NTU5LDIzMzkwNzY1DQpNTVIsTXlhbm1hcixBc2lhLDIwMTAsMzcyMS4yMTE0NDAwOTI3OSwwLjA3NSwwLjA2Niw0NTgyNjksMTg5ODg1MjIsNDc5NjMwMTINCk5BTSxOYW1pYmlhLEFmcmljYSwyMDEwLDg0NjAuODQ3MzY4MTIzNzgsMC4xNDQsMC4wOTcsNTQ4MCwxNTUwODQsMjI4MzI4OQ0KTlJVLE5hdXJ1LE9jZWFuaWEsMjAxMCw2NTkyLjQzNjgzNTc0NTk4LDAuMTQ0LDAuMDk5LDU1NCwxNTI4OSwxMDI1NQ0KTlBMLE5lcGFsLEFzaWEsMjAxMCwxOTg1Ljk4MDM0MDYwMTY5LE5BLE5BLE5BLE5BLDI5OTU5MzY0DQpOTEQsTmV0aGVybGFuZHMsRXVyb3BlLDIwMTAsNDU1MjQuNjYyMTQyNTczMywwLjQyNCwwLjAwOCwyNzcwMCw4OTcxNzcwLDE2NjEyOTg4DQpBTlQsTmV0aGVybGFuZHMgQW50aWxsZXMsTm9ydGggQW1lcmljYSwyMDEwLE5BLDAuMjUyLDAuMDA1LDQxNiwyMjcxNjUsTkENCk5DTCxOZXcgQ2FsZWRvbmlhLE9jZWFuaWEsMjAxMCxOQSwwLjI1MiwwLjAwNSw0NzIsMjU3OTA0LDI1MDg3MA0KTlpMLE5ldyBaZWFsYW5kLE9jZWFuaWEsMjAxMCwzMjExOS4yMTU1NDMwNzczLDAuMzMxLDAuMDA3LDkyODYsMzg2MjA1NCw0MzY4MTM2DQpOSUMsTmljYXJhZ3VhLE5vcnRoIEFtZXJpY2EsMjAxMCw0MDI4LjcxMjA4NzM4MTI4LDAuMTQzLDAuMDY2LDg0NDE1LDM0ODI2NTMsNTc4ODE2Mw0KTkVSLE5pZ2VyLEFmcmljYSwyMDEwLDgxNC4yNDA5MzYxNTE4MzIsTkEsTkEsTkEsTkEsMTU1MTE5NTMNCk5HQSxOaWdlcmlhLEFmcmljYSwyMDEwLDUxNTAuMTU4ODE4MjI3NjMsMC4xMDMsMC4wODUsODUxNDkzLDI3NDc3MTEyLDE1ODQyMzE4Mg0KTklVLE5pdWUsT2NlYW5pYSwyMDEwLE5BLDAuMjUyLDAuMDA2LDQsMTc5OSwxNDY4DQpORkssTm9yZm9sayBJc2xhbmQsT2NlYW5pYSwyMDEwLE5BLDAuMTAzLDAuMDg2LDY4LDIxNTYsTkENClBSSyxOb3J0aCBLb3JlYSxBc2lhLDIwMTAsTkEsMC4wNTQsMC4wNDgsMzA0MzI4LDE3MzI3NDgzLDI0MzQ2MjI5DQpNTlAsTm9ydGhlcm4gTWFyaWFuYSBJc2xhbmRzLE9jZWFuaWEsMjAxMCxOQSwwLjI1MiwwLjAwNiwyMTksMTA2MjU2LDYwOTE3DQpOT1IsTm9yd2F5LEV1cm9wZSwyMDEwLDYyMzUwLjQxMDcwNjg3NTA5NiwwLjI4LDAuMDA2LDg0MDMsNDEzMTY3OSw0ODgzMTExDQpPTU4sT21hbixBc2lhLDIwMTAsNDUzMzUuODUyNTE2ODQzNiwwLjA4NCwwLjAwNSw0NjU4LDI1OTc1NTYsMjc4MjQzNQ0KUEFLLFBha2lzdGFuLEFzaWEsMjAxMCw0MjgzLjYwNzMxMTYzNjM1LDAuMTAzLDAuMDksNDgwNDkzLDE0NTgxOTUyLDE3MzU5MzM4Mw0KUExXLFBhbGF1LE9jZWFuaWEsMjAxMCwxMTg0Ni41NzM5MzM0MzE4LDAuMTQ0LDAuMDg0LDcxNiwyMzQ0NiwyMDQ3Mg0KUFNFLFBhbGVzdGluZSxBc2lhLDIwMTAsNDE3Mi43NDU2ODkyMTU0NCwwLjA2MywwLjAwNSw1NTk5LDMwNDUyNTgsTkENClBBTixQYW5hbWEsTm9ydGggQW1lcmljYSwyMDEwLDE1NjI4LjU5MjI0Mzg3MzgsMC4xNDUsMC4wMjksMzQzODgsMzI0OTUzMSwzNTE2ODIwDQpQTkcsUGFwdWEgTmV3IEd1aW5lYSxPY2VhbmlhLDIwMTAsMzE5MS41ODA0MTAyODMwMSwwLjEwMywwLjA5LDg5ODM1LDI3NDc1MTQsNjg1ODI2Ng0KUFJZLFBhcmFndWF5LFNvdXRoIEFtZXJpY2EsMjAxMCw3Mjg5LjUxMzkxMDA1MjMzLE5BLE5BLE5BLE5BLDY0NTQ1NDgNClBFUixQZXJ1LFNvdXRoIEFtZXJpY2EsMjAxMCw5OTU2LjU1NjYzNjY4MzA3LDAuMTQ0LDAuMDM5LDE5NDQ1MywxMzc2NTYwOCwyOTA3NjUxMg0KUEhMLFBoaWxpcHBpbmVzLEFzaWEsMjAxMCw1NTk2LjgzNzI4Nzk0OTYyLDAuMDc1LDAuMDYyLDE4ODM2NTksODM0NDY4NjIsOTMyNjA3OTgNClBDTixQaXRjYWlybixPY2VhbmlhLDIwMTAsTkEsTkEsTkEsTkEsTkEsNTANClBPTCxQb2xhbmQsRXVyb3BlLDIwMTAsMjE3NzAuNjQ0NDM1OTc3MiwwLjA5NywwLjAxMywxNTcwMywzMjcyOTMzLDM4Mjc2NjYwDQpQUlQsUG9ydHVnYWwsRXVyb3BlLDIwMTAsMjcyMzguNDYwNjcyNDQyMiwwLjI2NSwwLjAwNSwxNjQwMiw4NTA3OTUxLDEwNjc1NTcyDQpQUkksUHVlcnRvIFJpY28sTm9ydGggQW1lcmljYSwyMDEwLDMzOTI0LjA1NDAxMDEzOTcsMC4yNTIsMC4wMTEsMTY1MTcsNDI0OTg0OCwzNzQ5MDA5DQpRQVQsUWF0YXIsQXNpYSwyMDEwLDEyNTE0MC44MzgzNDgwMDEsMC4xNiwwLjAwMyw3NTgsNjUzMDA3LDE3NTg3OTMNClJFVSxSZXVuaW9uLEFmcmljYSwyMDEwLE5BLDAuMTQ0LDAuMDAzLDg0Nyw4MDk0MjYsODQ2MDY4DQpST1UsUm9tYW5pYSxFdXJvcGUsMjAxMCwxNzU1My4yODMyOTY2NDQ0LDAuMDQyLDAuMDExLDM2MTAsODc1MTcwLDIxNDg2MzcxDQpSVVMsUnVzc2lhLEV1cm9wZSwyMDEwLDIzMTA3Ljc4NTIyMTI3NTksMC4xMTIsMC4wMiw4MDc1OSwxMDgxMjUzNywxNDI5NTgxNjQNClJVUyxSdXNzaWEsQXNpYSwyMDEwLDIzMTA3Ljc4NTIyMTI3NTksMC4xMTIsMC4wMiw4MDc1OSwxMDgxMjUzNywxNDI5NTgxNjQNClJXQSxSd2FuZGEsQWZyaWNhLDIwMTAsMTM2NS4xNzQyMzk5NDA4NSxOQSxOQSxOQSxOQSwxMDYyNDAwNQ0KU0hOLFNhaW50IEhlbGVuYSxBZnJpY2EsMjAxMCxOQSwwLjE0NCwwLjAzOSw5Niw2ODM5LDQxMTgNCktOQSxTYWludCBLaXR0cyBhbmQgTmV2aXMsTm9ydGggQW1lcmljYSwyMDEwLDIxNDEyLjIwMTQ1MzEwOCwwLjY1NCwwLjA1NCw3MTUsMzYxMDIsNTI0MDINCkxDQSxTYWludCBMdWNpYSxOb3J0aCBBbWVyaWNhLDIwMTAsMTIxMjMuODM1MTM5MDQ3NSwwLjUyMiwwLjExMyw2NzA5LDE2MzIyNywxNzQyNjcNClNQTSxTYWludCBQaWVycmUgYW5kIE1pcXVlbG9uLE5vcnRoIEFtZXJpY2EsMjAxMCxOQSwwLjI1MiwwLjAwNSwxMSw1ODg4LE5BDQpWQ1QsU2FpbnQgVmluY2VudCBhbmQgdGhlIEdyZW5hZGluZXMsTm9ydGggQW1lcmljYSwyMDEwLDk5MTUuNTc3NjE4OTExOTUsMC4yMjEsMC4wNTEsMjI0NSwxMjAxNDksMTA5MzMzDQpXU00sU2Ftb2EsT2NlYW5pYSwyMDEwLDUzOTkuODkzMDk2MzE4MzgsMC4xMDMsMC4wODQsNTEyMiwxNjgwMjUsMTgzMDgxDQpTTVIsU2FuIE1hcmlubyxFdXJvcGUsMjAxMCw3Mzg2Mi4zMzc0Mzc0NTAxLE5BLE5BLE5BLE5BLDMxNTM0DQpTVFAsU2FvIFRvbWUgYW5kIFByaW5jaXBlLEFmcmljYSwyMDEwLDI2NDEuNTEzOTQ4NDcyOTQsMC4xMDMsMC4wODUsNTA4MSwxNjM3NDAsMTY1Mzk3DQpTQVUsU2F1ZGkgQXJhYmlhLEFzaWEsMjAxMCw0NTQyMS4yMjg0Nzk3NDQ2LDAuMTU2LDAuMDE2LDIwNTUyLDM1OTM0NzEsMjc0NDgwODYNClNFTixTZW5lZ2FsLEFmcmljYSwyMDEwLDIxODMuOTk1MDUxNDE3NjYsMC4xMDMsMC4wODYsMjU0NzcwLDgxMjUwNjMsMTI0MzM3MjgNClNSQixTZXJiaWEsRXVyb3BlLDIwMTAsMTI2ODguMTI0Mjg5ODc0MSxOQSxOQSxOQSxOQSw5ODU2MjIyDQpTWUMsU2V5Y2hlbGxlcyxBZnJpY2EsMjAxMCwyMDM2NS4xMTg5MzMxNTEzLDAuMzU4LDAuMTM5LDQ2MTksOTEzNjEsODY1MTgNClNMRSxTaWVycmEgTGVvbmUsQWZyaWNhLDIwMTAsMTE5OS45ODk4NTAyNzUwMiwwLjA0MSwwLjAzNSwzNjQwOCwyODg3MDE3LDU4Njc1MzYNClNHUCxTaW5nYXBvcmUsQXNpYSwyMDEwLDcyMTE1LjgzOTUwMTQ1MDQsMC4xOTQsMC4wMDQsNjQ3Miw0NDkyNDk0LDUwODY0MTgNClNYTSxTaW50IE1hYXJ0ZW4gKER1dGNoIHBhcnQpLE5vcnRoIEFtZXJpY2EsMjAxMCxOQSwwLjI1MiwwLjAwNSw3MCwzNzQyOSxOQQ0KU1ZLLFNsb3Zha2lhLEV1cm9wZSwyMDEwLDI1MTU5LjA3NzU0ODc1NzksTkEsTkEsTkEsTkEsNTQ2MjExOQ0KU1ZOLFNsb3ZlbmlhLEV1cm9wZSwyMDEwLDI4Njc4LjM3MjYzMDM2ODcsMC4xNDUsMC4wMDUsNTU2LDMzNjU5NCwyMDI5NjgwDQpTTEIsU29sb21vbiBJc2xhbmRzLE9jZWFuaWEsMjAxMCwxODcxLjM2OTM1MjA5MzU2LDAuMTAzLDAuMDksMjAzOTQsNjE4Njc4LDUzODE0OA0KU09NLFNvbWFsaWEsQWZyaWNhLDIwMTAsTkEsMC4wNTQsMC4wNDcsMTAxNTMxLDU5NzExNjksOTMzMDg3Mg0KWkFGLFNvdXRoIEFmcmljYSxBZnJpY2EsMjAxMCwxMTg4Ny44MDUwMzQzOTI3LDAuMjQsMC4xMzQsNjMwMDA1LDEyODk5MjAxLDUwMTMyODE3DQpLT1IsU291dGggS29yZWEsQXNpYSwyMDEwLDMwMzUyLjEwNDgxOTAzMDMsMC4xMTIsMC4wMDEsMzM3NDcsNDE2NTQ2MTksNDgxODM1ODQNClNTRCxTb3V0aCBTdWRhbixBZnJpY2EsMjAxMCxOQSxOQSxOQSxOQSxOQSw5NDE1NDIxDQpFU1AsU3BhaW4sRXVyb3BlLDIwMTAsMzI1MDcuMDkzOTY2MDYyOSwwLjI3NywwLjAwNiw0NTg1MywyMjc3MTQ4OCw0NjA3Njk4OQ0KTEtBLFNyaSBMYW5rYSxBc2lhLDIwMTAsODUyOS41NzE0NDIxOTQ1MywwLjM1NywwLjI5OSwxNTkxMTc5LDE0NTY4MTc0LDIwODU5OTQ5DQpTRE4sU3VkYW4sQWZyaWNhLDIwMTAsMzM2Ni4wOTYyNjEwNzU0OSwwLjEwMywwLjA4MywyMjkyOCw3NTI1MjksMzQxMzY1MjANClNVUixTdXJpbmFtZSxTb3V0aCBBbWVyaWNhLDIwMTAsMTQyMTEuODc3NTE2MzI1NSwwLjE2MywwLjAyNywzOTQyLDQwMjI2Myw1MjQ2MzYNClNXWixTd2F6aWxhbmQsQWZyaWNhLDIwMTAsNzI5Ni41MTExMTg2MDkyOSxOQSxOQSxOQSxOQSwxMTg2MDU2DQpTV0UsU3dlZGVuLEV1cm9wZSwyMDEwLDQyOTQyLjU2MjUwMzI5NjIsMC4wNDgsMC4wMDEsMjE1MCw2MjAyMjM0LDkzNzk2ODcNCkNIRSxTd2l0emVybGFuZCxFdXJvcGUsMjAxMCw1NTg2Ni4zMDUwNzA3NTM3LE5BLE5BLE5BLE5BLDc2NjQzMTgNClNZUixTeXJpYSxBc2lhLDIwMTAsTkEsMC4xNzgsMC4xMTksMTU3OTA0LDM2MjE5OTcsMjA0MTA2MDYNClRXTixUYWl3YW4sQXNpYSwyMDEwLE5BLDAuMjUyLDAuMDA2LDQ1NzE4LDIyMjExNTY3LDIzMDI1MDAwDQpUSkssVGFqaWtpc3RhbixBc2lhLDIwMTAsMjEwNi4zMzg3NTU4MDIwNixOQSxOQSxOQSxOQSw2ODc4NjM3DQpUWkEsVGFuemFuaWEsQWZyaWNhLDIwMTAsMjA5MC41ODMyMjQ2NzU3NCwwLjAyMywwLjAyLDQ4NTg2LDY2ODg2OTUsNDQ4NDEyMjYNClRIQSxUaGFpbGFuZCxBc2lhLDIwMTAsMTM0ODYuNTYyNDE0OTU0OCwwLjE0NCwwLjEwOCwxMDI3NzM5LDI2MDQzNDQyLDY5MTIyMjM0DQpUR08sVG9nbyxBZnJpY2EsMjAxMCwxMjA4LjI4MTIwOTgzMjgsMC4wNTcsMC4wNDksMzU0MDEsMTk5MTY0Miw2MDI3Nzk4DQpUS0wsVG9rZWxhdSxPY2VhbmlhLDIwMTAsTkEsMC4xMDMsMC4wODYsNDMsMTM3OSwxMTM1DQpUT04sVG9uZ2EsT2NlYW5pYSwyMDEwLDQ5ODQuMTkzNjI5NTEwMjksMC4yMjMsMC4xNzYsNjYyNCwxMDI4NzIsMTA0MDU4DQpUVE8sVHJpbmlkYWQgYW5kIFRvYmFnbyxOb3J0aCBBbWVyaWNhLDIwMTAsMzEyNjAuOTA3MDQ3MTc2MywzLjYsMC4xOSw5NDA2NiwxMzU4NDMzLDEzNDE0NjUNClRVTixUdW5pc2lhLEFmcmljYSwyMDEwLDEwNDM2LjM2NTU5OTg2MjgsMC4xNDQsMC4wODgsMjM0MzA5LDcyNzQ5NzMsMTA0ODA5MzQNClRVUixUdXJrZXksRXVyb3BlLDIwMTAsMTc5NTkuMjU5MTA2NTc0NSwwLjIxMiwwLjAzOSw0ODU5MzcsMzQwNDI4NjIsNzI3NTIzMjUNClRVUixUdXJrZXksQXNpYSwyMDEwLDE3OTU5LjI1OTEwNjU3NDUsMC4yMTIsMC4wMzksNDg1OTM3LDM0MDQyODYyLDcyNzUyMzI1DQpUS00sVHVya21lbmlzdGFuLEFzaWEsMjAxMCw5OTQyLjQyNjk1NTkyMTIsTkEsTkEsTkEsTkEsNTA0MTk5NQ0KVENBLFR1cmtzIGFuZCBDYWljb3MgSXNsYW5kcyxOb3J0aCBBbWVyaWNhLDIwMTAsTkEsMC4yNTIsMC4wMDYsNDksMjI1NzAsMzgzNTQNClRVVixUdXZhbHUsT2NlYW5pYSwyMDEwLDI5ODYuNDQ5ODU1ODg4ODgsMC4xNDQsMC4xMDgsNDU3LDExNTYzLDk4MjcNClVHQSxVZ2FuZGEsQWZyaWNhLDIwMTAsMTUxNS44NjY0MTE1MjEyOCxOQSxOQSxOQSxOQSwzMzQyNDY4Mw0KVUtSLFVrcmFpbmUsRXVyb3BlLDIwMTAsNzgyNC40OTg0NTE3MTQzOCwwLjEwMywwLjA1MiwxMjg3NjUsNjgxMjc5OSw0NTQ0ODMyOQ0KQVJFLFVuaXRlZCBBcmFiIEVtaXJhdGVzLEFzaWEsMjAxMCw1NzIzMi42MTgwNzU3NjQ5LDAuMTk5LDAuMDA0LDMwMTYsMjAxODMwMiw3NTExNjkwDQpHQlIsVW5pdGVkIEtpbmdkb20sRXVyb3BlLDIwMTAsMzYzNjYuOTgzMTc4MjUyMiwwLjIxNSwwLjAwNCw2NzU0OSw0MzI1ODg4OSw2MjAzNTU3MA0KVVNBLFVuaXRlZCBTdGF0ZXMsTm9ydGggQW1lcmljYSwyMDEwLDQ5Mzc0LjE3ODg4NTE3OTcsMC4zMzUsMC4wMDcsMjc1NDI0LDExMjkyNTAzNCwzMTAzODM5NDgNClVSWSxVcnVndWF5LFNvdXRoIEFtZXJpY2EsMjAxMCwxNzA4Mi40MDQ2NTg2NzY1LDAuMjUyLDAuMDI0LDIxNTYyLDI0MzM1OTcsMzM2ODc4Ng0KVVpCLFV6YmVraXN0YW4sQXNpYSwyMDEwLDQyMzkuNzAyMjA4MzkyMTUsTkEsTkEsTkEsTkEsMjc0NDQ3MDINClZVVCxWYW51YXR1LE9jZWFuaWEsMjAxMCwyOTQ4LjAzMjkzNzI5MTgzLDAuMjk1LDAuMjQ1LDIyNDc4LDI1MTg1MSwyMzk2NTENClZFTixWZW5lenVlbGEsU291dGggQW1lcmljYSwyMDEwLDE2NTQ0Ljk3MjA1NTI1OTgsMC4yNTIsMC4wMTcsMTAyMzMzLDE2MDk0ODk3LDI4OTc5ODU3DQpWTk0sVmlldG5hbSxBc2lhLDIwMTAsNDQwOC4xNjg2MTE5MjE5OCwwLjEwMywwLjA5LDE4MzM4MTksNTU4NTgyNDUsODc4NDg0NDUNCkVTSCxXZXN0ZXJuIFNhaGFyYSxBZnJpY2EsMjAxMCxOQSxOQSxOQSxOQSxOQSw1MzA1MDANCllFTSxZZW1lbixBc2lhLDIwMTAsNDQ3OC43NDM1OTkxNDI5LDAuMTAzLDAuMDc3LDE2OTE4MSw2MDQ4OTIwLE5BDQpaTUIsWmFtYmlhLEFmcmljYSwyMDEwLDMyNzkuMjc3MTYxNDQ0NzYsTkEsTkEsTkEsTkEsMTMwODg1NzANClpXRSxaaW1iYWJ3ZSxBZnJpY2EsMjAxMCwxNDc0Ljg3NzEyNzk1NTI3LE5BLE5BLE5BLE5BLDEyNTcxNDU0DQo=" download="plastic_waste.csv">Download plastic_waste.csv</a>
+</div>
+<p>Note that this is a .csv file, to open it you will need to use the function <code>read.csv()</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+plastic_waste &lt;- read.csv(&#39;C:/Users/benjamcr/Rproj/GEOG3006/data/plastic_waste.csv&#39;)</code></pre>
+</div>
+<p>The variable descriptions are as follows:</p>
+<ul>
+<li><strong>code</strong>: 3 Letter country code</li>
+<li><strong>entity</strong>: Country name</li>
+<li><strong>continent</strong>: Continent name</li>
+<li><strong>year</strong>: Year</li>
+<li><strong>gdp_per_cap</strong>: GDP per capita constant 2011 international $, rate</li>
+<li><strong>plastic_waste_per_cap</strong>: Amount of plastic waste per capita in kg/day</li>
+<li><strong>mismanaged_plastic_waste_per_cap</strong>: Amount of mismanaged plastic waste per capita in kg/day</li>
+<li><strong>mismanaged_plastic_waste</strong>: Tonnes of mismanaged plastic waste</li>
+<li><strong>coastal_pop</strong>: Number of individuals living on/near coast</li>
+<li><strong>total_pop</strong>: Total population according to Gapminder</li>
+</ul>
+<p><span style="color: blue;"><strong>Question 1</strong></span>: Visualize the relationship between plastic waste per capita and mismanaged plastic waste per capita using a scatterplot. Describe the relationship.</p>
+<p><span style="color: blue;"><strong>Question 2</strong></span>: Color the points in the scatterplot by continent. Does there seem to be any clear distinctions between continents with respect to how plastic waste per capita and mismanaged plastic waste per capita are associated?</p>
+<p><span style="color: blue;"><strong>Question 3</strong></span>: Visualize the relationship between plastic waste per capita and total population as well as plastic waste per capita and coastal population. Do either of these pairs of variables appear to be more strongly linearly associated?</p>
+<p><span style="color: blue;"><strong>Question 4</strong></span>: Recreate the following plot and think about what is wrong about it, how could you make it better?</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="Lab1_DataViz_files/figure-html5/unnamed-chunk-21-1.png" width="624" /></p>
+</div>
+<p>Note that I am using the function <code>scale_color_viridis()</code> from the library <code>viridis</code>.</p>
+<p>In next lab we will correct the questions and train more our data vizualisation skills!</p>
+<p>Good luck! 💪 💪 💪</p>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
