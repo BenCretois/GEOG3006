@@ -3,7 +3,7 @@ title: "Lectures"
 site: distill::distill_website
 ---
 
-# Lecture 1
+# Lecture 1: Introduction to "data"
 
 ### 1.1 [Course intro](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=86b740d4-52ef-4b4d-945b-ac1c00da4d02)
 

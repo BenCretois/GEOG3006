@@ -3,8 +3,6 @@ title: "Exercises"
 site: distill::distill_website
 ---
 
-## Short introduction to the labs and exercises
-
 ```{r}
 knitr::include_graphics('ex/imgs/DataFlow.PNG')
 ```
