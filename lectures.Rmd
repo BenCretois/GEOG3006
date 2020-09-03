@@ -10,3 +10,13 @@ site: distill::distill_website
 ### 1.2 [Practical information](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4a5bd668-0b5c-41ff-a8e0-ac2300fc5ab9)
 
 ### 1.3 [Data](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=9a29203c-8285-410e-9035-ac2300b3edc5)
+
+# Lecture 2: More on Data & Introduction to probability
+
+### 2.1 [More practical info](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8a9f7b75-f100-4615-a8d2-ac2a00b7e7a7)
+
+### 2.2 [More on data](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=fd813c13-9cd8-4900-916a-ac2a00bf4418)
+
+### 2.3 [Introduction to probability](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=9b8abc70-2da9-4d69-a227-ac2a00f23f1b)
+
+---

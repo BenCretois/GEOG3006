@@ -1,0 +1,301 @@
+---
+title: "Lab2_DataViz2"
+output_dir: "docs"
+output: 
+      distill::distill_article:
+        self_contained: false
+        toc: TRUE
+        toc_float: TRUE
+        number_sections: yes
+---
+
+# Introduction to data vizualisation - Part 2
+
+> STILL UNDER CONSTRUCTION!
+
+## Exercises correction
+
+
+```{r, echo = TRUE}
+# Load the library
+library(ggplot2)
+
+# First, open the dataset
+plastic_waste <- read.csv('C:/Users/benjamcr/Rproj/GEOG3006/data/plastic_waste.csv')
+
+# Visualize how the dataset look like
+head(plastic_waste)
+```
+
+### Question 1
+
+<span style="color: blue;">**Question 1**</span>: Visualize the relationship between plastic waste per capita and mismanaged plastic waste per capita using a scatterplot. Describe the relationship.
+
+```{r, echo = TRUE}
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = mismanaged_plastic_waste)) +
+  geom_point() +
+  theme_bw() +
+  geom_smooth()
+
+# The trend looks constant. It seems that there is no relationship between plastic waste per capita and plastic waste mismanagement.
+```
+
+This first visualization indicates there are some extreme values in the dataset. While these are important and you should always try to understand these values called **outliers**, you should also explore your dataset without the outliers.
+
+```{r, echo = TRUE}
+library(dplyr)
+
+plastic_waste_no_outliers <- plastic_waste %>% 
+  filter(plastic_waste_per_cap < 1) %>%
+  filter(mismanaged_plastic_waste < 50000)
+
+ggplot(plastic_waste_no_outliers, aes(x = plastic_waste_per_cap, y = mismanaged_plastic_waste)) +
+  geom_point() +
+  theme_bw() +
+  geom_smooth(method = 'lm')
+
+# The more plastic waste per capita, the less mismanaged is the plastic waste. Put in another way, countries with high plastic waste per person are the countries which manage better the plastic waste.
+```
+
+In the `geom_smooth()` function, which evaluate the trend in your graph, we specify `method = 'lm'`. `lm` will return a straight line, which makes the interpretation easier. If `method = 'lm'` is not specified, the function may return a wiggly curve difficult to interpret.
+
+> Try out the above code without the `lm` method specified. 
+
+The code above use the function `filter()` and the pipe ` %>%`, both from the package `dplyr`. Through the R exercises we will use these functions a lot. Below you will find an explanation of these functions.
+
+> Can you guess what are `filter()` and ` %>% ` doing?
+
+### Question 2
+
+<span style="color: blue;">**Question 2**</span>: Color the points in the scatterplot by continent. Does there seem to be any clear distinctions between continents with respect to how plastic waste per capita and mismanaged plastic waste per capita are associated?
+
+
+```{r, echo = TRUE}
+ggplot(plastic_waste_no_outliers, aes(x = plastic_waste_per_cap, y = mismanaged_plastic_waste, color = continent)) +
+  geom_point() +
+  theme_bw() +
+  geom_smooth(method = 'lm')
+
+# Each continent has a very different trend. This is why it is important to explore your dataset from a diversity of angles.
+```
+
+### Question 3
+
+<span style="color: blue;">**Question 3**</span>: Visualize the relationship between plastic waste per capita and total population as well as plastic waste per capita and coastal population. Do either of these pairs of variables appear to be more strongly linearly associated?
+
+```{r, echo = TRUE}
+ggplot(plastic_waste_no_outliers, aes(y = plastic_waste_per_cap, x = total_pop)) +
+  geom_point() +
+  theme_bw() +
+  geom_smooth(method = 'lm')
+# The more persons a country has, the less waste per capita.
+
+ggplot(plastic_waste_no_outliers, aes(y = plastic_waste_per_cap, x = coastal_pop)) +
+  geom_point() +
+  theme_bw() +
+  geom_smooth(method = 'lm', color = 'red')
+# The more persons a country has, the less waste per capita. Nevertheless, the trend doesn't seem as strong as in the first plot.
+```
+
+
+### Question 4
+
+<span style="color: blue;">**Question 4**</span>: Recreate the following plot and think about what is wrong about it, how could you make it better?
+
+Here is the code for the plot:
+
+```{r, echo = TRUE, eval = FALSE}
+# Load the library viridis which give us a nice color palette
+library(viridis)
+
+# Code for the plot
+ggplot(plastic_waste, aes(x = coastal_pop, y = plastic_waste_per_cap, color = continent) +
+  geom_point() +
+  scale_color_viridis(discrete = TRUE) +
+  geom_smooth(col = 'black') +
+  labs(title = "Plastic waste vs. coastal population proportion",
+       subtitle = "by continent",
+       x = "Coastal population proportion",
+       y = "Plastic waste per capita",
+       color = "Continent")
+```
+
+We can improve this plot by removing the outliers from the plot as we did previously. This will give us a better view of the general trend.
+
+Another thing that is not optimal with this plot is that the points seem cluster: most of the points are on the left of the plots while some others are on the far right. The **range of values in the variable population is very large** and this may impede the visual. We can solve this dilema by taking the `log` of coastal population. By taking the `log`, which is a mathematical transformation, we give an **order of magnitude** to the variable population and we do not reason only in terms of raw numbers.
+
+Let's have a look at the plot:
+
+```{r, echo = TRUE}
+# Remove the outliers
+plastic_waste_no_outliers2 <- plastic_waste %>% 
+  filter(plastic_waste_per_cap < 1)
+
+# Plot the dataset
+ggplot(plastic_waste_no_outliers2, aes(x = log(coastal_pop), y = plastic_waste_per_cap, color = continent)) +
+  geom_point() +
+  viridis::scale_colour_viridis(discrete = TRUE) +
+  geom_smooth(col = 'black') +
+  labs(title = "Plastic waste vs. coastal population proportion",
+       subtitle = "by continent",
+       x = "Coastal population proportion",
+       y = "Plastic waste per capita",
+       color = "Continent")
+```
+
+## `filter()` and the pipe ` %>% `
+
+Previously, I have used `filter()` and the pipe ` %>% `, two things which can improve the way you handle dataset.
+
+
+### `filter()`
+
+One of these tasks in data analysis is to select a subset of cases in the data that satisfy a given logical condition. That's exactly what the filter function does. It selects or filters the rows of the data table that meet certain criteria creating a new data subset.
+
+For instance, going back to the kids dataset we have seen in the first lab:
+
+```{r, echo = TRUE}
+kids_frame <- data.frame(
+  names = c("Tor", "Gus", "Bob", "Di", "Lena", "Tony", "Ingrid", "Maria", "Ed", "Raghnild"),
+  height = c(110, 130, 115, 140, 125, 135, 120, 130, 130, 115),
+  shirt_color = c("green", "green", "green", "blue", "blue", "green", "blue", "green", "green", "blue"),
+  shoe_color = c("blue", "red", "grey", "blue", "pink", "red", "grey", "pink", "pink", "blue"),
+  sex = c("m", "m", "m", "f", "f", "m", "f", "f", "m", "f"),
+  age = c(8,11,8,12,11,11,9,12,12,8))
+```
+
+If I am only interested in the males:
+
+```{r, echo = TRUE}
+kids2 <- dplyr::filter(kids_frame, sex == 'm') # I write dplyr::filter to tell R that I want to use the filter function from the package dplyr. Other filter function exist and we need to avoid any misunderstanding.
+head(kids2)
+```
+
+### The pipe ` %>% `
+
+```{r}
+knitr::include_graphics('C:/Users/benjamcr/Rproj/GEOG3006/ex/imgs/pipe.png')
+```
+
+> For a full explanation of the pipe refer to the [Chapt 18 of R4DS](https://r4ds.had.co.nz/pipes.html)
+
+The point of the pipe is to help you write code in a way that is easier to read and understand. It is increasingly used in R programming and it is important to understand how it works. The pipe works basically as a **then** in a sentence. For instance, in english you would say:
+
+```{r, echo = TRUE}
+# I woke up, then showered, then dressed, then glammed up, then took breakfast
+```
+
+In R, with the pipe that would be translated by:
+
+```{r, echo = TRUE, eval = FALSE}
+I woke up %>% showered %>% dressed %>% glammed up %>% took breakfast
+```
+
+Let's take the example of the `filter`. If I want to use the pipe to create a new dataset with only Gus, Bob and Di I would write:
+
+```{r, echo = TRUE}
+kids2 <- kids_frame %>% filter(., sex == 'm') # The . is used to symbolize the previous object which is kids_frame in that case
+```
+
+You can chain the function with ` %>% `. For instance, suppose we want to isolate the males from the `kids_frame` and make a histogram of their height. We would write:
+
+```{r, echo = TRUE}
+kids_frame %>% 
+  filter(., sex == 'm') %>% 
+  ggplot(., aes(x = height)) +
+  geom_histogram()
+```
+
+
+> Note: The computer shortcut for the pipe is `Ctrl` + `Shift` + `M`
+
+## A new dataset to visualize
+
+In January 2017, Buzzfeed published an article on why Nobel laureates show immigration is so important for American science. You can read the article [here](https://www.buzzfeednews.com/article/peteraldhous/immigration-and-science). In the article they show that while most living Nobel laureates in the sciences are based in the US, many of them were born in other countries. This is one reason why scientific leaders say that immigration is vital for progress. In this lab we will work with the data from this article to recreate some of their visualizations as well as explore new questions.
+
+First, download the dataset here: 
+
+```{r, echo = FALSE}
+xfun::embed_file('C:/Users/benjamcr/Rproj/GEOG3006/data/nobel.csv')
+```
+
+### The data
+
+```{r}
+nobel <- read.csv('C:/Users/benjamcr/Rproj/GEOG3006/data/nobel.csv')
+head(nobel)
+```
+
+
+The variable descriptions are as follows:
+
+* id: ID number
+* firstname: First name of laureate
+* surname: Surname
+* year: Year prize won
+* category: Category of prize
+* affiliation: Affiliation of laureate
+* city: City of laureate in prize year
+* country: Country of laureate in prize year
+* born_date: Birth date of laureate
+* died_date: Death date of laureate
+* gender: Gender of laureate
+* born_city: City where laureate was born
+* born_country: Country where laureate was born
+* born_country_code: Code of country where laureate was born
+* died_city: City where laureate died
+* died_country: Country where laureate died
+* died_country_code: Code of country where laureate died
+* overall_motivation: Overall motivation for recognition
+* share: Number of other winners award is shared with
+* motivation: Motivation for recognition
+
+### Demo analysis
+
+Let's have a look at the distribution of nobel prices across countries. 
+
+```{r, echo = TRUE}
+nobel_cntry <- nobel %>%
+  dplyr::filter(!is.na(country)) %>% 
+  dplyr::group_by(country) %>% 
+  dplyr::summarise(n = n())
+head(nobel_cntry)
+
+# Plot the number of nobel prices per country
+nobel_cntry %>% 
+  ggplot(., aes(x = country, y = n)) +
+  geom_point() +
+  labs(title = "Number of nobel prices per country",
+       xlab = "Number of nobel prices",
+       ylab = "Country")
+```
+
+We can improve this plot and have a better visualization. If we want this figure in a report for instance.
+
+```{r, echo = TRUE}
+nobel_cntry %>% 
+  ggplot(., aes(x = country, y = n)) +
+  geom_point(size = 3, color = "#a25079") +
+  geom_segment(aes(x = country, xend = country, y=0, yend = n), color = "grey") +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Number of nobel prices per country",
+       xlab = "Number of nobel prices",
+       ylab = "Country")
+```
+
+
+
+### Exercise: get to know your data
+
+<span style="color: blue;">**Question 1**</span>: How many observations and how many variables are in the dataset?
+
+<span style="color: blue;">**Question 2**</span>: How many woman won a nobel price? How many men?
+
+<span style="color: blue;">**Question 3**</span>: Create a new data frame called nobel_living that filters for
+
+* laureates for whom country is available
+* laureates who are people as opposed to organizations (organizations are denoted with "org" as their gender)
+* laureates who are still alive (their died_date is NA)
+
+Confirm that once you have filtered for these characteristics you are left with a data frame with 228 observations.

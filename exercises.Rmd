@@ -9,7 +9,11 @@ knitr::include_graphics('ex/imgs/DataFlow.PNG')
 
 ### Part 1: Data Vizualisation
 
+In this module you will learn how to explore efficiently your dataset and how to make effective graph.
+
 [Lab 1: Introduction to data visualization and ggplot2](Lab1_DataViz.html)
+
+[Lab 2: Data visualization - Part 2](Lab2_DataViz.html)
 
 ### Part 2: Modelling data & Statistical inference
 
