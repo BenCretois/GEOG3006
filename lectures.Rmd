@@ -20,3 +20,11 @@ site: distill::distill_website
 ### 2.3 [Introduction to probability](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=9b8abc70-2da9-4d69-a227-ac2a00f23f1b)
 
 ---
+
+# Lecture 3: 
+
+### 3.1 [Exam info](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=2999455a-95ee-48e7-b31d-ac3100bdddac)
+
+### 3.2 [More probability](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=320e956e-d7b1-49a2-a8ff-ac3100db2e42)
+
+### 3.3 *Coming soon*

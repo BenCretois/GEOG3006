@@ -1,6 +1,6 @@
 ---
-title: "Lab2_DataViz2"
-output_dir: "docs"
+title: "Introduction to data vizualisation - Part 2"
+output_dir: "C:/Users/benjamcr/Rproj/GEOG3006/docs"
 output: 
       distill::distill_article:
         self_contained: false
@@ -8,10 +8,6 @@ output:
         toc_float: TRUE
         number_sections: yes
 ---
-
-# Introduction to data vizualisation - Part 2
-
-> STILL UNDER CONSTRUCTION!
 
 ## Exercises correction
 
@@ -54,7 +50,7 @@ ggplot(plastic_waste_no_outliers, aes(x = plastic_waste_per_cap, y = mismanaged_
   theme_bw() +
   geom_smooth(method = 'lm')
 
-# The more plastic waste per capita, the less mismanaged is the plastic waste. Put in another way, countries with high plastic waste per person are the countries which manage better the plastic waste.
+# The more plastic waste per capita, the less mismanaged is the plastic waste. Put in #another way, countries with high plastic waste per person are the countries which #manage better the plastic waste.
 ```
 
 In the `geom_smooth()` function, which evaluate the trend in your graph, we specify `method = 'lm'`. `lm` will return a straight line, which makes the interpretation easier. If `method = 'lm'` is not specified, the function may return a wiggly curve difficult to interpret.
@@ -76,7 +72,7 @@ ggplot(plastic_waste_no_outliers, aes(x = plastic_waste_per_cap, y = mismanaged_
   theme_bw() +
   geom_smooth(method = 'lm')
 
-# Each continent has a very different trend. This is why it is important to explore your dataset from a diversity of angles.
+# Each continent has a very different trend. This is why it is important to explore your # dataset from a diversity of angles.
 ```
 
 ### Question 3
@@ -167,7 +163,8 @@ kids_frame <- data.frame(
 If I am only interested in the males:
 
 ```{r, echo = TRUE}
-kids2 <- dplyr::filter(kids_frame, sex == 'm') # I write dplyr::filter to tell R that I want to use the filter function from the package dplyr. Other filter function exist and we need to avoid any misunderstanding.
+kids2 <- dplyr::filter(kids_frame, sex == 'm') 
+# I write dplyr::filter to tell R that I want to use the filter function from the #package dplyr. Other filter function exist and we need to avoid any misunderstanding.
 head(kids2)
 ```
 
@@ -221,7 +218,7 @@ xfun::embed_file('C:/Users/benjamcr/Rproj/GEOG3006/data/nobel.csv')
 
 ### The data
 
-```{r}
+```{r, echo = TRUE}
 nobel <- read.csv('C:/Users/benjamcr/Rproj/GEOG3006/data/nobel.csv')
 head(nobel)
 ```
@@ -270,6 +267,8 @@ nobel_cntry %>%
        ylab = "Country")
 ```
 
+> Can you guess what `group_by` and `summarise` are doing in the code above?
+
 We can improve this plot and have a better visualization. If we want this figure in a report for instance.
 
 ```{r, echo = TRUE}
@@ -284,7 +283,23 @@ nobel_cntry %>%
        ylab = "Country")
 ```
 
+### `group_by()` and `summarise()`
 
+The two functions `group_by()` and `summarise()` are often used in pair. The `group_by` function will split any operations applied to the dataframe into groups defined by one or more columns. `summarise` will perform an operation on a **group** that was defined by `group_by` or on the entire dataframe if `group_by` hasn't been used.
+
+A simple example with the `kids_frame` dataset.
+
+Suppose I want to get the average age for each sex, not for both. One way could be to subset the dataset to create a "male" and a "female" dataset. However, this takes some more lines of code. A more efficient way would be to use `group_by` and `summarise`:
+
+```{r, echo = TRUE}
+kids_frame %>% 
+  dplyr::group_by(sex) %>% 
+  dplyr::summarise(mean_age = mean(age))
+
+# The average age for female is 10.4 years old and 10 yo for the males
+```
+
+Instead of the function `mean` it is also possible to a wide range of functions including `min` (to know the minimal value), `max` (to know the maximale value) ...
 
 ### Exercise: get to know your data
 
@@ -294,8 +309,9 @@ nobel_cntry %>%
 
 <span style="color: blue;">**Question 3**</span>: Create a new data frame called nobel_living that filters for
 
-* laureates for whom country is available
-* laureates who are people as opposed to organizations (organizations are denoted with "org" as their gender)
-* laureates who are still alive (their died_date is NA)
+* laureates for whom country is available (you can use the function `drop_na()`, look on google what it does!)
+* females laureates who are still alive (their died_date is NA)
 
-Confirm that once you have filtered for these characteristics you are left with a data frame with 228 observations.
+<span style="color: blue;">**Question 4**</span>: With this new dataset, summarize the number of females laureate who are still alive by country and make a histogram of the number of female laureates per country. Your histogram should include a title and title for the axis.
+
+<span style="color: blue;">**Question 5**</span>: Which country has the most female laureates?

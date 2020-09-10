@@ -1,0 +1,239 @@
+---
+title: "Introduction to data vizualisation - Part 2"
+output_dir: "C:/Users/benjamcr/Rproj/GEOG3006/docs"
+output: 
+      distill::distill_article:
+        self_contained: false
+        toc: TRUE
+        toc_float: TRUE
+        number_sections: yes
+---
+
+## Exercise correction
+
+First of all, we need to open the dataset. 
+
+```{r, echo = TRUE}
+nobel <- read.csv('C:/Users/benjamcr/Rproj/GEOG3006/data/nobel.csv')
+head(nobel)
+```
+
+
+<span style="color: blue;">**Question 1**</span>: How many observations and how many variables are in the dataset?
+
+We can use the functions `nrow` and `ncol` to get the number of observations and the number of variables in a dataset. As you may remember from the tutorials, the **rows** of a dataset are the **observations** (Tor, Gus or Lena in the `kids_frame` dataset for instance). The **columns** are the variables (names, shirt_color or height in the `kids_frame` dataset)
+
+```{r, echo = TRUE}
+# Number of observations
+nrow(nobel)
+
+# Number of variables
+ncol(nobel)
+```
+
+
+<span style="color: blue;">**Question 2**</span>: How many woman won a nobel price? How many men?
+
+Although there is multiple ways of answering this question in R, a fast and efficient way of doing so is to use the combination `group_by` and `summarise()`, functions included in the `dplyr` package.
+
+```{r, echo = TRUE}
+library(tidyverse)
+
+nobel %>% 
+  dplyr::group_by(gender) %>% 
+  dplyr::summarise(n = n())
+  
+```
+
+
+> In the line above I load the library `tidyverse`. Later in the document we will see what is this library and why it is so useful.
+
+From the output we can see that only 52 women got a nobel price while 856 men got a nobel price. 
+
+We can calculate the percentage of women who got a nobel price:
+
+```{r}
+52 / (52 + 856)
+```
+
+Only 5%!
+
+<span style="color: blue;">**Question 3**</span>: Create a new data frame called nobel_living that filters for
+
+* laureates for whom country is available (you can use the function `drop_na()`, look on google what it does!)
+* females laureates who are still alive (their died_date is NA)
+
+Here, we need to create a new object that we will call `nobel_living`. To select the data we are supposed to place in this dataset we will use the function `filter`, again from the `dplyr` package.
+
+```{r, echo = TRUE}
+nobel_living <- nobel %>% 
+  drop_na(country) %>% 
+  filter(gender == "female") %>% 
+  filter(is.na(died_date))
+```
+
+The code above has three steps. Note that in this case there is no special order for the steps.
+
+* First, I filter only for the laureates whom country is available with the function `drop_na`
+* Then I filter only for laureates whom gender is `female`
+* Finally, I filter only for the laureates whom died_date is `NA`. Here I combine 2 functions: `filter` and `is.na()`.
+
+The function `is.na()` will test whether a particular cell value is `NA` or not. Here, if NA is true (the person is still living) then the function will filter for it. Roughly, you can translate this line of code by **Filter the laureates whom died_date is NA**.
+
+> Note that you can filter only the dead persons by adding a ! before the `is.na()` function.
+
+```{r, echo = TRUE, eval =FALSE}
+nobel_living <- nobel %>% 
+  drop_na(country) %>% 
+  filter(gender == "female") %>% 
+  filter(is.na(died_date))
+```
+
+We can translate this as **Filter the laureates whom died_date is no NA**.
+
+<span style="color: blue;">**Question 4**</span>: With this new dataset, summarize the number of females laureate who are still alive by country and make a histogram of the number of female laureates per country. Your histogram should include a title and title for the axis.
+
+First, we will create a dataset which summarise the number of female laureates by country:
+
+```{r, echo = TRUE}
+nobel_female_country <- nobel_living %>% 
+  group_by(country) %>% 
+  summarise(n = n())
+```
+
+This dataset should have 7 observations and only two variables which are `n` the number of living female laureate per country and `country`.
+
+Then we can build our visualisation with the package `ggplot2`. Here I do not build a histogram but rather a **lollipop chart**.
+
+```{r, echo = TRUE}
+nobel_female_country %>% 
+  ggplot(., aes(x = country, y = n)) +
+  geom_point(size = 3, color = "#a25079") +
+  geom_segment(aes(x = country, xend = country, y=0, yend = n), color = "grey") +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Number of nobel prices per country",
+       xlab = "Number of nobel prices",
+       ylab = "Country")
+```
+
+
+<span style="color: blue;">**Question 5**</span>: Which country has the most female laureates?
+
+From the lollipop chart we draw we can clearly see that the US has the most female living laureate. Note that Norway has a woman who won a Nobel Price and who is still alive, in fact **May-Britt Moser** works at NTNU in St-Olav!
+
+
+## A word on the `tidyverse` library
+
+Previously, I have used the [Tidyverse](https://www.tidyverse.org/#:~:text=Tidyverse&text=The%20tidyverse%20is%20an%20opinionated,%2C%20grammar%2C%20and%20data%20structures.&text=See%20how%20the%20tidyverse%20makes,%E2%80%9CR%20for%20Data%20Science%E2%80%9D.) package which is a **collection** of R packages that share an underlying design philosophy, grammar and data structures.
+
+We have already been using some of the packages included in the `tidyverse` including `dplyr`, `magritrr` (package which has the pipe) and `ggplot2`. There is a lot more to explore and a lot of very useful functions in it. Of course I do not know everything from the `tidyverse` and later in this course you may find more efficient ways to **wrangle** the data than I do, let me know if that's the case!
+
+I highly recommend to install the `tidyverse` package and to load it at the beginning of your script. If you do that you won't have to load `ggplot`, `dplyr` ... every time.
+
+```{r, echo = TRUE, eval = FALSE}
+install.packages('tidyverse')
+library(tidyverse)
+```
+
+If you want to improve your data science skills you can find some tips [here](https://oliviergimenez.github.io/tidyverse-tips/).
+
+## Other functions that will make your life easier in R
+
+You already have been introduced to some of the main functions from the `dplyr` package:
+
+* `filter`
+* `group_by`
+* `summarise`
+
+There is two other functions which will help you in your data analysis workflow, namely `select()` and `mutate()`
+
+### A few words on `select()`
+
+It’s not uncommon to get datasets with hundreds or even thousands of variables. In this case, the first challenge is often narrowing in on the variables you’re actually interested in. `select()` allows you to rapidly zoom in on a useful subset using operations based on the names of the variables.
+
+`select()` is not very useful on the `kids_frame` dataset but you can still get the idea:
+
+```{r, echo = TRUE}
+# We reconstruct the kids_frame dataset
+kids_frame <- data.frame(
+  names = c("Tor", "Gus", "Bob", "Di", "Lena", "Tony", "Ingrid", "Maria", "Ed", "Raghnild"),
+  height = c(110, 130, 115, 140, 125, 135, 120, 130, 130, 115),
+  shirt_color = c("green", "green", "green", "blue", "blue", "green", "blue", "green", "green", "blue"),
+  shoe_color = c("blue", "red", "grey", "blue", "pink", "red", "grey", "pink", "pink", "blue"),
+  sex = c("m", "m", "m", "f", "f", "m", "f", "f", "m", "f"),
+  age = c(8,11,8,12,11,11,9,12,12,8))
+```
+
+Imagine you would like to create a new dataset with only the columns names and height, with the `select()` function you would write:
+
+```{r, echo = TRUE}
+kids_selected <- kids_frame %>% 
+  dplyr::select(names, height)
+
+head(kids_selected)
+```
+
+Now you reduced the initial dataset to only two columns.
+
+### A few words on `mutate()`
+
+Besides selecting sets of existing columns, it’s often useful to add new columns that are functions of existing columns. That’s the job of `mutate()`.
+
+`mutate()` always adds new columns at the end of your dataset so we’ll start by creating a narrower dataset so we can see the new variables. Remember that when you’re in RStudio, the easiest way to see all the columns is `View()`
+
+Here I will create a new column about the kids' favorite food:
+
+```{r}
+kids_frame_food <- kids_frame %>% 
+  mutate(fav_food = c("strawberry", "candy", "pasta", "chocolate", "candy", "beef", "soup", "brocoli", "cake", "ice cream"))
+
+head(kids_frame_food)
+```
+
+Now you can see that the new column has been created!
+
+### Other functions worth mentioning
+
+Now you know the main functions of the tidyverse package that will allow you to wrangle efficiently. The list is not exhaustive and as I said I do not know all the functions! However here a small list of the `tidyverse` functions worth mentionning. You can look them up in R by typing `?NAME_FUNCTION` or on google.
+
+* `transmute`
+* `rename`
+* `starts_with`
+* `ends_with`
+* `slice`
+* ...
+
+### For next lab
+
+During next lab we will finish the bloc on Data visualisation and data wrangling. We will mainly repeat what we have been doing, using the same functions. 
+
+First, download the dataset here: 
+
+```{r, echo = FALSE}
+xfun::embed_file('C:/Users/benjamcr/Rproj/GEOG3006/data/ncbikecrash.rda')
+```
+
+As you may see, this is an **.rda** file. A **.rda** file is basically a compressed R file. I saved this file in the folder "data". TO open it I should write:
+
+```{r, echo = TRUE, eval = FALSE}
+load("data/ncbikecrash.rda")
+```
+
+You will use what you learned form the previous labs and answer these questions:
+
+<span style="color: blue;">**Question 1**</span>: Run View(ncbikecrash) in your Console to view the data in the data viewer. What does each row in the dataset represent?
+
+<span style="color: blue;">**Question 2**</span>: How many bike crashes were recorded in NC between 2007 and 2014? How many variables are recorded on these crashes?
+
+<span style="color: blue;">**Question 3**</span>: How many bike crashes occurred in residential development areas where the driver was between 0 and 19 years old?
+
+<span style="color: blue;">**Question 4**</span>: Create a frequency table of the estimated speed of the car (driver_est_speed) involved in the crash. What is the most common estimated speed range in the dataset?
+
+<span style="color: blue;">**Question 4**</span>: Recreate the following plot, and describe in context of the data what it shows.
+
+```{r, echo=FALSE}
+knitr::include_graphics("C:/Users/benjamcr/Rproj/GEOG3006/ex/imgs/plot_ex3.png")
+```
+
+Good luck! 
