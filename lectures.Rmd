@@ -27,4 +27,6 @@ site: distill::distill_website
 
 ### 3.2 [More probability](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=320e956e-d7b1-49a2-a8ff-ac3100db2e42)
 
-### 3.3 *Coming soon*
+### 3.3 [What is statistics?](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=839b91a7-4e3f-4b02-a0ee-ac3200a1c609)
+
+---

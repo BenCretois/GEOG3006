@@ -230,10 +230,4 @@ You will use what you learned form the previous labs and answer these questions:
 
 <span style="color: blue;">**Question 4**</span>: Create a frequency table of the estimated speed of the car (driver_est_speed) involved in the crash. What is the most common estimated speed range in the dataset?
 
-<span style="color: blue;">**Question 4**</span>: Recreate the following plot, and describe in context of the data what it shows.
-
-```{r, echo=FALSE}
-knitr::include_graphics("C:/Users/benjamcr/Rproj/GEOG3006/ex/imgs/plot_ex3.png")
-```
-
 Good luck! 
