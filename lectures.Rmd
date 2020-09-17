@@ -30,3 +30,11 @@ site: distill::distill_website
 ### 3.3 [What is statistics?](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=839b91a7-4e3f-4b02-a0ee-ac3200a1c609)
 
 ---
+
+# Lecture 4:
+
+### 4.1 [Probability distributions](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=da86c694-6a2e-4770-9b32-ac3800dbbda5)
+
+### 4.2 [Summarizing data](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=35112133-f11e-4501-9a36-ac3800ee56f5)
+
+---
