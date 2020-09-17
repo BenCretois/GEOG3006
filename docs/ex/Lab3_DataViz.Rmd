@@ -1,5 +1,5 @@
 ---
-title: "Introduction to data vizualisation - Part 2"
+title: "Introduction to data vizualisation - Part 3"
 output_dir: "C:/Users/benjamcr/Rproj/GEOG3006/docs"
 output: 
       distill::distill_article:

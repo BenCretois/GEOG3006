@@ -17,6 +17,8 @@ In this module you will learn how to explore efficiently your dataset and how to
 
 [Lab 3: Data visualization & data wrangling - Part 3](Lab3_DataViz.html)
 
+[Lab 4: Data visualization & data wrangling - Part 4](Lab4_DataViz.html)
+
 ### Part 2: Modelling data & Statistical inference
 
 
