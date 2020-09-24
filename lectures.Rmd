@@ -38,3 +38,11 @@ site: distill::distill_website
 ### 4.2 [Summarizing data](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=35112133-f11e-4501-9a36-ac3800ee56f5)
 
 ---
+
+# Lecture 5:
+
+### 5.1 [Models](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=37443eee-4c21-4a6f-b120-ac3f00c70028)
+
+### 5.2 [Models in R](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=86a16a49-9ce0-43dd-97b8-ac3f00eb9173)
+
+---
