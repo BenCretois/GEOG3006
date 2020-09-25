@@ -1,0 +1,119 @@
+---
+title: "Modelling with a single predictor"
+output_dir: "C:/Users/benjamcr/Rproj/GEOG3006/docs"
+output: 
+      distill::distill_article:
+        self_contained: false
+        toc: TRUE
+        toc_float: TRUE
+        number_sections: yes
+---
+
+## Get to know the data
+
+In the United States especially many college courses conclude by giving students the opportunity to evaluate the course and the instructor anonymously. However, this way of evaluating a course is highly criticized as it is argued that students' evaluation does not reflect course quality of teaching effectiveness but may rather reflect "non-teaching" related characteristics such as physical appearance of the teacher. These were the results of the paper [Beauty in the classroom: instructors' pulchritude and putative pedagogical productivity](https://www.sciencedirect.com/science/article/pii/S0272775704001165) by Hamermesh & Parker.
+
+In this lab we will analyze the data from this study and learn what goes into a positive professor evaluation.
+
+The data were gathered from end of semester student evaluations for a large sample of professors from the University of Texas at Austin. In addition, six students rated the professors’ physical appearance. (This is a slightly modified version of the original data set that was released as part of the replication data for [Data Analysis Using Regression and Multilevel/Hierarchical Models](https://www.cambridge.org/core/books/data-analysis-using-regression-and-multilevelhierarchical-models/32A29531C7FD730C3A68951A17C9D983#:~:text=Book%20description,nonlinear%20regression%20and%20multilevel%20models.) (Gelman and Hill, 2007).) The result is a data frame where **each row contains a different course and columns represent variables about the courses and professors**.
+
+## Package
+
+In this lab we will use the package `tidyverse` that you already know, the package `openintro` which contains the data we need to do this lab and finally the package `broom` which help you *clean* or *tidy* your model output.
+
+To install the packages `openintro` and `broom` write in your console or a script:
+
+```{r, echo = TRUE, eval = FALSE}
+install.packages('openintro')
+install.packages('broom')
+```
+
+Then load the libraries you will need for the exercise:
+
+```{r, echo = TRUE}
+library(tidyverse)
+library(openintro)
+library(broom)
+```
+
+
+## Exercises
+
+The dataset we’ll be using is called `evals` from the `openintro` package.
+
+Store the dataset `evals` in the object `data` as follow:
+ 
+```{r, echo = TRUE}
+data <- openintro::evals
+```
+
+Take a glance at the dataset:
+
+```{r, echo = TRUE}
+head(data)
+```
+
+There are a lot of variables in this dataset. To get an explanation of what the variables mean write `?evals`.
+
+
+### Part 1 - Exploratory Data Analysis
+
+As I have explained in previous labs, the first step in all data analysis is data exploration or data visualization.
+
+<span style="color: #9B870C;">**Question 1:**</span> Visualize the distribution of score. Is the distribution skewed (i.e. does your data look **normally distributed** or are they concentrated towards certain values)? What does that tell you about how students rate courses? Is this what you expected to see? Why, or why not? Include any summary statistics and visualizations you use in your response.
+
+For example, I could visualize how score is distributed relative to whether the professor wore an formal or not formal outfit:
+
+```{r, echo = TRUE}
+ggplot(data, aes(y=score, x= pic_outfit)) + geom_boxplot() + theme_bw()
+```
+
+Visually I can see that the mean score for professor wearing formal outfit is higher than if they wear non formal outfit.
+
+I could confirm this intuition by computing a summary statistic using `group_by` and `summarise`
+
+```{r, echo = TRUE}
+data %>% 
+  group_by(pic_outfit) %>% 
+  summarise(score_mean = mean(score))
+```
+
+
+<span style="color: #9B870C;">**Question 2:**</span> Visualize and describe the relationship between **score** and **bty_avg**.
+
+<span style="color: #9B870C;">**Question 3:**</span>  Replot the scatterplot (the point cloud) from the previous question, but this time use `geom_jitter()`? What does “jitter” mean? What was misleading about the initial scatterplot?
+
+### Part 2 - Linear regression with a numerical predictor
+
+Visually analyzing data can give some some intuition about the effects of some variables on our response variable (here **score**). However, visual can sometimes be misleading and we need to carry out a statistical analysis to help us infer if our intuition is real or if it is only **natural variation** resulting from noise in the data.
+
+<span style="color: #9B870C;">**Question 4:**</span> Let’s see if the apparent trend in the plot is something more than natural variation. Fit a linear model called m_bty to predict average professor evaluation score by average beauty rating (bty_avg). Based on the regression output, write the linear model and interpret your model
+
+> Note: A linear model is in the form $\hat{y} = \beta_0 + \beta_1x$
+
+<span style="color: #9B870C;">**Question 5:**</span> Replot your visualization from **Question 3**, and add the regression line to this plot in orange color. Turn off the shading for the uncertainty of the line.
+
+> Hint: there is multiple method to plot the regression line. One alternative **when you only have on covariate** is to use `geom_smooth` as we saw in earlier labs. Another alternative is to use the function `predict`, which is a bit more complicated to use but which will become useful when our model include multiple predictor variables. I will cover the `predict` function in the next lab, until then you can have a look at how to use it [here](http://www.sthda.com/english/articles/40-regression-analysis/166-predict-in-r-model-predictions-and-confidence-intervals/)
+
+At this point your scatterplot should look like this:
+
+```{r}
+ggplot(data, aes(y=score, x= bty_avg)) + 
+  geom_point() + 
+  geom_smooth(method = 'lm', se = FALSE, col ='orange')
+```
+
+<span style="color: #9B870C;">**Question 6:**</span> Interpret the slope of the linear model in context of the data.
+
+
+<span style="color: #9B870C;">**Question 7:**</span> Interpret the intercept of the linear model in context of the data. Comment on whether or not the intercept makes sense in this context.
+
+### Part 3: Linear regression with a categorical predictor
+
+Previously, our linear model was trying to explain our **response variable** `score` with `bty_avg`, which is a **numerical** variable. Now you will construct a linear model trying to explain our **response variable** `score` with a categorical variable. Even though you did not see that yet, try to answers the following questions. We will learn more about categorical variables in the next lab exercise.
+
+<span style="color: #9B870C;">**Question 8:**</span> Fit a new linear model called `m_gen` to predict average professor evaluation `score` based on `gender` of the professor. Based on the regression output, write the linear model and interpret the slope and intercept in context of the data.
+
+<span style="color: #9B870C;">**Question 9:**</span> What is the equation of the line corresponding to male professors? What is it for female professors?
+
+Good luck! `r emo::ji("flex")`
