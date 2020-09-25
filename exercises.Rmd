@@ -21,5 +21,7 @@ In this module you will learn how to explore efficiently your dataset and how to
 
 ### Part 2: Modelling data & Statistical inference
 
+[Lab 5: Modelling with a single predictor](Lab5_Model.html)
+
 
 ### Part 3: Predictions

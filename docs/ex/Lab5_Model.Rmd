@@ -100,7 +100,6 @@ At this point your scatterplot should look like this:
 ```{r}
 ggplot(data, aes(y=score, x= bty_avg)) + 
   geom_point() + 
-  geom_jitter() +
   geom_smooth(method = 'lm', se = FALSE, col ='orange')
 ```
 
