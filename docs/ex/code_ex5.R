@@ -21,7 +21,6 @@ ggplot(data, aes(y=score, x= bty_avg)) + geom_point() + geom_jitter()
 
 lm1 <- lm(score ~ bty_avg, data = data)
 summary(lm1)
-broom::tidy(lm1)
 
 pred_df <- data.frame(score_pred = predict(lm1, data), data$bty_avg)
 

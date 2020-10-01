@@ -46,3 +46,9 @@ site: distill::distill_website
 ### 5.2 [Models in R](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=86a16a49-9ce0-43dd-97b8-ac3f00eb9173)
 
 ---
+
+# Lecture 6:
+
+### 6.1 [Model dummies & interactions](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=40ba8e12-da64-4645-bbb2-ac4600d64084)
+
+### 6.2 [Model fit](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f43c21fc-45b7-48d2-92b8-ac4600eb65b1)

@@ -19,366 +19,35 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>GEOG3006 - Quantitative methods: Lectures</title>
+  <title>Modelling with a single predictor</title>
   
   
   
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2020-09-25"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-09-25"/>
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="GEOG3006 - Quantitative methods: Lectures"/>
+  <meta property="og:title" content="Modelling with a single predictor"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="GEOG3006 - Quantitative methods"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="GEOG3006 - Quantitative methods: Lectures"/>
+  <meta property="twitter:title" content="Modelling with a single predictor"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site"]}},"value":[{"type":"character","attributes":{},"value":["Lectures"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output_dir","output","date"]}},"value":[{"type":"character","attributes":{},"value":["Modelling with a single predictor"]},{"type":"character","attributes":{},"value":["C:/Users/benjamcr/Rproj/GEOG3006/docs"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["09-25-2020"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
-  <!--radix_placeholder_navigation_in_header-->
   
-  <script type="application/javascript">
-  
-    window.headroom_prevent_pin = false;
-  
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-  
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-  
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-  
-      // responsive menu
-      $('.distill-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-  
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["imgs/brewerp.PNG","imgs/DataFlow.PNG","imgs/pipe.png","imgs/plot_ex3.PNG","Lab5_Model_files/figure-html5/unnamed-chunk-5-1.png","Lab5_Model_files/figure-html5/unnamed-chunk-7-1.png"]}
   </script>
-  
-  <style type="text/css">
-  
-  /* Theme (user-documented overrideables for nav appearance) */
-  
-  .distill-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #455a64;
-    font-size: 15px;
-    font-weight: 300;
-  }
-  
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-  
-  .distill-site-nav a:hover {
-    color: white;
-  }
-  
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-  
-  .distill-site-header {
-  
-  }
-  
-  .distill-site-footer {
-  
-  }
-  
-  
-  /* Site Header */
-  
-  .distill-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-  
-  .distill-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-  
-  
-  .distill-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-  
-  .distill-site-header a,
-  .distill-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-  
-  .distill-site-header .title {
-    font-size: 18px;
-  }
-  
-  .distill-site-header .logo {
-    padding: 0;
-  }
-  
-  .distill-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-  
-  .distill-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-  
-  
-  
-  @media screen and (min-width: 1000px) {
-    .distill-site-header .logo img {
-      display: inline-block;
-    }
-    .distill-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .distill-site-header .title {
-      padding-left: 12px;
-    }
-  }
-  
-  
-  .distill-site-header .nav-toggle {
-    display: none;
-  }
-  
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-  
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-  
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-  
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  .nav-dropdown-active {
-    display: block;
-  }
-  
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-  
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-  
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
-    .distill-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .distill-site-header .title {
-      margin-left: 0;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 0;
-    }
-    .distill-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-  
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header.responsive {position: relative;}
-    .distill-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .distill-site-header.responsive a,
-    .distill-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .distill-site-header.responsive .nav-left,
-    .distill-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .distill-site-header.responsive .nav-dropdown {float: none;}
-    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
-    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-  
-  /* Site Footer */
-  
-  .distill-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-  
-  /* Headroom */
-  
-  d-title {
-    padding-top: 6rem;
-  }
-  
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-  
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-  
-  .headroom--unpinned {
-    top: -100px;
-  }
-  
-  .headroom--pinned {
-    top: 0;
-  }
-  
-  </style>
-  
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
+  <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
   
@@ -1264,10 +933,10 @@
   </script>
   
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="Lab5_Model_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="Lab5_Model_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="Lab5_Model_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="Lab5_Model_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -1279,62 +948,129 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Lectures","authors":[]}
+{"title":"Modelling with a single predictor","authors":[],"publishedDate":"2020-09-25T00:00:00.000+02:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="distill-site-nav distill-site-header">
-<div class="nav-left">
-<a href="index.html" class="title">GEOG3006 - Quantitative methods</a>
-</div>
-<div class="nav-right">
-<a href="index.html">Home</a>
-<a href="tutorial.html">Tuto</a>
-<a href="lectures.html">Lectures</a>
-<a href="exercises.html">Exercises</a>
-<a href="about.html">About us</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Lectures</h1>
+<h1>Modelling with a single predictor</h1>
 
 </div>
 
 
 <div class="d-article">
-<h1 id="lecture-1-introduction-to-data">Lecture 1: Introduction to “data”</h1>
-<h3 id="course-intro">1.1 <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=86b740d4-52ef-4b4d-945b-ac1c00da4d02">Course intro</a></h3>
-<h3 id="practical-information">1.2 <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4a5bd668-0b5c-41ff-a8e0-ac2300fc5ab9">Practical information</a></h3>
-<h3 id="data">1.3 <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=9a29203c-8285-410e-9035-ac2300b3edc5">Data</a></h3>
-<h1 id="lecture-2-more-on-data-introduction-to-probability">Lecture 2: More on Data &amp; Introduction to probability</h1>
-<h3 id="more-practical-info">2.1 <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8a9f7b75-f100-4615-a8d2-ac2a00b7e7a7">More practical info</a></h3>
-<h3 id="more-on-data">2.2 <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=fd813c13-9cd8-4900-916a-ac2a00bf4418">More on data</a></h3>
-<h3 id="introduction-to-probability">2.3 <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=9b8abc70-2da9-4d69-a227-ac2a00f23f1b">Introduction to probability</a></h3>
-<hr />
-<h1 id="lecture-3">Lecture 3:</h1>
-<h3 id="exam-info">3.1 <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=2999455a-95ee-48e7-b31d-ac3100bdddac">Exam info</a></h3>
-<h3 id="more-probability">3.2 <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=320e956e-d7b1-49a2-a8ff-ac3100db2e42">More probability</a></h3>
-<h3 id="what-is-statistics">3.3 <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=839b91a7-4e3f-4b02-a0ee-ac3200a1c609">What is statistics?</a></h3>
-<hr />
-<h1 id="lecture-4">Lecture 4:</h1>
-<h3 id="probability-distributions">4.1 <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=da86c694-6a2e-4770-9b32-ac3800dbbda5">Probability distributions</a></h3>
-<h3 id="summarizing-data">4.2 <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=35112133-f11e-4501-9a36-ac3800ee56f5">Summarizing data</a></h3>
-<hr />
-<h1 id="lecture-5">Lecture 5:</h1>
-<h3 id="models">5.1 <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=37443eee-4c21-4a6f-b120-ac3f00c70028">Models</a></h3>
-<h3 id="models-in-r">5.2 <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=86a16a49-9ce0-43dd-97b8-ac3f00eb9173">Models in R</a></h3>
-<hr />
-<h1 id="lecture-6">Lecture 6:</h1>
-<h3 id="model-dummies-interactions">6.1 <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=40ba8e12-da64-4645-bbb2-ac4600d64084">Model dummies &amp; interactions</a></h3>
-<h3 id="model-fit">6.2 <a href="https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f43c21fc-45b7-48d2-92b8-ac4600eb65b1">Model fit</a></h3>
+<h3 class="d-toc-header">Table of Contents</h3>
+<nav class="d-toc" id="TOC">
+<ul>
+<li><a href="#get-to-know-the-data">Get to know the data</a></li>
+<li><a href="#package">Package</a></li>
+<li><a href="#exercises">Exercises</a><ul>
+<li><a href="#part-1---exploratory-data-analysis">Part 1 - Exploratory Data Analysis</a></li>
+<li><a href="#part-2---linear-regression-with-a-numerical-predictor">Part 2 - Linear regression with a numerical predictor</a></li>
+<li><a href="#part-3-linear-regression-with-a-categorical-predictor">Part 3: Linear regression with a categorical predictor</a></li>
+</ul></li>
+</ul>
+</nav>
+<hr class="d-toc-separator"/>
+<h2 id="get-to-know-the-data">Get to know the data</h2>
+<p>In the United States especially many college courses conclude by giving students the opportunity to evaluate the course and the instructor anonymously. However, this way of evaluating a course is highly criticized as it is argued that students’ evaluation does not reflect course quality of teaching effectiveness but may rather reflect “non-teaching” related characteristics such as physical appearance of the teacher. These were the results of the paper <a href="https://www.sciencedirect.com/science/article/pii/S0272775704001165">Beauty in the classroom: instructors’ pulchritude and putative pedagogical productivity</a> by Hamermesh &amp; Parker.</p>
+<p>In this lab we will analyze the data from this study and learn what goes into a positive professor evaluation.</p>
+<p>The data were gathered from end of semester student evaluations for a large sample of professors from the University of Texas at Austin. In addition, six students rated the professors’ physical appearance. (This is a slightly modified version of the original data set that was released as part of the replication data for <a href="https://www.cambridge.org/core/books/data-analysis-using-regression-and-multilevelhierarchical-models/32A29531C7FD730C3A68951A17C9D983#:~:text=Book%20description,nonlinear%20regression%20and%20multilevel%20models.">Data Analysis Using Regression and Multilevel/Hierarchical Models</a> (Gelman and Hill, 2007).) The result is a data frame where <strong>each row contains a different course and columns represent variables about the courses and professors</strong>.</p>
+<h2 id="package">Package</h2>
+<p>In this lab we will use the package <code>tidyverse</code> that you already know, the package <code>openintro</code> which contains the data we need to do this lab and finally the package <code>broom</code> which help you <em>clean</em> or <em>tidy</em> your model output.</p>
+<p>To install the packages <code>openintro</code> and <code>broom</code> write in your console or a script:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+install.packages(&#39;openintro&#39;)
+install.packages(&#39;broom&#39;)</code></pre>
+</div>
+<p>Then load the libraries you will need for the exercise:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+library(tidyverse)
+library(openintro)
+library(broom)</code></pre>
+</div>
+<h2 id="exercises">Exercises</h2>
+<p>The dataset we’ll be using is called <code>evals</code> from the <code>openintro</code> package.</p>
+<p>Store the dataset <code>evals</code> in the object <code>data</code> as follow:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+data &lt;- openintro::evals</code></pre>
+</div>
+<p>Take a glance at the dataset:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+head(data)</code></pre>
+<pre><code>
+# A tibble: 6 x 23
+  course_id prof_id score rank  ethnicity gender language   age
+      &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;     &lt;fct&gt;  &lt;fct&gt;    &lt;int&gt;
+1         1       1   4.7 tenu~ minority  female english     36
+2         2       1   4.1 tenu~ minority  female english     36
+3         3       1   3.9 tenu~ minority  female english     36
+4         4       1   4.8 tenu~ minority  female english     36
+5         5       2   4.6 tenu~ not mino~ male   english     59
+6         6       2   4.3 tenu~ not mino~ male   english     59
+# ... with 15 more variables: cls_perc_eval &lt;dbl&gt;,
+#   cls_did_eval &lt;int&gt;, cls_students &lt;int&gt;, cls_level &lt;fct&gt;,
+#   cls_profs &lt;fct&gt;, cls_credits &lt;fct&gt;, bty_f1lower &lt;int&gt;,
+#   bty_f1upper &lt;int&gt;, bty_f2upper &lt;int&gt;, bty_m1lower &lt;int&gt;,
+#   bty_m1upper &lt;int&gt;, bty_m2upper &lt;int&gt;, bty_avg &lt;dbl&gt;,
+#   pic_outfit &lt;fct&gt;, pic_color &lt;fct&gt;</code></pre>
+</div>
+<p>There are a lot of variables in this dataset. To get an explanation of what the variables mean write <code>?evals</code>.</p>
+<h3 id="part-1---exploratory-data-analysis">Part 1 - Exploratory Data Analysis</h3>
+<p>As I have explained in previous labs, the first step in all data analysis is data exploration or data visualization.</p>
+<p><span style="color: #9B870C;"><strong>Question 1:</strong></span> Visualize the distribution of score. Is the distribution skewed (i.e. does your data look <strong>normally distributed</strong> or are they concentrated towards certain values)? What does that tell you about how students rate courses? Is this what you expected to see? Why, or why not? Include any summary statistics and visualizations you use in your response.</p>
+<p>For example, I could visualize how score is distributed relative to whether the professor wore an formal or not formal outfit:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+ggplot(data, aes(y=score, x= pic_outfit)) + geom_boxplot() + theme_bw()</code></pre>
+<p><img src="Lab5_Model_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+</div>
+<p>Visually I can see that the mean score for professor wearing formal outfit is higher than if they wear non formal outfit.</p>
+<p>I could confirm this intuition by computing a summary statistic using <code>group_by</code> and <code>summarise</code></p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+data %&gt;% 
+  group_by(pic_outfit) %&gt;% 
+  summarise(score_mean = mean(score))</code></pre>
+<pre><code>
+# A tibble: 2 x 2
+  pic_outfit score_mean
+  &lt;fct&gt;           &lt;dbl&gt;
+1 formal           4.22
+2 not formal       4.17</code></pre>
+</div>
+<p><span style="color: #9B870C;"><strong>Question 2:</strong></span> Visualize and describe the relationship between <strong>score</strong> and <strong>bty_avg</strong>.</p>
+<p><span style="color: #9B870C;"><strong>Question 3:</strong></span> Replot the scatterplot (the point cloud) from the previous question, but this time use <code>geom_jitter()</code>? What does “jitter” mean? What was misleading about the initial scatterplot?</p>
+<h3 id="part-2---linear-regression-with-a-numerical-predictor">Part 2 - Linear regression with a numerical predictor</h3>
+<p>Visually analyzing data can give some some intuition about the effects of some variables on our response variable (here <strong>score</strong>). However, visual can sometimes be misleading and we need to carry out a statistical analysis to help us infer if our intuition is real or if it is only <strong>natural variation</strong> resulting from noise in the data.</p>
+<p><span style="color: #9B870C;"><strong>Question 4:</strong></span> Let’s see if the apparent trend in the plot is something more than natural variation. Fit a linear model called m_bty to predict average professor evaluation score by average beauty rating (bty_avg). Based on the regression output, write the linear model and interpret your model</p>
+<blockquote>
+<p>Note: A linear model is in the form <span class="math inline">\(\hat{y} = \beta_0 + \beta_1x\)</span></p>
+</blockquote>
+<p><span style="color: #9B870C;"><strong>Question 5:</strong></span> Replot your visualization from <strong>Question 3</strong>, and add the regression line to this plot in orange color. Turn off the shading for the uncertainty of the line.</p>
+<blockquote>
+<p>Hint: there is multiple method to plot the regression line. One alternative <strong>when you only have on covariate</strong> is to use <code>geom_smooth</code> as we saw in earlier labs. Another alternative is to use the function <code>predict</code>, which is a bit more complicated to use but which will become useful when our model include multiple predictor variables. I will cover the <code>predict</code> function in the next lab, until then you can have a look at how to use it <a href="http://www.sthda.com/english/articles/40-regression-analysis/166-predict-in-r-model-predictions-and-confidence-intervals/">here</a></p>
+</blockquote>
+<p>At this point your scatterplot should look like this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="Lab5_Model_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
+</div>
+<p><span style="color: #9B870C;"><strong>Question 6:</strong></span> Interpret the slope of the linear model in context of the data.</p>
+<p><span style="color: #9B870C;"><strong>Question 7:</strong></span> Interpret the intercept of the linear model in context of the data. Comment on whether or not the intercept makes sense in this context.</p>
+<h3 id="part-3-linear-regression-with-a-categorical-predictor">Part 3: Linear regression with a categorical predictor</h3>
+<p>Previously, our linear model was trying to explain our <strong>response variable</strong> <code>score</code> with <code>bty_avg</code>, which is a <strong>numerical</strong> variable. Now you will construct a linear model trying to explain our <strong>response variable</strong> <code>score</code> with a categorical variable. Even though you did not see that yet, try to answers the following questions. We will learn more about categorical variables in the next lab exercise.</p>
+<p><span style="color: #9B870C;"><strong>Question 8:</strong></span> Fit a new linear model called <code>m_gen</code> to predict average professor evaluation <code>score</code> based on <code>gender</code> of the professor. Based on the regression output, write the linear model and interpret the slope and intercept in context of the data.</p>
+<p><span style="color: #9B870C;"><strong>Question 9:</strong></span> What is the equation of the line corresponding to male professors? What is it for female professors?</p>
+<p>Good luck! 💪</p>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -1342,6 +1078,15 @@
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
