@@ -23,5 +23,7 @@ In this module you will learn how to explore efficiently your dataset and how to
 
 [Lab 5: Modelling with a single predictor](Lab5_Model.html)
 
+[Lab 6: Modelling with a single predictor - Part 2](Lab6_Model.html)
+
 
 ### Part 3: Predictions
