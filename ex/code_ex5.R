@@ -4,7 +4,7 @@ openintro::evals
 data <- openintro::evals
 
 ggplot(data, aes(x=score)) + geom_histogram() + theme_bw()
-ggplot(data, aes(y=score, x= bty_avg)) + geom_point() + geom_smooth(method = 'lm')
+ggplot(data, aes(y=score, x= gender)) + geom_boxplot()
 ggplot(data, aes(y=score, x= pic_outfit)) + geom_boxplot() + theme_bw ()
 
 data %>% 
@@ -31,3 +31,9 @@ ggplot(data, aes(x= bty_avg, y = score)) +
   geom_point() + 
   geom_jitter() +
   geom_line(aes(y = score_pred), color = 'red')
+
+
+
+# Gender
+data$gender_recode <- ifelse(data$gender == 'female', 1, 0)
+m_gen <- lm(score ~ gender_recode, data = data)

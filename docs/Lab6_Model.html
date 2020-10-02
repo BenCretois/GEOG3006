@@ -45,7 +45,7 @@
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["imgs/brewerp.PNG","imgs/DataFlow.PNG","imgs/pipe.png","imgs/plot_ex3.PNG","Lab5_Model.html","Lab5_Model_files/bowser-1.9.3/bowser.min.js","Lab5_Model_files/distill-2.2.21/template.v2.js","Lab5_Model_files/figure-html5/unnamed-chunk-5-1.png","Lab5_Model_files/figure-html5/unnamed-chunk-7-1.png","Lab5_Model_files/jquery-1.11.3/jquery.min.js","Lab5_Model_files/webcomponents-2.0.0/webcomponents.js","Lab6_Model_files/bowser-1.9.3/bowser.min.js","Lab6_Model_files/distill-2.2.21/template.v2.js","Lab6_Model_files/figure-html5/unnamed-chunk-10-1.png","Lab6_Model_files/figure-html5/unnamed-chunk-3-1.png","Lab6_Model_files/figure-html5/unnamed-chunk-4-1.png","Lab6_Model_files/figure-html5/unnamed-chunk-5-1.png","Lab6_Model_files/figure-html5/unnamed-chunk-6-1.png","Lab6_Model_files/figure-html5/unnamed-chunk-9-1.png","Lab6_Model_files/jquery-1.11.3/jquery.min.js","Lab6_Model_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["imgs/brewerp.PNG","imgs/DataFlow.PNG","imgs/pipe.png","imgs/plot_ex3.PNG","Lab6_Model_files/bowser-1.9.3/bowser.min.js","Lab6_Model_files/distill-2.2.21/template.v2.js","Lab6_Model_files/figure-html5/unnamed-chunk-10-1.png","Lab6_Model_files/figure-html5/unnamed-chunk-3-1.png","Lab6_Model_files/figure-html5/unnamed-chunk-4-1.png","Lab6_Model_files/figure-html5/unnamed-chunk-5-1.png","Lab6_Model_files/figure-html5/unnamed-chunk-6-1.png","Lab6_Model_files/figure-html5/unnamed-chunk-9-1.png","Lab6_Model_files/jquery-1.11.3/jquery.min.js","Lab6_Model_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1130,8 +1130,14 @@ broom::tidy(m_gen)</code></pre>
 <p>We can interpret the <span class="math inline">\(\beta_0\)</span> as the average <code>score</code> for male professor and <span class="math inline">\(\beta_1\)</span> the “additional value to score” if the professor is a female.</p>
 <p><span style="color: #9B870C;"><strong>Question 9:</strong></span> What is the equation of the line corresponding to male professors? What is it for female professors?</p>
 <p>We can formalise what we previously said by giving the equation for both male and females:</p>
-<p><span class="math inline">\(score_{female} = \beta_0 + \beta_1 * 1\)</span> <span class="math inline">\(score_{female} = 4.2 - 0.14 * 1\)</span> <span class="math inline">\(score_{female} = 4.06\)</span></p>
-<p><span class="math inline">\(score_{male} = \beta_0 + \beta_1 * 0\)</span> <span class="math inline">\(score_{male} = 4.2 - 0.14 * 0\)</span> <span class="math inline">\(score_{male} = 4.2\)</span></p>
+<p>Female:</p>
+<p><span class="math inline">\(score_{female} = \beta_0 + \beta_1 * 1\)</span></p>
+<p><span class="math inline">\(score_{female} = 4.2 - 0.14 * 1\)</span></p>
+<p><span class="math inline">\(score_{female} = 4.06\)</span></p>
+<p>Male:</p>
+<p><span class="math inline">\(score_{male} = \beta_0 + \beta_1 * 0\)</span></p>
+<p><span class="math inline">\(score_{male} = 4.2 - 0.14 * 0\)</span></p>
+<p><span class="math inline">\(score_{male} = 4.2\)</span></p>
 <p>On average, the students will grade a male teacher 4.2 while they will grade a female professor 4.06.</p>
 <h1 id="exercise-continuation">Exercise continuation</h1>
 <p>For this lab and the next one you will continue to analyze the <code>eval</code> dataset. Here, you will still work with <strong>categorical predictors</strong> and learn how to interpret it. It is very important to understand how to interpret models with categorical data, especially in the social sciences where you will be confronted to plenty of them. Here are the questions for the next lab:</p>
