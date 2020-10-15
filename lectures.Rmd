@@ -63,4 +63,7 @@ site: distill::distill_website
 
 ### 7.2 [dispersion](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=77804d10-bf0d-40bb-938b-ac5400e4f656)
 
+### 7.3 [European Social Survey (ESS)](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=080904c9-e2a4-427f-98c5-ac5500e19411)
+
+---
 ---
