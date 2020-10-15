@@ -190,12 +190,20 @@ We can interpret the $\beta_0$ as the average `score` for male professor and $\b
 
 We can formalise what we previously said by giving the equation for both male and females:
 
+Female: 
+
 $score_{female} = \beta_0 + \beta_1 * 1$
+
 $score_{female} = 4.2 - 0.14 * 1$
+
 $score_{female} = 4.06$
 
+Male: 
+
 $score_{male} = \beta_0 + \beta_1 * 0$
+
 $score_{male} = 4.2 - 0.14 * 0$
+
 $score_{male} = 4.2$
 
 On average, the students will grade a male teacher 4.2 while they will grade a female professor 4.06.

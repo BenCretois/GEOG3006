@@ -25,5 +25,6 @@ In this module you will learn how to explore efficiently your dataset and how to
 
 [Lab 6: Modelling with a single predictor - Part 2](Lab6_Model.html)
 
+[Lab 7: Modelling with a single predictor - Part 3](Lab7_Model.html)
 
-### Part 3: Predictions
+### Part 3: Communicating your results (Open science & reproducibility)
