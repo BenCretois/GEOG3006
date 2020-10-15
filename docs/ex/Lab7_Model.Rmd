@@ -1,0 +1,193 @@
+---
+title: "Modelling with a single predictor - 2"
+output_dir: "C:/Users/benjamcr/Rproj/GEOG3006/docs"
+output: 
+      distill::distill_article:
+        self_contained: false
+        toc: TRUE
+        toc_float: TRUE
+        number_sections: yes
+---
+
+# Exercise correction
+
+As usual, you first need to load the libraries and open the dataset.
+
+```{r, echo = TRUE}
+# Load the libraries
+library(tidyverse)
+library(openintro)
+library(broom)
+
+# Open the dataset
+data <- openintro::evals
+```
+
+
+<span style="color: #9B870C;">**Question 11:**</span> Create a new variable called `rank_relevel` where `"tenure track"` is the baseline level.
+
+Here we will need to create a new column `rank_relevel` which gives a number to the different `rank` categories. Let's first have a look at the `rank` categories:
+
+```{r, echo = TRUE}
+unique(data$rank)
+```
+
+The variable `rank` contains 3 categories: `teaching`, `tenure track`, `tenured`. I want `tenure track` to be my "baseline level" meaning that I want it to be the **intercept** in my model. Therefore I need to re-code it as 0.
+
+For that we can use the function `recode`:
+
+```{r, echo = TRUE}
+data <- data %>% 
+  mutate(rank_relevel = recode(data$rank, 
+       "tenure track" = 0,
+       "teaching" = 1,
+       "tenured" = 2))
+```
+
+In this compact bit of code I am basically asking R to create a new column in `data` where `tenure track` takes the value 0, `teaching` takes the value of 1 and `tenured` takes the value of 2. We also need to specify that the values in this "dummy column" are `factors` and not just numbers:
+
+```{r, echo = TRUE}
+data$rank_relevel <- as.factor(data$rank_relevel)
+```
+
+You can check if you did it right with table:
+
+```{r, echo = TRUE}
+table(data$rank)
+table(data$rank_relevel)
+```
+
+This seems coherent.
+
+<span style="color: #9B870C;">**Question 12:**</span> Fit a new linear model called `m_rank_relevel` to predict average professor evaluation `score` based on `rank_relevel` of the professor. Based on the regression output, write the linear model and interpret the slopes and intercept in context of the data. Also determine and interpret the **R2** of the model.
+
+We fit the model with the function `lm` that we already used in the previous exercise:
+
+```{r, echo = TRUE}
+m_rank_level <- lm(score ~ rank_relevel, data = data)
+broom::tidy(m_rank_level)
+```
+
+To interpret the model output we need to write down the model's equation. The equation of the linear model is:
+
+$score = \beta_0 + \beta_1 * teaching + \beta_2 * tenured$
+
+Because we coded `tenure tack` as the baseline level, it is here the intercept or the $\beta_0$.Now that we have the values for all the **model parameters** we can re-write the equation as follow:
+
+$score = 4.15 + 0.12 * teaching -0.01 * tenured$
+
+Following this equation, the students would give on average a score of **4.15** to a person ranked as a `tenure track`. 
+
+If the person has the rank `teaching`, the students would give an average score of **4.27** (we add $\beta_0$ and $\beta_1$).
+
+If the person has the rank `tenured`, the students would give an average score of **4.14**
+
+We should also interpret the **$R_2$** of the model. As a reminder, $R_2$ can be calculated as follow:
+
+$R_2 = \frac{TSS - RSS}{TSS}$ 
+
+$R_2 = \frac{Explained\:variations}{Total\:variation}$ 
+
+$R_2 = \frac{1 - unexplained\:variations}{Total\:variation}$ 
+
+You can access the model's $R_2$ by using the function `glance` from `broom`:
+
+```{r, echo = TRUE}
+broom::glance(m_rank_level)
+```
+
+We can see that the model's $R_2$ is equal to **0.0116**, which means that the model explains only around 1%  ... Not a great fit.
+
+
+<span style="color: #9B870C;">**Question 13:**</span> Create another new variable called `tenure_eligible` that labels `"teaching"` faculty as "no" and labels `"tenure track"` and `"tenured"` faculty as `"yes"`.
+
+To answer this question we need to use the function `recode` again, this time to specify only two categories.
+
+```{r, echo = TRUE}
+data <- data %>% 
+  mutate(tenure_eligible = recode(data$rank, 
+       "tenure track" = "yes",
+       "teaching" = "no",
+       "tenured" = "yes"))
+```
+
+Because these are not numbers we do not need to specify that they are `factors` with the `as.factor()` function.
+
+
+<span style="color: #9B870C;">**Question 14:**</span> Fit a new linear model called `m_tenure_eligible` to predict average professor evaluation `score` based on `tenure_eligibleness` of the professor. Based on the regression output, write the linear model and interpret the slopes and intercept in context of the data. Also determine and interpret the **R2** of the model.
+
+We run the model again with the `lm` function:
+
+```{r, echo = TRUE}
+m_tenure_eligible <- lm(score ~ tenure_eligible, data = data)
+```
+
+To interpret the model output we need to write down the equation:
+
+$score = \beta_0 + \beta_1 * yes$
+
+$score = 4.28 -0.141 * yes$
+
+Here, the baseline (or the intercept) is the `no` category. Therefore the student would give on average a score of 4.28 if the person teaching has the rank `teaching`. The score would decrease by **0.141** compared to this baseline if the person has the rank `tenure_track` or `tenured`.
+
+To get the model's $R_2$ we use again the function `glance`:
+
+```{r, echo = TRUE}
+broom::glance(m_tenure_eligible)
+```
+
+We can see that the model's $R_2$ is equal to **0.0115**, which means that the model explains only around 1%  ... Not a great fit either.
+
+
+
+# Why you should consider **multiple regression analysis**?
+
+So far we have only included **one** predictor in our models. However, while this keeps the model very simple to interpret it is not always an optimal thing to do.
+
+**Multiple regression** is an extension of simple linear regression. It is used when we want to predict the value of a variable based on the value of two or more other variables. For example, you could use multiple regression to understand whether **exam performance** can be explained based on **revision time, test anxiety, lecture attendance and gender**. Alternately, you could use multiple regression to understand whether **daily cigarette consumption** can be explained based on **smoking duration, age when started smoking, smoker type, income and gender**.
+
+In a **multiple regression** we need to add some terms to account for the other predictor variables, this translate into the addition of more **model parameters** to estimate. Concretely, the model for `exam performance` would look like this
+
+$exam\:performance = \beta_0 + beta_1 * revision\:time + \beta_2 * test\:anxiety + beta_3 * lecture\:attendance + \beta_4 * gender$
+
+**Multiple regression** can **correct** the estimation of a parameter value. It is possible that, in a **simple regression** (with only one predictor variable), the unique variable explains more variance than it should because we did not account for another variable which is correlated to the first one. **Simple regressions can inflate** the importance of a particular variable. For instance,
+
+Note that the contrary is true, the **simple regression** can "hide" the effect of a particular variable because of its correlation with another variable.
+
+This concept is not easy to understand but as a general rule, **you should include predictor variables which you think have an effect on the response variable altogether in the same model**.
+
+We will learn more about multiple regression in the next lab ...
+
+
+# Introduction to European Survey
+
+For your term paper you have the choice of using the dataset resulting from the [European Social Survey](https://www.europeansocialsurvey.org/) or to work with your own dataset - which is very recommanded!
+
+You can download the dataset on [Blackboard](https://ntnu.blackboard.com/webapps/blackboard/content/listContentEditable.jsp?content_id=_1156185_1&course_id=_25583_1) or here:
+
+```{r, echo = FALSE}
+xfun::embed_file('C:/Users/benjamcr/Rproj/GEOG3006/data/ess_round9.csv')
+```
+
+**The European Social Survey (ESS)** is an academically driven cross-national survey that has been conducted across Europe since its establishment in 2001. Every two years, face-to-face interviews are conducted with newly selected, cross-sectional samples.
+
+The survey measures the attitudes, beliefs and behaviour patterns of diverse populations in more than thirty nations. The main aims of the ESS are:
+
+* To chart stability and change in social structure, conditions and attitudes in Europe and to interpret how Europe’s social, political and moral fabric is changing;
+* To achieve and spread higher standards of rigour in cross-national research in the social sciences, including for example, questionnaire design and pre-testing, sampling, data collection, reduction of bias and the reliability of questions;
+* To introduce soundly-based indicators of national progress, based on citizens’ perceptions and judgements of key aspects of their societies;
+* To undertake and facilitate the training of European social researchers in comparative quantitative measurement and analysis;
+* To improve the visibility and outreach of data on social change among academics, policy makers and the wider public.
+
+The ESS survey is a very rich source of data.
+
+```{r, , echo = TRUE}
+# Open the ESS dataset
+ess <- read_csv('C:/Users/benjamcr/Rproj/GEOG3006/data/ess_round9.csv')
+```
+
+The content of `ess` is impressive, we have 47086 observations and 558 variables. The names of the variables are short but their full meaning can be found on the **ESS9 Codebook** on BlackBoard or on the ESS9 website.
+
+# Next lab
+
+In the next lab I will analyze part of the ESS survey. In particular, we will have a look at the drivers of **internet use** in Norway. Obviously you cannot reproduce the same analysis for your term paper.
