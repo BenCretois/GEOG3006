@@ -19,366 +19,35 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>GEOG3006 - Quantitative methods: Exercises</title>
+  <title>Modelling with a single predictor - 2</title>
   
   
   
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2020-10-23"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-10-23"/>
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="GEOG3006 - Quantitative methods: Exercises"/>
+  <meta property="og:title" content="Modelling with a single predictor - 2"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="GEOG3006 - Quantitative methods"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="GEOG3006 - Quantitative methods: Exercises"/>
+  <meta property="twitter:title" content="Modelling with a single predictor - 2"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site"]}},"value":[{"type":"character","attributes":{},"value":["Exercises"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output_dir","output","date"]}},"value":[{"type":"character","attributes":{},"value":["Modelling with a single predictor - 2"]},{"type":"character","attributes":{},"value":["C:/Users/benjamcr/Rproj/GEOG3006/docs"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["10-23-2020"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
-  <!--radix_placeholder_navigation_in_header-->
   
-  <script type="application/javascript">
-  
-    window.headroom_prevent_pin = false;
-  
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-  
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-  
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-  
-      // responsive menu
-      $('.distill-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-  
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["imgs/brewerp.PNG","imgs/DataFlow.PNG","imgs/pipe.png","imgs/plot_ex3.PNG","Lab8_Model_files/bowser-1.9.3/bowser.min.js","Lab8_Model_files/distill-2.2.21/template.v2.js","Lab8_Model_files/figure-html5/unnamed-chunk-10-1.png","Lab8_Model_files/figure-html5/unnamed-chunk-12-1.png","Lab8_Model_files/figure-html5/unnamed-chunk-4-1.png","Lab8_Model_files/figure-html5/unnamed-chunk-5-1.png","Lab8_Model_files/jquery-1.11.3/jquery.min.js","Lab8_Model_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
-  
-  <style type="text/css">
-  
-  /* Theme (user-documented overrideables for nav appearance) */
-  
-  .distill-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #455a64;
-    font-size: 15px;
-    font-weight: 300;
-  }
-  
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-  
-  .distill-site-nav a:hover {
-    color: white;
-  }
-  
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-  
-  .distill-site-header {
-  
-  }
-  
-  .distill-site-footer {
-  
-  }
-  
-  
-  /* Site Header */
-  
-  .distill-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-  
-  .distill-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-  
-  
-  .distill-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-  
-  .distill-site-header a,
-  .distill-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-  
-  .distill-site-header .title {
-    font-size: 18px;
-  }
-  
-  .distill-site-header .logo {
-    padding: 0;
-  }
-  
-  .distill-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-  
-  .distill-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-  
-  
-  
-  @media screen and (min-width: 1000px) {
-    .distill-site-header .logo img {
-      display: inline-block;
-    }
-    .distill-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .distill-site-header .title {
-      padding-left: 12px;
-    }
-  }
-  
-  
-  .distill-site-header .nav-toggle {
-    display: none;
-  }
-  
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-  
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-  
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-  
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  .nav-dropdown-active {
-    display: block;
-  }
-  
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-  
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-  
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
-    .distill-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .distill-site-header .title {
-      margin-left: 0;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 0;
-    }
-    .distill-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-  
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header.responsive {position: relative;}
-    .distill-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .distill-site-header.responsive a,
-    .distill-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .distill-site-header.responsive .nav-left,
-    .distill-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .distill-site-header.responsive .nav-dropdown {float: none;}
-    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
-    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-  
-  /* Site Footer */
-  
-  .distill-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-  
-  /* Headroom */
-  
-  d-title {
-    padding-top: 6rem;
-  }
-  
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-  
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-  
-  .headroom--unpinned {
-    top: -100px;
-  }
-  
-  .headroom--pinned {
-    top: 0;
-  }
-  
-  </style>
-  
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
+  <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
   
@@ -1264,10 +933,10 @@
   </script>
   
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="Lab8_Model_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="Lab8_Model_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="Lab8_Model_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="Lab8_Model_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -1279,52 +948,256 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Exercises","authors":[]}
+{"title":"Modelling with a single predictor - 2","authors":[],"publishedDate":"2020-10-23T00:00:00.000+02:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="distill-site-nav distill-site-header">
-<div class="nav-left">
-<a href="index.html" class="title">GEOG3006 - Quantitative methods</a>
-</div>
-<div class="nav-right">
-<a href="index.html">Home</a>
-<a href="tutorial.html">Tuto</a>
-<a href="lectures.html">Lectures</a>
-<a href="exercises.html">Exercises</a>
-<a href="about.html">About us</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Exercises</h1>
+<h1>Modelling with a single predictor - 2</h1>
 
 </div>
 
 
 <div class="d-article">
+<h3 class="d-toc-header">Table of Contents</h3>
+<nav class="d-toc" id="TOC">
+<ul>
+<li><a href="#case-study-on-the-ess9">Case study on the ESS9</a><ul>
+<li><a href="#defining-a-research-question">Defining a research question</a></li>
+<li><a href="#open-the-data-and-wrangle">Open the data and wrangle</a></li>
+<li><a href="#data-visualization">Data visualization</a><ul>
+<li><a href="#visualization">Visualization</a></li>
+<li><a href="#model">Model</a></li>
+<li><a href="#discussing-the-results">Discussing the results</a></li>
+<li><a href="#communicating-the-results">Communicating the results</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<hr class="d-toc-separator"/>
+<p>In this Lab I will go through a case study made with the ESS9 dataset. This case study will give you more guidelines on how to filter out the data you are interested in. This case study is based on the workflow of the “data scientist”:</p>
+<ul>
+<li>Wrangle</li>
+<li>Visualizing</li>
+<li>Modeling</li>
+<li>Discussing the results</li>
+<li>Communicating the results</li>
+</ul>
+<h1 id="case-study-on-the-ess9">Case study on the ESS9</h1>
+<h2 id="defining-a-research-question">Defining a research question</h2>
+<p>Before collecting any data it is very important to know what we want, what is the question we want to ask. The question will condition the data we will collect and the protocol used to collect it. In this case study I will ask a simple question: what are the drivers of the time spent on internet in Norway?</p>
+<p>To answer that specific question I need to think properly about the variables (<strong>the independant variables / predictors</strong>) which may influence the time spent on internet, which is here my <strong>response variable</strong>.</p>
+<p>Usually, to know which variables to use we would need to look in the literature or ask an expert in the field. Otherwise we could use variables which would not have any real meaning and our interpretation of the results might be misleading.</p>
+<p>Here I hypothesize (but I should have looked in the literature or ask an expert!) that the time spent on internet is influenced by:</p>
+<ul>
+<li><strong>age</strong>: younger people might be on internet more than older people</li>
+<li><strong>sex</strong>: I would guess that males spend more time playing video games than females which would make their internet use higher</li>
+<li><strong>sociality</strong>: I would tend to think that the less time spent with friends, the more time one would spend on internet.</li>
+</ul>
+<p>After asking the question and defining the variables that may be important I need to go out on the field and collect the data! Luckily I do not have to collect the data myself as the ESS9 dataset already have this data.</p>
+<h2 id="open-the-data-and-wrangle">Open the data and wrangle</h2>
+<p>First of all, I load the libraries and open the dataset:</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="ex/imgs/DataFlow.PNG" width="544" /></p>
+<pre class="r"><code>
+# Load the libraries
+library(tidyverse)
+library(broom)
+library(cowplot)
+library(ggcorrplot)
+
+# Open the dataset
+ess &lt;- read_csv(&#39;C:/Users/benjamcr/Rproj/GEOG3006/data/ess_round9.csv&#39;)</code></pre>
 </div>
-<h3 id="part-1-data-vizualisation">Part 1: Data Vizualisation</h3>
-<p>In this module you will learn how to explore efficiently your dataset and how to make effective graph.</p>
-<p><a href="Lab1_DataViz.html">Lab 1: Introduction to data visualization and ggplot2</a></p>
-<p><a href="Lab2_DataViz.html">Lab 2: Data visualization - Part 2</a></p>
-<p><a href="Lab3_DataViz.html">Lab 3: Data visualization &amp; data wrangling - Part 3</a></p>
-<p><a href="Lab4_DataViz.html">Lab 4: Data visualization &amp; data wrangling - Part 4</a></p>
-<h3 id="part-2-modelling-data-statistical-inference">Part 2: Modelling data &amp; Statistical inference</h3>
-<p><a href="Lab5_Model.html">Lab 5: Modelling with a single predictor</a></p>
-<p><a href="Lab6_Model.html">Lab 6: Modelling with a single predictor - Part 2</a></p>
-<p><a href="Lab7_Model.html">Lab 7: Modelling with a single predictor - Part 3</a></p>
-<p><a href="Lab8_Model.html">Lab 8: Case study on ESS9</a></p>
-<h3 id="part-3-communicating-your-results-open-science-reproducibility">Part 3: Communicating your results (Open science &amp; reproducibility)</h3>
+<p>The dataset is massive and we need to isolate what we need to get a smaller, more manageable dataset. After glancing at the <strong>ESS9 Codebook</strong> I see that the variables I am looking for have a certain code:</p>
+<ul>
+<li><strong>netustm</strong>: internet use, how much spent on the net in a typical day, in minutes</li>
+<li><strong>agea</strong>: age of the respondent</li>
+<li><strong>gndr</strong>: gender of the respondent. Note that 1 stands for males and 2 for females</li>
+<li><strong>sclmeet</strong>: how often the respondent socially meets with friends, relatives or colleagues</li>
+</ul>
+<p>Finally, I want the data for Norway only. The ESS9 dataset has a column <code>cntry</code> in which <code>NO</code> stands for Norway. You can check this with the function <code>unique</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+unique(ess$cntry)</code></pre>
+<pre><code>
+ [1] &quot;AT&quot; &quot;BE&quot; &quot;BG&quot; &quot;CH&quot; &quot;CY&quot; &quot;CZ&quot; &quot;DE&quot; &quot;EE&quot; &quot;ES&quot; &quot;FI&quot; &quot;FR&quot; &quot;GB&quot; &quot;HR&quot;
+[14] &quot;HU&quot; &quot;IE&quot; &quot;IT&quot; &quot;LT&quot; &quot;LV&quot; &quot;ME&quot; &quot;NL&quot; &quot;NO&quot; &quot;PL&quot; &quot;PT&quot; &quot;RS&quot; &quot;SE&quot; &quot;SI&quot;
+[27] &quot;SK&quot;</code></pre>
+</div>
+<p>I am now able to make a subset of the ESS9 dataset:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+data &lt;- ess %&gt;% 
+  dplyr::filter(cntry == &quot;NO&quot;) %&gt;% # I filter only the observatins for Norway
+  dplyr::select(internet = netustm, 
+                age = agea, 
+                gender = gndr, 
+                social = sclmeet)  %&gt;% # I select the variables I am interested in
+  mutate(gender_recode = ifelse(gender == 1, 0, 1)) %&gt;% 
+  drop_na() # I get rid of all the missing values</code></pre>
+</div>
+<blockquote>
+<p>Note that I need to recode the variable <code>gender</code> with 0 and 1, This is mainly by security.</p>
+</blockquote>
+<p>Et voilà, these 3 lines of codes reduce the dataset considerably. <code>data</code> is made of only 1298 observations and 4 columns.</p>
+<h2 id="data-visualization">Data visualization</h2>
+<p>We can now begin to explore the relationship between <code>netustm</code> and the predictor variables. We also have to compute the correlation between each predictor variables so the model assumptions are respected (we have seen that in a previous lab).</p>
+<h3 id="visualization">Visualization</h3>
+<p>Note that I use <code>geom_jitter</code> for the categorical variables (namely <code>gender</code> and <code>social</code>), this allow us to have a better overview on how the observations are distributed.</p>
+<p>I also use a new function <code>plot_grid</code> from the package <code>cowplot</code>. While non-necessary, this function helps me to have a clean layout for the plots.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+a &lt;- ggplot(data, aes(x = internet, y = age)) + 
+  geom_point() + 
+  geom_smooth(method = &#39;lm&#39;) + 
+  geom_jitter() +
+  theme_classic() +
+  xlab(&#39;internet use (in minutes)&#39;)
+
+b &lt;- ggplot(data, aes(x = social, y = internet)) + 
+  geom_point() + 
+  geom_jitter() +
+  theme_classic() +
+  ylab(&#39;internet use (in minutes)&#39;)
+
+c &lt;- ggplot(data, aes(x = gender, y = internet)) + 
+  geom_point() + 
+  geom_jitter() +
+  theme_classic() +
+  ylab(&#39;internet use (in minutes)&#39;)
+
+cowplot::plot_grid(a,b,c, ncol = 3)</code></pre>
+<p><img src="Lab8_Model_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<p>From the plots I can expect internet use to be linearly related with the predictor variables:</p>
+<ul>
+<li>The younger, the more the respondent use internet</li>
+<li>It seems that the more social, the more the respondent use internet. This is in contradiction with my hypothesis!</li>
+<li>It also seems that gender does not really influence internet use … I am definitely not so good at hypothesizing ;)</li>
+</ul>
+<p>Now that we have a sense of how our data is distributed we need to confirm our intuition with some modeling. But before, we need to check if the <code>predictor variables</code> are not too correlated with each other:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+data %&gt;% 
+  dplyr::select(age, gender, social) %&gt;% 
+  cor(.) %&gt;% 
+  ggcorrplot(., type = &quot;lower&quot;, lab = TRUE)</code></pre>
+<p><img src="Lab8_Model_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+</div>
+<p>This is the fancy way of getting a correlation matrix, by using <code>ggcorplot</code>. You can also get the exact same result by writing:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+data %&gt;% 
+  dplyr::select(age, gender, social) %&gt;% 
+  cor(.)</code></pre>
+<pre><code>
+               age      gender      social
+age     1.00000000 -0.05482751 -0.16255562
+gender -0.05482751  1.00000000  0.03661748
+social -0.16255562  0.03661748  1.00000000</code></pre>
+</div>
+<p>Nevertheless, in a report or a scientific paper it is usually better to include more visuals. The correlation matrix show us that the predictor variables are weakly correlated with each other. The statistical model should be able to deal with this.</p>
+<h3 id="model">Model</h3>
+<p>As said previously, we now need to confirm our intuition regarding the distribution of the variables. This is done with <strong>statistical modeling</strong>. We can now fit the model:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+model &lt;- lm(internet ~ age + gender_recode + social, data = data)
+broom::tidy(model)</code></pre>
+<pre><code>
+# A tibble: 4 x 5
+  term          estimate std.error statistic  p.value
+  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)    435.       28.2     15.4    2.78e-49
+2 age             -4.05      0.279  -14.5    2.51e-44
+3 gender_recode    1.31      9.76     0.134  8.94e- 1
+4 social           0.240     3.91     0.0615 9.51e- 1</code></pre>
+</div>
+<p>To interpret the model output we can write its equation:</p>
+<p><span class="math inline">\(internet = \beta_1 + \beta_2 * age + \beta_3 * gender + \beta_4 * social\)</span></p>
+<p>With the estimated <strong>parameter values</strong>:</p>
+<p><span class="math inline">\(internet = 435 -4 * age + 1.3 * gender + 0.24 * social\)</span></p>
+<p>The <span class="math inline">\(\beta_1\)</span> or the intercept is 435. Therefore the model tells us that a person of 0 year with a social index of 0 and being a male spends on average 435 minutes on internet. This interpretation is of course ridiculous and we need to select other values to get a more reasonable interpretation. Take for instance a 15 year old boy who meets his friends once a week (a value of 5 for the predictor <code>social</code>):</p>
+<p><span class="math inline">\(internet = 435 -4 * 15 + 1.3 * 0 + 0.24 * 5\)</span></p>
+<p>This boy would spend on average 376.2 minutes on internet per day (more than 6 hours). We can directly see that the predictors <code>social</code> and <code>gender</code> have a very low effect on the average time spent on internet as changing them weakly influence the amount of time spent on internet. Take for example a 15 year old girl who meets her friend every day (a value of 7 for the predictor <code>social</code>), she would spend on average 378 minutes on internet according to our model. Only 2 minutes more than her boy counterpart!</p>
+<p>We can intuitively guess that <code>age</code> is the most important predictor of internet use in our model as it changes the response <code>internet</code> the most. In fact, a 1 year old increase in the age of the respondent decreases its internet time by 4 minutes. In contrast, a female would spend on average only 1 more minutes than a male. Moreover, meeting the friends more often only increase the internet use by 0.24 minutes, a negligible amount of time.</p>
+<blockquote>
+<p>Note: Some of you who have already done some courses on statistics or quantitative methods may have notice that I do not use the p-value or the term “significant”. We classically say that a variable is “significant” if its p-value &lt; 0.05. Nevertheless the 0.05 value is totally subjective and is only a norm. While p-values and “significancies” can be useful in some context I suggest that you focus on the <strong>effect</strong> of a variable by interpreting how it changes the response rather than on its p-value.</p>
+</blockquote>
+<p>I am also wondering whether the interaction between the predictors <code>age</code> and <code>gender</code> influence the time spent on the internet. Could older woman spend more time on internet than older men?</p>
+<p>The model would now look like:</p>
+<p><span class="math inline">\(internet = \beta_1 + \beta_2 * age + \beta_3 * gender + \beta_4 * social + \beta_5 * age * gender\)</span></p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+model2 &lt;- lm(internet ~ age + gender_recode + social + age:gender_recode, data = data)
+broom::tidy(model2)</code></pre>
+<pre><code>
+# A tibble: 5 x 5
+  term              estimate std.error statistic  p.value
+  &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)        445.       30.8     14.4    6.34e-44
+2 age                 -4.26      0.376  -11.3    2.47e-28
+3 gender_recode      -19.8      27.1     -0.728  4.66e- 1
+4 social               0.163     3.91     0.0417 9.67e- 1
+5 age:gender_recode    0.460     0.553    0.832  4.05e- 1</code></pre>
+</div>
+<p>With the estimated parameters we can re-write the model as follow:</p>
+<p><span class="math inline">\(internet = 444 -4 * age -20 * gender + 0.16 * social + 0.5 * age:gender\)</span></p>
+<p>The effect of <code>gender</code> is now greater than on the first model. However, it needs to be interpreted with the interaction term if we want to see if there is really a difference.</p>
+<blockquote>
+<p>Note: Including <code>age:gender</code> un-hide or at least “correct” the effect of <code>gender</code> and this is a reason why <strong>multiple regression analysis</strong> is so important and useful.</p>
+</blockquote>
+<p>If we take the example of a 50 year old man who meets his friend once a week and a 50 year old woman who meet her friends once a week too the difference will be now more pronounced.</p>
+<p><span class="math inline">\(internet_{male, 50yo} = 444 -4 * 50 -20 * 0 + 0.16 * 5 + 0.5 * 50*0\)</span></p>
+<p><span class="math inline">\(internet_{male, 50yo} = 245\)</span></p>
+<p><span class="math inline">\(internet_{female, 50yo} = 444 -4 * 50 -20 * 1+ 0.16 * 5 + 0.5 * 50*1\)</span></p>
+<p><span class="math inline">\(internet_{female, 50yo} = 250\)</span></p>
+<p>The woman would spend on average 5 minutes more on internet than her male counterpart … The difference is not very pronounced. I will therefore stick with model 1.</p>
+<h3 id="discussing-the-results">Discussing the results</h3>
+<p>After modeling we need to discuss the meaning of the result. Interpreting and seeing if a model make sense is a way of validating it: if the model doesn’t make any sense in the <em>real world</em> then we know that something need to be changed. Imagine that <span class="math inline">\(\beta_3\)</span> which is the coefficient for <code>gender</code> is of 1000. This would mean than a woman would on average spend 16 more hours on internet than a man … This is obviously not possible and would need to revise our model!</p>
+<blockquote>
+<p>Note: a statistical model is stupid and need a person to see if it makes sense or not!</p>
+</blockquote>
+<p>In our case the parameter values make sense as we saw with the few examples I have been through. The variable <code>age</code> is the one which has the most important effect. This is due to the “generational gap”: older people are less use to be on internet while younger people were born with it and, in a way, it is a normal part of their lives: Facebook, Twitter, Instagram, Snapchat …</p>
+<p>The model also indicated that the coefficient for <code>gender</code> is positive, even though it doesn’t trigger enormous change in the response. We can hypothesize that female spend a bit more time than male on internet because they are more social, they communicate more with other friends through Messenger or Whatsapp for instance.</p>
+<h3 id="communicating-the-results">Communicating the results</h3>
+<p>In a report or a scientific paper we usually want to highlight the most important result. In my case I want to show how <code>age</code> change the response <code>time spend on internet</code>. While interpreting the coefficient as we did previously is already an important step in communicating the results, it is also very important to include plots as it helps to truly visualize the effect of a variable on another.</p>
+<p>First, I need to predict the response <code>internet</code> based on the model output. I can use the function <code>predict</code>. In the code below I create a new column <code>predict_internet</code> which return the <strong>predicted internet use</strong> based on the variables at a specific row. The <code>predict</code> function basically does what we have previously done when we worked on the examples of the 50 year old woman but for the entire dataset.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+data &lt;- data %&gt;% 
+  mutate(predict_internet = predict(model))</code></pre>
+</div>
+<p>We can now plot <code>predict_internet</code> with regard to age. We also add the data points to the graph, this helps to see if the model fitted well:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+data %&gt;% ggplot(., aes(x = age)) +
+  geom_line(aes(y = predict_internet), col = &#39;darkblue&#39;, size = 1) +
+  geom_point(aes(y = internet), alpha = .3) +
+  theme_classic()</code></pre>
+<p><img src="Lab8_Model_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
+<p>We now clearly see the trend. However, we do not have any uncertainty associated with this trend, which is a shame … The <code>predict</code> function has an argument which is <code>se.fit</code>. If <code>se.fit = TRUE</code> then the function will predict <code>internet</code> and its associated uncertainty. We can create a dataset <code>p</code> containing the <strong>predicted use of internet</strong> and the <strong>standard error</strong> which we will add to our dataset:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+p &lt;- predict(model, se.fit = TRUE)
+data &lt;- data %&gt;% mutate(se = p$se.fit)</code></pre>
+</div>
+<p>And we can now plot the results with their associated uncertainty with the function <code>geom_ribbon</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+data %&gt;% ggplot(., aes(x = age)) +
+  geom_line(aes(y = predict_internet), col = &#39;darkblue&#39;, size = 0.75) +
+  geom_ribbon(aes(ymin = predict_internet - se, ymax = predict_internet + se), col = &#39;blue&#39;, alpha = .5) +
+  geom_point(aes(y = internet), alpha = .3) +
+  theme_classic() +
+  xlab(&#39;age of the respondent&#39;) + ylab(&#39;time spent on internet (in minutes)&#39;)</code></pre>
+<p><img src="Lab8_Model_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
+</div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -1332,6 +1205,15 @@
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->

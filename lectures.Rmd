@@ -66,4 +66,12 @@ site: distill::distill_website
 ### 7.3 [European Social Survey (ESS)](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=080904c9-e2a4-427f-98c5-ac5500e19411)
 
 ---
+
+# Lecture 8
+
+### 8.1 [sampling and confidence intervals](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=152a599b-1bd7-4c87-9eb2-ac5c0098ab53)
+
+### 8.2 [hypothesis testing and significance]( https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=851fa37d-fef0-4e7f-8e35-ac5c00be35fe)
+
+---
 ---

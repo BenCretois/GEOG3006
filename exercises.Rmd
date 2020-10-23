@@ -27,4 +27,6 @@ In this module you will learn how to explore efficiently your dataset and how to
 
 [Lab 7: Modelling with a single predictor - Part 3](Lab7_Model.html)
 
+[Lab 8: Case study on ESS9](Lab8_Model.html)
+
 ### Part 3: Communicating your results (Open science & reproducibility)
