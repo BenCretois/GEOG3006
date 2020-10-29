@@ -31,4 +31,4 @@ In this module you will learn how to explore efficiently your dataset and how to
 
 ### Part 3: Communicating your results (Open science & reproducibility)
 
-[Lab 9: Introduction to Rmarkdown](Lab9_Rmarkdown.html)
+[Lab 9: Introduction to Rmarkdown](ex/Lab9_Rmarkdown.html)
