@@ -19,366 +19,35 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>GEOG3006 - Quantitative methods: Exercises</title>
+  <title>Lab 9: Introduction to Rmarkdown</title>
   
   
   
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2020-10-29"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-10-29"/>
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="GEOG3006 - Quantitative methods: Exercises"/>
+  <meta property="og:title" content="Lab 9: Introduction to Rmarkdown"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="GEOG3006 - Quantitative methods"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="GEOG3006 - Quantitative methods: Exercises"/>
+  <meta property="twitter:title" content="Lab 9: Introduction to Rmarkdown"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site"]}},"value":[{"type":"character","attributes":{},"value":["Exercises"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output_dir","output","date"]}},"value":[{"type":"character","attributes":{},"value":["Lab 9: Introduction to Rmarkdown"]},{"type":"character","attributes":{},"value":["docs"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_float","number_sections"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["10-29-2020"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
-  <!--radix_placeholder_navigation_in_header-->
   
-  <script type="application/javascript">
-  
-    window.headroom_prevent_pin = false;
-  
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-  
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-  
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-  
-      // responsive menu
-      $('.distill-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-  
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["imgs/brewerp.PNG","imgs/DataFlow.PNG","imgs/pipe.png","imgs/plot_ex3.PNG","imgs/rmd.PNG","imgs/rmd10.PNG","imgs/rmd2.PNG","imgs/rmd3.PNG","imgs/rmd4.PNG","imgs/rmd5.PNG","imgs/rmd6.PNG","imgs/rmd7.PNG","imgs/rmd8.PNG","imgs/rmd9.PNG"]}
   </script>
-  
-  <style type="text/css">
-  
-  /* Theme (user-documented overrideables for nav appearance) */
-  
-  .distill-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #455a64;
-    font-size: 15px;
-    font-weight: 300;
-  }
-  
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-  
-  .distill-site-nav a:hover {
-    color: white;
-  }
-  
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-  
-  .distill-site-header {
-  
-  }
-  
-  .distill-site-footer {
-  
-  }
-  
-  
-  /* Site Header */
-  
-  .distill-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-  
-  .distill-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-  
-  
-  .distill-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-  
-  .distill-site-header a,
-  .distill-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-  
-  .distill-site-header .title {
-    font-size: 18px;
-  }
-  
-  .distill-site-header .logo {
-    padding: 0;
-  }
-  
-  .distill-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-  
-  .distill-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-  
-  
-  
-  @media screen and (min-width: 1000px) {
-    .distill-site-header .logo img {
-      display: inline-block;
-    }
-    .distill-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .distill-site-header .title {
-      padding-left: 12px;
-    }
-  }
-  
-  
-  .distill-site-header .nav-toggle {
-    display: none;
-  }
-  
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-  
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-  
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-  
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  .nav-dropdown-active {
-    display: block;
-  }
-  
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-  
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-  
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
-    .distill-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .distill-site-header .title {
-      margin-left: 0;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 0;
-    }
-    .distill-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-  
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header.responsive {position: relative;}
-    .distill-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .distill-site-header.responsive a,
-    .distill-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .distill-site-header.responsive .nav-left,
-    .distill-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .distill-site-header.responsive .nav-dropdown {float: none;}
-    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
-    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-  
-  /* Site Footer */
-  
-  .distill-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-  
-  /* Headroom */
-  
-  d-title {
-    padding-top: 6rem;
-  }
-  
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-  
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-  
-  .headroom--unpinned {
-    top: -100px;
-  }
-  
-  .headroom--pinned {
-    top: 0;
-  }
-  
-  </style>
-  
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
+  <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
   
@@ -1264,10 +933,10 @@
   </script>
   
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="Lab9_Rmarkdown_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="Lab9_Rmarkdown_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="Lab9_Rmarkdown_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="Lab9_Rmarkdown_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -1279,53 +948,196 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Exercises","authors":[]}
+{"title":"Lab 9: Introduction to Rmarkdown","authors":[],"publishedDate":"2020-10-29T00:00:00.000+01:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="distill-site-nav distill-site-header">
-<div class="nav-left">
-<a href="index.html" class="title">GEOG3006 - Quantitative methods</a>
-</div>
-<div class="nav-right">
-<a href="index.html">Home</a>
-<a href="tutorial.html">Tuto</a>
-<a href="lectures.html">Lectures</a>
-<a href="exercises.html">Exercises</a>
-<a href="about.html">About us</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Exercises</h1>
+<h1>Lab 9: Introduction to Rmarkdown</h1>
 
 </div>
 
 
 <div class="d-article">
+<h3 class="d-toc-header">Table of Contents</h3>
+<nav class="d-toc" id="TOC">
+<ul>
+<li><a href="#introduction-to-rmarkdown">Introduction to Rmarkdown</a><ul>
+<li><a href="#download-rmarkdown">Download Rmarkdown</a></li>
+<li><a href="#create-an-rmarkdown-file">Create an Rmarkdown file</a></li>
+<li><a href="#yaml-header">YAML header</a></li>
+<li><a href="#code-chunck">Code chunck</a></li>
+<li><a href="#hiding-code-chunk">Hiding code chunk</a></li>
+<li><a href="#inserting-figures">Inserting figures</a></li>
+<li><a href="#inserting-tables-with-kable">Inserting tables with <code>kable()</code></a></li>
+<li><a href="#formatting-text">Formatting text</a></li>
+</ul></li>
+<li><a href="#header-1">Header 1</a><ul>
+<li><a href="#header-2">Header 2</a></li>
+<li><a href="#creating-pdf-documents-in-rmarkdown">Creating <code>pdf</code> documents in Rmarkdown</a></li>
+</ul></li>
+<li><a href="#have-a-go-yourself">Have a go yourself!</a></li>
+</ul>
+</nav>
+<hr class="d-toc-separator"/>
+<h1 id="introduction-to-rmarkdown">Introduction to Rmarkdown</h1>
+<p>R Markdown allows you to create documents that serve as a neat record of your analysis. In the world of reproducible research, we want other researchers to easily understand what we did in our analysis, otherwise nobody can be certain that you analysed your data properly.</p>
+<p>You might choose to create an RMarkdown document as an appendix to a paper or project assignment that you are doing, upload it to an online repository such as Github, or simply to keep as a personal record so you can quickly look back at your code and see what you did.</p>
+<p>RMarkdown <strong>presents your code alongside its output (graphs, tables, etc.) with conventional text to explain it</strong>, a bit like a notebook. Just know that all the labs build were done in Rmarkdown!</p>
+<p>For instance, have a look at <a href="https://github.com/ourcodingclub/CC-2-RMarkdown/blob/master/UnderGrad_Dissertation_Rmd.pdf">this appendix</a> for a Bachelor thesis which summarize neatly all the analysis that were carried out.</p>
+<p>While it is not mandatory for your term paper we highly recommend that you use the Rmarkdown format for showing us your analysis!</p>
+<h2 id="download-rmarkdown">Download Rmarkdown</h2>
+<p>You can download Rmarkdown as you would download any other R package:</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="ex/imgs/DataFlow.PNG" width="544" /></p>
+<pre class="r"><code>
+install.packages(&#39;rmarkdown&#39;)
+library(rmarkdown)</code></pre>
 </div>
-<h3 id="part-1-data-vizualisation">Part 1: Data Vizualisation</h3>
-<p>In this module you will learn how to explore efficiently your dataset and how to make effective graph.</p>
-<p><a href="Lab1_DataViz.html">Lab 1: Introduction to data visualization and ggplot2</a></p>
-<p><a href="Lab2_DataViz.html">Lab 2: Data visualization - Part 2</a></p>
-<p><a href="Lab3_DataViz.html">Lab 3: Data visualization &amp; data wrangling - Part 3</a></p>
-<p><a href="Lab4_DataViz.html">Lab 4: Data visualization &amp; data wrangling - Part 4</a></p>
-<h3 id="part-2-modelling-data-statistical-inference">Part 2: Modelling data &amp; Statistical inference</h3>
-<p><a href="Lab5_Model.html">Lab 5: Modelling with a single predictor</a></p>
-<p><a href="Lab6_Model.html">Lab 6: Modelling with a single predictor - Part 2</a></p>
-<p><a href="Lab7_Model.html">Lab 7: Modelling with a single predictor - Part 3</a></p>
-<p><a href="Lab8_Model.html">Lab 8: Case study on ESS9</a></p>
-<h3 id="part-3-communicating-your-results-open-science-reproducibility">Part 3: Communicating your results (Open science &amp; reproducibility)</h3>
-<p><a href="Lab9_Rmarkdown.html">Lab 9: Introduction to Rmarkdown</a></p>
+<h2 id="create-an-rmarkdown-file">Create an Rmarkdown file</h2>
+<p>To create a new RMarkdown file (<code>.Rmd</code>), select <code>File -&gt; New File -&gt; R Markdown...</code>_ in RStudio, then choose the file type you want to create. For now we will focus on a .html Document, which can be easily converted to other file types later.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="imgs/rmd.PNG" width="329" /></p>
+</div>
+<p>The newly created .Rmd file comes with basic instructions, but we want to create our own RMarkdown script, so go ahead and delete everything in the example file.</p>
+<p>Now you can save the <code>Rmd</code> in a relevant folder.</p>
+<h2 id="yaml-header">YAML header</h2>
+<p>A Rmarkdown document always begin with a <code>YAML</code> header enclosed with <code>---</code>. By default this includes a title, author, date and the file type you want to output to. Many other options are available for different functions and formatting but we will keep with the basics now.</p>
+<p>Insert something like this at the top of your new <code>.Rmd</code> script:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>By default, the <code>title</code>, <code>author</code>, <code>date</code> and <code>output</code> format are printed at the top of your <code>.html</code> document. This is the minimum you should put in your header section.</p>
+<p>Now that we have our first piece of content, we can test the <code>.Rmd</code> file by compiling it to <code>.html</code>. To compile your <code>.Rmd</code> file into a <code>.html</code> document, you should press the <code>Knit</code> button in the taskbar:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="imgs/rmd2.PNG" width="552" /></p>
+</div>
+<p>By default, RStudio opens a separate preview window to display the output of your <code>.Rmd</code> file.</p>
+<h2 id="code-chunck">Code chunck</h2>
+<p>Below the <code>YAML</code> header is the space where you will write your code, accompanying explanation and any outputs. Code that is included in your .Rmd document should be enclosed by three backwards apostrophes <code>```</code>. These are known as code chunks and look like this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="imgs/rmd3.PNG" width="225" /></p>
+</div>
+<p>In your <code>.html</code> output, this should look like this:</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre class="r"><code>
+norm &lt;- rnorm(100, mean = 0, sd = 1)</code></pre>
+</div>
+<p>It’s important to remember when you are creating an RMarkdown file that if you want to run code that refers to an object, for example:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="imgs/rmd4.PNG" width="154" /></p>
+</div>
+<p><code>dataframe</code> <strong>must</strong> refer to an object existing in your <code>environment</code>, thus if you want to load the dataset you want to analyze in the <code>Rmd</code> document you need to include the code in the .Rmd:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="imgs/rmd5.PNG" width="293" /></p>
+</div>
+<p>Similarly, if you are using any packages in your analysis, you will have to load them in the .Rmd file using <code>library()</code> as in a normal R script.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="imgs/rmd6.PNG" width="162" /></p>
+</div>
+<h2 id="hiding-code-chunk">Hiding code chunk</h2>
+<p>If you don’t want the code of a particular code chunk to appear in the final document, but still want to show the output (e.g. a plot), then you can include <code>echo = FALSE</code> in the code chunk instructions.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="imgs/rmd7.PNG" width="202" /></p>
+</div>
+<p>In some cases, when you load packages into RStudio, various warning messages such as “Warning: package <code>‘dplyr’ was built under R version 3.4.4” might appear</code>. If you do not want these warning messages to appear, you can use <code>warning = FALSE</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="imgs/rmd8.PNG" width="193" /></p>
+</div>
+<blockquote>
+<p>IMPORTANT: remember, R Markdown doesn’t pay attention to anything you have loaded in other R scripts, you MUST load all objects and packages in the R Markdown script.</p>
+</blockquote>
+<h2 id="inserting-figures">Inserting figures</h2>
+<p>Inserting a graph into RMarkdown is easy, the more energy-demanding aspect might be adjusting the formatting.</p>
+<p>By default, RMarkdown will place graphs by maximising their height, while keeping them within the margins of the page and maintaining aspect ratio. If you have a particularly tall figure, this can mean a really huge graph. In the following example we modify the dimensions of the figure we created above. To manually set the figure dimensions, you can insert an instruction into the curly braces:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="imgs/rmd9.PNG" width="224" /></p>
+</div>
+<h2 id="inserting-tables-with-kable">Inserting tables with <code>kable()</code></h2>
+<p>The most aesthetically pleasing and simple table formatting function I have found is <code>kable()</code> in the <code>knitr</code> package. The first argument tells <code>kable</code> to make a table out of the object dataframe and that numbers should have two significant figures. Remember to load the knitr package in your .Rmd file as well.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="imgs/rmd10.PNG" width="169" /></p>
+</div>
+<p>Will return:</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">A</th>
+<th style="text-align: right;">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b</td>
+<td style="text-align: right;">20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="formatting-text">Formatting text</h2>
+<p>Markdown syntax can be used to change how text appears in your output file. Here are a few common formatting commands:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p><em>Italic</em></p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p><strong>Bold</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>This is the <code>code</code></p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h1 id="header-1">Header 1</h1>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h2 id="header-2">Header 2</h2>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<ul>
+<li>Unordered list item</li>
+<li>Unordered list item 2</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<ol type="1">
+<li>Unordered list item</li>
+<li>Unordered list item 2</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p><a href="https://www.google.com">Link</a></p>
+<h2 id="creating-pdf-documents-in-rmarkdown">Creating <code>pdf</code> documents in Rmarkdown</h2>
+<p>To compile a <code>.pdf</code> instead of a <code>.html</code> document, change output: from html_document to pdf_document in the YAML header:</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h1 id="have-a-go-yourself">Have a go yourself!</h1>
+<p>At this point you should be able to make your own document in Rmarkdown and show your entire analysis! Have a go and try to convert one of your r script into a <code>Rmd</code> document!</p>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

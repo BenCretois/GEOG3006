@@ -74,4 +74,11 @@ site: distill::distill_website
 ### 8.2 [hypothesis testing and significance]( https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=851fa37d-fef0-4e7f-8e35-ac5c00be35fe)
 
 ---
+
+# Lecture 9
+
+### 9.1 [Central limit theorem](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=76b8ec84-06a5-445a-b03e-ac6200e1f115)
+
+### 9.2 [Interpreting regression results](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c6d905f5-b505-4770-a13c-ac6200f3ba8c)
+
 ---
