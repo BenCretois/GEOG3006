@@ -82,3 +82,11 @@ site: distill::distill_website
 ### 9.2 [Interpreting regression results](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c6d905f5-b505-4770-a13c-ac6200f3ba8c)
 
 ---
+
+# Lecture 10
+
+### 9.1 [Logistic regression](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8c69692c-d453-4ae5-ae98-ac6a00e8e57c)
+
+### 9.2 [More than two categories](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=617d8489-86fd-4b10-b297-ac6a010f7496)
+
+---
