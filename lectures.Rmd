@@ -90,3 +90,12 @@ site: distill::distill_website
 ### 9.2 [More than two categories](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=617d8489-86fd-4b10-b297-ac6a010f7496)
 
 ---
+
+# Lecture 11
+
+### 11.1 [Polynomial regression](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c44f2c1b-45e2-43a0-ae33-ac7000f0f538)
+
+### 11.2 [Interpreting models](https://ntnu.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0e950277-ae8b-4180-9e80-ac7100f72aa5)
+
+
+---
